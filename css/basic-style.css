@@ -2,7 +2,7 @@ html{
   background-image: url("../img/home-bg.png")
 }
 
-.login-input-username{
+/*.login-input-username{
   width:90%;
   margin: auto;
   border-bottom: 2px solid #ce1370 !important;
@@ -12,6 +12,20 @@ html{
   background-size: 5% ;
   padding-left: 10% !important;
   background-position: left center;
+}*/
+
+/*.login-input-username{
+position: relative;
+float: right;
+width:90%;
+}
+
+.login-image-username{
+  position: relative;
+  float: left;
+  width: 3%;
+  height: 3%;
+  margin:auto;
 }
 
 .login-input-password{
@@ -23,9 +37,49 @@ html{
   background-repeat: no-repeat;
   background-size: 10%;
   padding-left: 10% !important;
-  background-position: left center;
+  background-position: left center !important;
   margin-top: 5%;
+  
+}*/
+
+.login-username input{
+width:90%;
+background-color:transparent;
 }
+
+.login-username img{
+  float: left;
+  margin: 2%;
+  height: 5%;
+  width: 5%;
+}
+
+.login-username{
+  margin: 5%;
+  left:10px;
+  border-bottom: 2px solid #ce1370 !important;
+  margin-right: 5% !important;
+}
+
+.login-input-password{
+width:90%;
+background-color:transparent;
+}
+
+.login-image-password{
+  float: left;
+  padding: 1%;
+  height: 10%;
+  width: 10%;
+}
+
+.login-password{
+  margin: 5%;
+  left:10px;
+  border-bottom: 2px solid #ce1370 !important;
+  margin-right: 5% !important;
+}
+
 
 .align-center{
   text-align: center;
@@ -42,11 +96,12 @@ html{
 
 .login-text{
   color: #ce1370;
+  padding:0 2%;
 }
 
 .login-button{
   background-color: #ce1370;
-  color:#fdf7c2;
+  color:#FDF7F6;
   width: 90%;
   border: none;
   height:10%;
@@ -54,6 +109,7 @@ html{
   margin-bottom: 5%;
   padding:5%;
   border-radius: 5px;
+  box-shadow: 1px -1px 5px #858180;/*vertical horizontal blur color*/
 }
 
 .login-link{
