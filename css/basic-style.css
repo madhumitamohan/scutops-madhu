@@ -42,12 +42,6 @@ width:90%;
   
 }*/
 
-.login-username input{
-width:auto;
-background-color:transparent;
-padding-left:3%;
-}
-
 .login-username img{
   float: left;
   margin-left: 20px !important;
@@ -57,15 +51,8 @@ padding-left:3%;
 }
 
 .login-username{
-  margin: 5%;
   left:10px;
   border-bottom: 2px solid #ce1370 !important;
-}
-
-.login-password input{
-width:auto;
-background-color:transparent;
-padding-left:3%;
 }
 
 .login-password img{
@@ -76,7 +63,6 @@ padding-left:3%;
 }
 
 .login-password{
-  margin: 5%;
   left:10px;
   border-bottom: 2px solid #ce1370 !important;
 }
@@ -91,8 +77,8 @@ padding-left:3%;
   color: #ce1370;
 }
 
-.login-scutops-image{
-  margin:5%;
+.scutops-image-logo{
+  margin:10% 5% 0 5% ;
 }
 
 .login-text{
@@ -102,7 +88,7 @@ padding-left:3%;
  
 }
 
-.login-button{
+.button-style{
   background-color: #ce1370;
   color:#FDF7F6;
   width: 90%;
@@ -115,12 +101,46 @@ padding-left:3%;
   box-shadow: 1px -1px 5px #858180;/*vertical horizontal blur color*/
 }
 
-.login-link{
+.text-bold{
   text-decoration: none;
-  font-weight: bold;
+  font-weight: bold !important;
   color: #ce1370;
 }
 
 .background{
   background-color: black;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.margin-5{
+  margin: 5%;
+}
+
+.input-style{
+width:auto;
+background-color:transparent;
+padding-left:3% !important;
+}
+
+.input-style::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:   #ce1370 ;
+}
+.input-style:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #ce1370;
+}
+.input-style::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:   #ce1370;
+}
+.input-style:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:   #ce1370;
+}
+.input-style::-ms-input-placeholder { /* Microsoft Edge */
+   color:   #ce1370;
+}
+
+.border-pink{
+  border-bottom: 2px solid #ce1370 !important;
 }

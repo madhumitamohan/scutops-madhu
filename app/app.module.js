@@ -50,6 +50,13 @@ angular.module(appName, ['ionic'])
         title: 'Login'
     })
 
+    .state('signup', {
+        url: "/signup",
+        templateUrl: "app/signup/templates/signup.html",
+        controller: 'LoginController as Login',
+        title: 'SignUp'
+    })
+
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');
