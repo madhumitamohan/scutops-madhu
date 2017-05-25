@@ -8,11 +8,11 @@
         /**
          * Login Controller.
          */
-        .controller('LoginController', Login);
+        .controller('LoginController', SignUp);
 
-    Login.$inject = ['$state', '$filter', '$http', 'config', '$location'];
+    SignUp.$inject = ['$state', '$filter', '$http', 'config', '$location'];
 
-    function Login($state, $filter, $http, config, $location) {
+    function SignUp($state, $filter, $http, config, $location) {
         var loginVm = this;
         // Variable declarations
         loginVm.currentUser = {};
@@ -46,7 +46,7 @@
         }
 
         function SignUp() {
-            $state.go('signup'); //change state go to app.module
+            $state.go('setlocation'); //change state go to app.module
         }
 
 

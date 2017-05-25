@@ -53,12 +53,25 @@ angular.module(appName, ['ionic'])
     .state('signup', {
         url: "/signup",
         templateUrl: "app/signup/templates/signup.html",
-        controller: 'LoginController as Login',
+        controller: 'SignUpController as SignUp',
         title: 'SignUp'
     })
 
+     .state('set-location', {
+        url: "/set-location",
+        templateUrl: "app/set-location/templates/set-location.html",
+        controller: 'set-locationController as set-location',
+        title: 'set-location'
+    })
+
+     .state('display-options', {
+        url: "/display-options",
+        templateUrl: "app/display-options/templates/display-options.html",
+        controller: 'display-optionsController as display-options',
+        title: 'display-options'
+    })
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/display-options');
 
 });
