@@ -8,11 +8,11 @@
         /**
          * Login Controller.
          */
-        .controller('LoginController', Login);
+        .controller('DisplayOptionsController', DisplayOptions);
 
-    Login.$inject = ['$state', '$filter', '$http', 'config', '$location'];
+    DisplayOptions.$inject = ['$state', '$filter', '$http', 'config', '$location'];
 
-    function Login($state, $filter, $http, config, $location) {
+    function DisplayOptions($state, $filter, $http, config, $location) {
         var loginVm = this;
         // Variable declarations
         loginVm.currentUser = {};
@@ -20,9 +20,9 @@
         loginVm.currentUser.password = ""; //mannu
 
         // Function declarations
-        loginVm.authinticateUser = authinticateUser;
-        loginVm.SignUp = SignUp;
-        loginVm.ForgotPassword = ForgotPassword;
+        loginVm.bookService = bookService;
+      
+        
         loginVm.changeServerIp = changeServerIp;
 
         activate();
@@ -41,19 +41,10 @@
             // To initialize anything before the project starts
         }
 
-        function authinticateUser() {
-            $state.go('dashboard');
+        function bookService() {
+            $state.go('set-location');
         }
 
-        function SignUp() {
-            $state.go('signup'); //change state go to app.module
-        }
-
-
-        function ForgotPassword() {
-            /*$state.go('forgotPassword');*/
-            $location.path('/forgot');
-        }
     }
 
 })();

@@ -8,7 +8,7 @@
         /**
          * Login Controller.
          */
-        .controller('LoginController', SignUp);
+        .controller('SignUpController', SignUp);
 
     SignUp.$inject = ['$state', '$filter', '$http', 'config', '$location'];
 
@@ -21,7 +21,7 @@
 
         // Function declarations
         loginVm.authinticateUser = authinticateUser;
-        loginVm.SignUp = SignUp;
+        loginVm.signUp = signUp;
         loginVm.ForgotPassword = ForgotPassword;
         loginVm.changeServerIp = changeServerIp;
 
@@ -45,8 +45,8 @@
             $state.go('dashboard');
         }
 
-        function SignUp() {
-            $state.go('setlocation'); //change state go to app.module
+        function signUp() {
+            $state.go('display-options'); //change state go to app.module
         }
 
 

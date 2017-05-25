@@ -60,18 +60,18 @@ angular.module(appName, ['ionic'])
      .state('set-location', {
         url: "/set-location",
         templateUrl: "app/set-location/templates/set-location.html",
-        controller: 'set-locationController as set-location',
-        title: 'set-location'
+        controller: 'SetLocationController as SetLocation',
+        title: 'SetLocation'
     })
 
      .state('display-options', {
         url: "/display-options",
         templateUrl: "app/display-options/templates/display-options.html",
-        controller: 'display-optionsController as display-options',
+        controller: 'DisplayOptionsController as DisplayOptions',
         title: 'display-options'
     })
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/display-options');
+    $urlRouterProvider.otherwise('/login');
 
 });
