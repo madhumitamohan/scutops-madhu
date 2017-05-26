@@ -71,6 +71,14 @@ angular.module(appName, ['ionic'])
         title: 'display-options'
     })
 
+
+     .state('confirm-booking', {
+        url: "/confirm-booking",
+        templateUrl: "app/confirm-booking/templates/confirm-booking.html",
+        controller: 'ConfirmBookingController as ConfirmBooking',
+        title: 'confirm-booking'
+    })
+
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');
 

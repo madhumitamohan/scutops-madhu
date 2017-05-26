@@ -1,20 +1,20 @@
 <ion-view title={{pageTitle}}>
-	<ion-content>
+	<ion-content class="background-page">
 		<div class="ion-content ">
-
-
-			<div class="row" style="padding-top:30px" >
+			
+		<div class="row header" >
 				<div class="col-20 padding-header" >
 					<img src="img/menu-icon.png" style=" margin-left:25px "/>
 				</div>
 				<div class="col  align-center" >
-					<h3 class="text-bold">Set Location</h3>
+					<h3 class="text-bold">ScutOps</h3>
 				</div>
 				<div class="col-20" >
-					<img src="img/notification-icon.png" class="icon-dimensions" style=" margin-right:25px " />
+					<img src="img/notification-icon.png" class="icon-dimensions float-right" style=" margin-right:25px " />
 				</div>
 			</div>
 <!-- -->
+			<div style="  margin-top: 80px !important;">
 			<div class="align-center" class="map-input-container">
 				<div class="service-location">
 					<p class="margin0">SERVICE LOCATION</p>
@@ -52,10 +52,11 @@
 
 			</div>
 
-			<div class="align-center">
-				<button class="button-style">BOOK NOW </button>
+			<div class="align-center"><!--NAVIGATION NOT TAKING PLACE. CHECK! -->
+				<button class="button-style" ng-click="SetLocation.BookNow()">BOOK NOW </button>
 			</div>			
 		</div>
+	</div>
 	</ion-content>
 </ion-view> 
 

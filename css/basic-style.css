@@ -1,46 +1,10 @@
-html{
+.background-page{
   background-image: url("../img/home-bg.png");
 }
 
-/*.login-input-username{
-  width:90%;
-  margin: auto;
-  border-bottom: 2px solid #ce1370 !important;
-  background-image: url("../img/User_icon.png");
-  background-color:transparent;
-  background-repeat: no-repeat;
-  background-size: 5% ;
-  padding-left: 10% !important;
-  background-position: left center;
-}*/
-
-/*.login-input-username{
-position: relative;
-float: right;
-width:90%;
+.background-page2{
+   background-color: #FFF3E0;
 }
-
-.login-image-username{
-  position: relative;
-  float: left;
-  width: 3%;
-  height: 3%;
-  margin:auto;
-}
-
-.login-input-password{
-  width:90%;
-  margin: auto;
-  border-bottom: 2px solid #ce1370 !important;
-  background-image: url("../img/password_icon.png");
-  background-color:transparent;
-  background-repeat: no-repeat;
-  background-size: 10%;
-  padding-left: 10% !important;
-  background-position: left center !important;
-  margin-top: 5%;
-  
-}*/
 
 .login-username img{
   float: left;
@@ -180,8 +144,8 @@ padding-left:3% !important;
 .main-content{
   position: relative;
   padding-left: 30px !important;
+  padding-top: 5%;
   top:80px ;
-  background-color: #FFF3E0;
   overflow-y:scroll;
 }
 
@@ -261,6 +225,14 @@ margin:auto;
 font-size: 15px;
 width: 90%;
 }
+
+/*PAYMENT OPTIONS*/
+.scutops-money{
+  width:50%;
+  height:30%;
+  background-image: url('../img/home-bg.png');
+}
+
 /*PLACEHOLDER STYLES*/
 #location-input::-webkit-input-placeholder {
    text-align: center;
@@ -329,3 +301,5 @@ width: 90%;
   top: 0;
 }
 
+
+/**/
