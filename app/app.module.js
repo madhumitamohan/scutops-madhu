@@ -79,6 +79,13 @@ angular.module(appName, ['ionic'])
         title: 'confirm-booking'
     })
 
+     .state('feedback', {
+        url: "/feedback",
+        templateUrl: "app/feedback/templates/feedback.html",
+        controller: 'FeedbackController as Feedback',
+        title: 'feedback'
+    })
+
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');
 

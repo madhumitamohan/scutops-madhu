@@ -13,6 +13,7 @@
     SetLocation.$inject = ['$state', '$filter', '$http', 'config', '$location', '$scope', '$compile','$window'];
 
     function SetLocation($state, $filter, $http, config, $location, $scope, $compile, $window ) {
+
         var loginVm = this;
         // Variable declarations
         loginVm.currentUser = {};
@@ -20,62 +21,50 @@
         loginVm.currentUser.password = ""; //mannu
 
         // Function declarations
+        var map;
+        var marker;
         loginVm.BookNow = BookNow;
-
+        loginVm.Search = Search;
+        loginVm.doMapInitializations = doMapInitializations;
         activate();
 
 
+        function Search(){
+            console.log("Hello");
+            //document.getElementById('location-input').value="4th Cross Road,Thrikkakkara,Kerala";
+            var add = document.getElementById('location-input').value;
 
+            var geocoder = new google.maps.Geocoder;
+            geocoder.geocode({address:add},function(results,status){
+                map.setCenter(results[0].geometry.location);
+                placeMarker(results[0].geometry.location);
+                console.log(status);
+            });
 
+        }
 
-      function initMap() {
-        // Create a map object and specify the DOM element for display.
+      function initMap() {        
         var center = new google.maps.LatLng(9.994015,76.293758);
-
-        //REMOVING DEFAULT CONTROLS OF THE MAP
-        //var mapOptions {disableDefaultUI: true}
-
-
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 9.994015, lng: 76.293758},
           scrollwheel: true,
-          zoom: 8,
+          zoom: 15,
           disableDefaultUI: true,
           draggable:true     });
 
         //FOR PLACING THE MARKER AT THE CENTER
-        var marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
             map:map,
             position: center,
             //draggable:true,
             animation: google.maps.Animation.DROP,
             icon:'img/marker2.gif'
         });
-       
-       var geocoder = new google.maps.Geocoder;
-
-       //ALTERNATE METHOD FOR LINKING THE MARKER TO THE MAP
-         // marker.setMap(map);
-        //ON CLICKING THE MARKER IT ZOOMS IN
-        google.maps.event.addListener(marker,'click',function() {
-        map.setZoom(15);
-        map.setCenter(marker.getPosition());
-       });
-
-        //FOR DISPLAYING THE INFO WINDOW
-        /*var infowindow = new google.maps.InfoWindow({
-         content:"Hello World!"
-        });
-
-        infowindow.open(map,marker);
-        */
 
         //MAKING THE MAP MOVABLE
+        var geocoder = new google.maps.Geocoder;
         google.maps.event.addListener(map, 'click', function(event) {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-            setTimeout(function(){
-                marker.setAnimation(null);
-            },500);
+            
             placeMarker(event.latLng);
 
             //finding the formatted address of the position
@@ -85,45 +74,39 @@
             console.log(results[0].formatted_address);
             })
         });
+    }
+
+        function Animate(){
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(function(){
+                marker.setAnimation(null);
+            },500);
+        }
 
         function placeMarker(location) {
-            //setting the marker at the right position
+            Animate();
             marker.setPosition(location);
-            
-           // map.setCenter(location);
-
         }
-      }
+      
 
-       function doMapInitializations() {
+      function doMapInitializations() {
                 setTimeout(function(){ 
                     initMap();
             }, 1000);
-            google.maps.event.addDomListener(window, 'load', initialize);
-
-         /*   $scope.centerOnMe = function() {
-                if (!$scope.map) {
-                    return;
-                }
-
-
-                navigator.geolocation.getCurrentPosition(function(pos) {
-                    $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-                    $scope.loading.hide();
-                }, function(error) {
-                    alert('Unable to get location: ' + error.message);
-                });
-            };*/
+            //google.maps.event.addDomListener(window, 'load', initialize);
         }
 
         function activate() {
             doMapInitializations();
+
         }
 
 
         function BookNow() {
-            $state.go('login');
+            $state.go('confirm-booking');
         }
+
+        
     }
 
-})();
+}) ();

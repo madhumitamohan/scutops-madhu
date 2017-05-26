@@ -4,6 +4,7 @@
 
 .background-page2{
    background-color: #FFF3E0;
+
 }
 
 .login-username img{
@@ -94,9 +95,6 @@ padding-left:3% !important;
   border-bottom: 2px solid #ce1370 !important;
 }
 
-.padding-header{
-  padding-top: 5px !important;
-  } 
 .signup-service-text{
   font-size: 5px;
   background-color: white;
@@ -118,14 +116,15 @@ padding-left:3% !important;
   border:1px solid #E27E88;
   padding: 0;
 }
-
+/*
 .title-table{
   color:#E27E88;
   font-size: 70%;
-  margin:3% 0 3% 0;
-  padding: 3%;
+  margin:3% 0 3% 0 !important; 
+  line-height: 1.5em;
+  padding-bottom: 3%;
 }
-
+*/
 
 .margin0{
   margin: 0 0 0 0 !important;
@@ -168,12 +167,13 @@ padding-top: 10px;
 }
 
 .textarea{
-border-radius: 5px;
+border-radius: 3px;
 box-shadow: 0 0 15px 7px #F8D1CF;
 border: 1px solid #ce1370 !important;
 background-color: #FAFAFA;
 padding: 5px 5px 5px 10px !important;
 resize:none;
+margin:auto;
 }
 
 .tic-icon{
@@ -191,6 +191,34 @@ resize:none;
 }
 
 /*SET-LOCATION*/
+
+.title-table{
+  height:100%;
+  width:90%;
+  background-color:rgb(253,222,169) ;
+  border:1px solid rgb(206,19,113);
+  border-radius: 3px;
+  margin: 15% 5% 5% 5% !important;
+  }
+
+  .table-row{
+    margin:2% 2% 2% 2%;
+    color: rgb(226,126,136);
+    font-size: 0.7em;
+    line-height: 1.3em;
+  }
+
+  .table-row-input{
+    color:rgb(214,75,123) !important;
+    background-color: rgb(253,222,169);
+    /*width: 25px;*/
+    margin:auto;
+    font-size: 1.1em !important;
+    height: 15px !important;
+    padding-left: 3px;
+  }
+
+
 #map{
   height: 300px;
   width: 100%;
@@ -208,12 +236,10 @@ resize:none;
   margin:10px 3% 3% 3%; 
   padding: 10px;
   z-index: 2;
-
 }
 
 .map-input-container{
-  position: relative;
-  z-index: 1;
+  margin-top: 20px !important;
 }
 
 #location-input{
@@ -224,30 +250,75 @@ padding:0 6% 0 6%;
 margin:auto;
 font-size: 15px;
 width: 90%;
+height:1.2em !important;
+}
+
+.input-number{
+  padding-left: 2%;
+  width:10%;
+  margin:auto;
+  background-color:  #FDDEA9;;
 }
 
 /*PAYMENT OPTIONS*/
 .scutops-money{
-  width:50%;
-  height:30%;
+  width:60vw;
+  height:60vw;
   background-image: url('../img/home-bg.png');
+  padding:1%;
+  border-color: rgb(228,109,111);
+  color:rgb(206,19,111);
+  border-radius:3px;
+  box-shadow: 1px 1px 1px rgb(246,181,110);
 }
 
+.main-content2{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top:80px ;
+  padding-top: 2%;
+}
+
+.main-content2 hr{
+  color:rgb(245,198,201);
+}
+
+.font-8{
+font-size: 90%;
+}
+
+.block-major{
+  padding: 10px 10px 10px 10px !important;
+  line-height: 2em;
+}
+
+.block{
+  padding: 2% 10px 0 10px !important;
+}
 /*PLACEHOLDER STYLES*/
 #location-input::-webkit-input-placeholder {
    text-align: center;
+   color: black;
+   font-weight: 200;
 }
 
 #location-input:-moz-placeholder { /* Firefox 18- */
-   text-align: center;  
+   text-align: center;
+   color: black;  
+   font-weight: 200;
 }
 
 #location-input::-moz-placeholder {  /* Firefox 19+ */
-   text-align: center;  
+   text-align: center;
+   color: black;  
+   font-weight: 200;
 }
 
 #location-input:-ms-input-placeholder {  
    text-align: center; 
+   color: black;
+   font-weight: 200;
 }
 
 
@@ -296,10 +367,23 @@ width: 90%;
 .header{
   background-image: url("../img/home-bg.png");
    padding-top:40px;
-  position:fixed;
+ /* position:fixed;*/
   overflow: hidden;
   top: 0;
 }
 
+hr { border-color: inherit; }
+/*FEEDBACK*/
+.feedback-text{
+  padding: 80px 0 40px 0;
+  font-size: 0.9em;
+  line-height: 1.2em;
+}
 
-/**/
+.feedback-input{
+  width:90%;
+  background-image: url("../img/feedback2.jpg");
+  background-repeat: no-repeat;
+  background-size: 100px 89px;
+  background-position: center;
+}

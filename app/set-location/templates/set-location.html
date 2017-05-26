@@ -1,9 +1,9 @@
 <ion-view title={{pageTitle}}>
-	<ion-content class="background-page">
-		<div class="ion-content ">
+	<ion-content class="background-page" >
+		<div class="ion-content" >
 			
 		<div class="row header" >
-				<div class="col-20 padding-header" >
+				<div class="col-20 " >
 					<img src="img/menu-icon.png" style=" margin-left:25px "/>
 				</div>
 				<div class="col  align-center" >
@@ -14,10 +14,10 @@
 				</div>
 			</div>
 <!-- -->
-			<div style="  margin-top: 80px !important;">
+		<div >
 			<div class="align-center" class="map-input-container">
 				<div class="service-location">
-					<p class="margin0">SERVICE LOCATION</p>
+					<div class="margin0">SERVICE LOCATION</div>
 					<input id="location-input" type="text" placeholder="Enter Location"/>
 				</div>
 				<div id="map" class="background" >
@@ -27,35 +27,39 @@
 					<input type="text" placeholder="Enter Location"/>
 				</div>-->
 			</div>
-
-			<div class="signup-table">
-				<div class="row padding0" >
-					<div class="col-50 align-center" style="border-bottom:1px solid #E27E88" >
-							<p class="title-table" style="line-height: 15px;border-right:1px solid #E27E88;">DATE</br>
-							DEC 15</p>
-					</div>
-					<div class="col-50  align-center" style="border-bottom:1px solid #E27E88;">
-						<p class=" title-table" style="line-height: 15px">NO. OF PROFESSIONALS</br>
-							1</p>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-50  align-center">
-						<p class=" title-table" style="line-height: 15px;border-right:1px solid #E27E88;">START TIME</br>
-							2:00pm</p>
-					</div>
-					<div class="col-50  align-center">
-						<p class="title-table" > Have a promocode?</p>
-					</div>
-				</div>
-
-			</div>
-
-			<div class="align-center"><!--NAVIGATION NOT TAKING PLACE. CHECK! -->
-				<button class="button-style" ng-click="SetLocation.BookNow()">BOOK NOW </button>
-			</div>			
 		</div>
+
+			
+			<div class="title-table">
+				<div class="row table-row">
+					<div class="col-50 align-center">
+						<div>DATE</div>
+						<input class="table-row-input" type="date" style="width: 120px;">
+					</div>
+					<div class="col-50 align-center">
+						<div>NO. OF EMPLOYEES</div>
+						<input type="number" min="0" max="10" class="table-row-input" style="width: 25px;"/>
+					</div>
+				</div>
+				<hr/>
+				<div class="row table-row">
+					<div class="col-50 align-center">
+						<div>START TIME</div>
+						<input class="table-row-input" type="time" style="width: 60px;">
+					</div>
+					<div class="col-50 align-center">
+						<div class="table-row-input " style="width: 100px;">Have a promocode?</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="align-center" ><!--NAVIGATION NOT TAKING PLACE. CHECK! -->
+				<button type="button" class="button-style" ng-click="SetLocation.BookNow()">BOOK NOW </button>
+			</div>	
+
+			<button type="button" ng-click="SetLocation.Search()">SEARCH</button>
+
+
 	</div>
 	</ion-content>
 </ion-view> 
