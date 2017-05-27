@@ -4,16 +4,17 @@
 			
 		<div class="row header" >
 				<div class="col-20 " >
-					<img src="img/menu-icon.png" style=" margin-left:25px "/>
+					<img src="img/menu-icon.png" class="margin-left-25"/>
 				</div>
 				<div class="col  align-center" >
 					<h3 class="text-bold">ScutOps</h3>
 				</div>
 				<div class="col-20" >
-					<img src="img/notification-icon.png" class="icon-dimensions float-right" style=" margin-right:25px " />
+					<img src="img/notification-icon.png" class="icon-dimensions float-right" class="margin-left-25" />
 				</div>
 			</div>
 <!-- -->
+		<div class="content">
 		<div >
 			<div class="align-center" class="map-input-container">
 				<div class="service-location">
@@ -22,30 +23,26 @@
 				</div>
 				<div id="map" class="background" >
 				</div>
-				<!--<div class="align-center">
-					<p class="signup-service-text">SERVICE LOCATION</p>
-					<input type="text" placeholder="Enter Location"/>
-				</div>-->
 			</div>
 		</div>
 
 			
 			<div class="title-table">
-				<div class="row table-row">
-					<div class="col-50 align-center">
+				<div class="row table-row ">
+					<div class="col-50 align-center" style="border-right:1px solid rgb(206,19,113)">
 						<div>DATE</div>
-						<input class="table-row-input" type="date" style="width: 120px;">
+						<input id= "date" class="table-row-input" type="date" style="width: 120px;">
 					</div>
 					<div class="col-50 align-center">
 						<div>NO. OF EMPLOYEES</div>
-						<input type="number" min="0" max="10" class="table-row-input" style="width: 25px;"/>
+						<input id="count" type="number" min="1" max="5" class="table-row-input" style="width: 25px;"/>
 					</div>
 				</div>
 				<hr/>
 				<div class="row table-row">
-					<div class="col-50 align-center">
+					<div class="col-50 align-center" style="border-right:1px solid rgb(206,19,113)">
 						<div>START TIME</div>
-						<input class="table-row-input" type="time" style="width: 60px;">
+						<input id="time" class="table-row-input" type="time" style="width: 60px;">
 					</div>
 					<div class="col-50 align-center">
 						<div class="table-row-input " style="width: 100px;">Have a promocode?</div>
@@ -61,6 +58,7 @@
 
 
 	</div>
+</div>
 	</ion-content>
 </ion-view> 
 

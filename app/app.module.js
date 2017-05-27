@@ -86,6 +86,13 @@ angular.module(appName, ['ionic'])
         title: 'feedback'
     })
 
+     .state('menu', {
+        url: "/menu",
+        templateUrl: "app/menu/templates/menu.html",
+        controller: 'MenuController as Menu',
+        title: 'menu'
+    })
+
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');
 

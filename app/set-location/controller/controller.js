@@ -14,18 +14,21 @@
 
     function SetLocation($state, $filter, $http, config, $location, $scope, $compile, $window ) {
 
-        var loginVm = this;
+        var SetLocationVm = this;
         // Variable declarations
-        loginVm.currentUser = {};
-        loginVm.currentUser.email = ""; //manu@gmail.com
-        loginVm.currentUser.password = ""; //mannu
+        SetLocationVm.currentUser = {};
+        SetLocationVm.currentUser.email = ""; //manu@gmail.com
+        SetLocationVm.currentUser.password = ""; //mannu
+        var bookingDate,bookingTime,bookingCount,bookingPromocode,valid=true;
+        var currentDate,currentTime,currentHour,currentMinute,currentSecond,validDate,validHour,validTime,date;
 
         // Function declarations
         var map;
         var marker;
-        loginVm.BookNow = BookNow;
-        loginVm.Search = Search;
-        loginVm.doMapInitializations = doMapInitializations;
+        SetLocationVm.BookNow = BookNow;
+        SetLocationVm.Search = Search;
+        SetLocationVm.doMapInitializations = doMapInitializations;
+        SetLocationVm.checkValidity = checkValidity;
         activate();
 
 
@@ -98,15 +101,100 @@
 
         function activate() {
             doMapInitializations();
+            inputInitialize();
 
         }
 
+
+        function inputInitialize(){
+            date = new Date();
+            currentDate = date.toISOString().substr(0,10);
+            currentHour = date.getHours();
+            currentMinute = date.getMinutes();
+            currentSecond = date.getSeconds();
+            validHour = date.getHours() + 2;
+
+            currentHour = (currentHour<10)? ("0" + currentHour) : currentHour;
+            currentMinute = (currentMinute<10)? ("0" + currentMinute) : currentMinute;
+            currentSecond = (currentSecond<10)? ("0" + currentSecond) : currentSecond;          
+            validHour = (validHour<10)? ("0" + validHour) : validHour;
+            validTime = validHour + ":" + currentMinute;
+
+            document.getElementById("date").value = currentDate;
+            document.getElementById("time").value = validTime;
+            document.getElementById("count").value = 1;
+        }
 
         function BookNow() {
-            $state.go('confirm-booking');
+            if(checkValidity())
+                $state.go('confirm-booking');
+
         }
 
-        
+
+        function checkValidity(){
+            bookingTime = document.getElementById("time").value;
+            bookingDate= document.getElementById("date").value;
+            bookingCount = document.getElementById("count").value;
+            validDate = new Date();
+            validDate.setDate(date.getDate()+1);
+            validDate = validDate.toISOString().substr(0,10);
+            if(dateValidity() && timeValidity() && countValidity())
+                return true;
+        }
+
+        function timeValidity(){
+            
+           /* console.log(date.getTime());
+            console.log(Date.parse('01/01/2011 10:20:45') > Date.parse('01/01/2011 5:10:10'));*/
+            var bookingTimeHour = bookingTime.substr(0,2);
+            //bookinghour
+                      
+            
+            
+            if(bookingTime < "07:00" || bookingTime > "18:00")
+               {
+                alert("Booking is allowed only between 7am and 5pm");
+                return false;
+               }
+            else if((currentDate == bookingDate) && (bookingTime<validTime))
+            {
+                alert("Booking is only allowed 2 hours from now");
+                return false;
+            }
+            else if(bookingDate == validDate && currentHour>=18 && bookingTimeHour<9 )
+            {
+                alert("Not Possible");
+                return false;
+            }
+            return true;
+
+        }
+
+        function dateValidity(){
+            if(Date.parse(bookingDate) < Date.parse(currentDate))
+                {
+                    alert("Booking starts from today");
+                    return false;
+                }
+                return true;
+        }
+
+        function countValidity(){
+            console.log(bookingCount);
+            if(bookingCount<1)
+                {
+                    alert("Book atleast one professional");
+                    return false;
+                }
+            else if(bookingCount>5)
+                {
+                    alert("Book less than or equal to five professionals");
+                    return false;
+                }
+            return true;
+            
+        }
     }
 
 }) ();

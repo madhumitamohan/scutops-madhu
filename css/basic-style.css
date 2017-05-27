@@ -1,37 +1,18 @@
-.background-page{
+.background-page, .login-page{
   background-image: url("../img/home-bg.png");
 }
 
 .background-page2{
    background-color: #FFF3E0;
-
 }
 
-.login-username img{
-  float: left;
-  margin-left: 20px !important;
-  margin-right: 5px !important;
-  height:20px;
-  width: 13px;
+.margin-left-25{
+  margin-left:25px;
 }
 
-.login-username{
-  left:10px;
-  border-bottom: 2px solid #ce1370 !important;
+.margin-5{
+  margin: 5%;
 }
-
-.login-password img{
-  float: left;
-  margin-left: 10px !important;
-  height: 12px;
-  width: 30px;
-}
-
-.login-password{
-  left:10px;
-  border-bottom: 2px solid #ce1370 !important;
-}
-
 
 .align-center{
   text-align: center;
@@ -42,15 +23,10 @@
   color: #ce1370;
 }
 
-.scutops-image-logo{
-  margin:10% 5% 0 5% ;
-}
-
-.login-text{
+.text-bold{
+  text-decoration: none;
+  font-weight: bold !important;
   color: #ce1370;
-  padding:0 2%;
-  font-weight: 500;
- 
 }
 
 .button-style{
@@ -66,22 +42,12 @@
   box-shadow: 1px -1px 5px #858180;/*vertical horizontal blur color*/
 }
 
-.text-bold{
-  text-decoration: none;
-  font-weight: bold !important;
-  color: #ce1370;
-}
-
 .background{
   background-color: black;
 }
 
 .cursor-pointer{
   cursor: pointer;
-}
-
-.margin-5{
-  margin: 5%;
 }
 
 .input-style{
@@ -93,6 +59,46 @@ padding-left:3% !important;
 
 .border-pink{
   border-bottom: 2px solid #ce1370 !important;
+}
+
+.login-page .scutops-image-logo{
+  margin:10% 5% 0 5% ;
+}
+
+.login-page .scutops-image-logo img{
+  width: 100%;
+}
+
+.login-page .login-username img{
+  float: left;
+  margin-left: 20px !important;
+  margin-right: 5px !important;
+  height:20px;
+  width: 13px;
+}
+
+.login-page .login-username{
+  left:10px;
+  border-bottom: 2px solid #ce1370 !important;
+}
+
+.login-page .login-password img{
+  float: left;
+  margin-left: 10px !important;
+  height: 12px;
+  width: 30px;
+}
+
+.login-page .login-password{
+  left:10px;
+  border-bottom: 2px solid #ce1370 !important;
+}
+
+.login-page .login-text{
+  color: #ce1370;
+  padding:0 2%;
+  font-weight: 500;
+ 
 }
 
 .signup-service-text{
@@ -146,6 +152,9 @@ padding-left:3% !important;
   padding-top: 5%;
   top:80px ;
   overflow-y:scroll;
+  font-size: 10px;
+  line-height: 1.5em;
+  height: 100%;
 }
 
 .small-icon-dimensions{
@@ -199,6 +208,7 @@ margin:auto;
   border:1px solid rgb(206,19,113);
   border-radius: 3px;
   margin: 15% 5% 5% 5% !important;
+  box-shadow: 0 0 2px rgb(206,19,113);
   }
 
   .table-row{
@@ -362,14 +372,21 @@ font-size: 90%;
   background-image: url("../img/home-bg.png");
   overflow: hidden;
   bottom:0;
+  z-index: 2;
 }
 
 .header{
   background-image: url("../img/home-bg.png");
-   padding-top:40px;
- /* position:fixed;*/
+  padding-top:40px;
+  position:fixed;
   overflow: hidden;
   top: 0;
+  z-index: 1;
+}
+
+.content{
+  position:relative;
+  top:80px;
 }
 
 hr { border-color: inherit; }
@@ -386,4 +403,49 @@ hr { border-color: inherit; }
   background-repeat: no-repeat;
   background-size: 100px 89px;
   background-position: center;
+}
+
+.menu{
+  float: top left;
+  width:60%;
+  position: absolute;
+  height:140%;
+  z-index: 4;
+  background-color: rgb(250,206,128);
+  color: #ce1370;
+  font-size:11px;
+  line-height: 1.2em;
+}
+
+.user-profile{
+  background-image:url("../img/home-bg.png"); 
+  height: 95px;
+  padding:20px;
+  position: relative;
+}
+
+.user-dp{
+  height: 50px;
+  width:50px;
+  background-color: white;
+  border-radius: 50%;
+  float: left;
+  margin-left: 5%;
+}
+
+.user-name{
+  padding-top: 14px;
+ }
+
+.options{
+line-height: 3em; 
+padding-left: 20px; 
+padding-top: 10px;
+}
+
+.icon-small{
+  margin:5px 15px 0 5%;
+  height:20px;
+  width: 20px;
+  float: left;
 }

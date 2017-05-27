@@ -2,11 +2,56 @@
 	<ion-content class="backround-page2">
 		
 		<div class="ion-content">
+
+		    <div class="menu" ng-show="val21" ng-click="val21=!val21">
+			 	
+			 	<div class="background user-profile align-center">
+			 		<img src="" class="user-dp"/>
+			 		<div class="user-name">Nandu Dinesan</div>
+			 	</div>
+
+			 	<div class="options">
+			 		<div>
+			 			<img src="img/feedback.png" class="icon-small"/>
+			 			<div>My Bookings</div>
+			 		</div>
+			 		<div>
+			 			<img src="img/feedback.png" class="icon-small"/>
+			 			<div>Promotions</div>
+			 		</div>
+			 		<div>
+			 			<img src="img/feedback.png" class="icon-small"/>
+			 			<div>My Profile</div>
+			 		</div>
+			 		<div>
+			 			<img src="img/feedback.png" class="icon-small"/>
+			 			<div>Notifications</div>
+			 		</div>
+			 		<div>
+			 			<img src="img/feedback.png" class="icon-small"/>
+			 			<div>Help</div>
+			 		</div>
+			 		<div>
+			 			<img src="img/feedback.png" class="icon-small"/>
+			 			<div>Feedback</div>
+			 		</div>
+			 		<div>
+			 			<img src="img/feedback.png" class="icon-small"/>
+			 			<div>Settings</div>
+			 		</div>
+
+			 	</div>
+			 	<hr/>
+
+			 	<div>About</div>
+			 	<div>Log Out</div>
+
+			</div>
 			<div class="row header" >
 				<div class="col-20 padding-header" >
-					<img src="img/menu-icon.png" style=" margin-left:25px "/>
+					<img src="img/menu-icon.png" style=" margin-left:25px " ng-click="val21=!val21"/>
 				</div>
-				<div class="col  align-center" >
+				<div class="col align-center" >
 					<h3 class="text-bold">ScutOps</h3>
 				</div>
 				<div class="col-20" >
@@ -14,31 +59,31 @@
 				</div>
 			</div>
 
-			<div class="main-content">
+			<div class="main-content content">
 				<div class="padding-top-10">
 					<img src="img/block-icon.png" class="small-icon-dimensions float-left" style="margin-top:3px" />
-					<p class="font-10 float-left" style="padding-left:2%" >Choose Service</p>
+					<p class="float-left" style="padding-left:2%" >Choose Service</p>
 				</div>
 
 				
 				<div class="row">
-					<div class="col font-10 align-center" style="position:relative">
+					<div class="col-25 align-center" style="position:relative">
 						<img src="img/tic-icon.png" class="tic-icon" ng-show="val1"/>
 						<img src="img/coocking-icon.png" class="circular-icon" ng-click="val1=!val1"/>
-						<p>COOKING</p>
+						<div>COOKING</div>
 
 					</div>
-					<div class="col font-10 align-center" style="position:relative">
+					<div class="col-25 align-center" style="position:relative">
 						<img src="img/tic-icon.png" class="tic-icon" ng-show="val2"/>
 						<img src="img/cleaning-icon.png" class="circular-icon"  ng-click="val2=!val2" />
 						<p>CLEANING</p>
 					</div>
-					<div class="col font-10 align-center" style="position:relative">
+					<div class="col-25 align-center" style="position:relative">
 						<img src="img/tic-icon.png" class="tic-icon" ng-show="val3"/>
 						<img src="img/spcialized-cooking-icon.png" class="circular-icon" ng-click="val3=!val3"/>
 						<p>SPECIALIZED COOKING</p>
 					</div>
-					<div class="col font-10 align-center" style="position:relative">
+					<div class="col-25 align-center" style="position:relative">
 						<img src="img/tic-icon.png" class="tic-icon" ng-show="val4"/>
 						<img src="img/specialized-cleaning-icon.png" class="circular-icon" ng-click="val4=!val4"/>
 						<p>SPECIALIZED CLEANING</p>
@@ -57,7 +102,7 @@
 				-->
 				<div >
 					<img src="img/instructions-logo.png" class="small-icon-dimensions float-left" style="margin-top:3px" />
-					<p class="font-10 float-left" style="padding-left:2%" >Instructions</p>
+					<p class="float-left" style="padding-left:2%" >Instructions</p>
 				</div>
 
 				<div style="padding-right:30px !important">
@@ -68,27 +113,27 @@
                <div ng-show="val1">
 					<div class="padding-top-10">
 						<img src="img/block-icon.png" class="small-icon-dimensions float-left" style="margin-top:3px" />
-						<p class="font-10 float-left" style="padding-left:2%" >Choose Cuisine</p>
+						<p class="float-left" style="padding-left:2%" >Choose Cuisine</p>
 					</div>
 
 				
 					<div class="row">
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col-25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val5"/>
 							<img src="img/break-fast-icon.png" class="circular-icon" ng-click="val5=!val5"/>
 							<p>BREAKFAST</p>
 						</div>
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col-25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val6"/>
 							<img src="img/lunch-icon.png" class="circular-icon" ng-click="val6=!val6"/>
 							<p>LUNCH</p>
 						</div>
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col-25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val7"/>
 							<img src="img/snacks-icon.png" class="circular-icon" ng-click="val7=!val7"/>
 							<p>SNACKS</p>
 						</div>
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col-25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val8"/>
 							<img src="img/dinner-icon.png" class="circular-icon" ng-click="val8=!val8"/>
 							<p>DINNER</p>
@@ -99,27 +144,27 @@
 				<div ng-show="val2">
 					<div class="padding-top-10">
 						<img src="img/block-icon.png" class="small-icon-dimensions float-left" style="margin-top:3px" />
-						<p class="font-10 float-left" style="padding-left:2%" >Choose Service Area</p>
+						<p class=" float-left" style="padding-left:2%" >Choose Service Area</p>
 					</div>
 
 				
 					<div class="row">
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col-25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val9"/>
 							<img src="img/bedroom-icon.png" class="circular-icon" ng-click="val9=!val9"/>
 							<p>BEDROOM</p>
 						</div>
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val10"/>
 							<img src="img/living-room-icon.png" class="circular-icon" ng-click="val10=!val10"/>
 							<p>LIVING ROOM</p>
 						</div>
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col-25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val11"/>
 							<img src="img/dining-room-icon.png" class="circular-icon" ng-click="val11=!val11"/>
 							<p>DINING ROOM</p>
 						</div>
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col-25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val12"/>
 							<img src="img/washroom-icon.png" class="circular-icon" ng-click="val12=!val12"/>
 							<p>WASHROOM</p>
@@ -130,27 +175,27 @@
 				<div ng-show="val3">
 					<div class="padding-top-10">
 						<img src="img/block-icon.png" class="small-icon-dimensions float-left" style="margin-top:3px" />
-						<p class="font-10 float-left" style="padding-left:2%" >Choose Cuisine</p>
+						<p class="float-left" style="padding-left:2%" >Choose Cuisine</p>
 					</div>
 
 				
 					<div class="row">
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col-25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val13"/>
 							<img src="img/break-fast-icon.png" class="circular-icon" ng-click="val13=!val13"/>
 							<p>BREAKFAST</p>
 						</div>
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col-25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val14"/>
 							<img src="img/lunch-icon.png" class="circular-icon" ng-click="val14=!val14"/>
 							<p>LUNCH</p>
 						</div>
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col-25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val15"/>
 							<img src="img/snacks-icon.png" class="circular-icon" ng-click="val15=!val15"/>
 							<p>SNACKS</p>
 						</div>
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col-25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val16"/>
 							<img src="img/dinner-icon.png" class="circular-icon" ng-click="val16=!val16"/>
 							<p>DINNER</p>
@@ -161,27 +206,27 @@
 				<div ng-show="val4">
 					<div class="padding-top-10">
 						<img src="img/block-icon.png" class="small-icon-dimensions float-left" style="margin-top:3px" />
-						<p class="font-10 float-left" style="padding-left:2%" >Choose Service Area</p>
+						<p class="float-left" style="padding-left:2%" >Choose Service Area</p>
 					</div>
 
 				
 					<div class="row">
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col-25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val17"/>
 							<img src="img/bedroom-icon.png" class="circular-icon" ng-click="val17=!val17"/>
 							<p>BEDROOM</p>
 						</div>
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col-25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val18"/>
 							<img src="img/living-room-icon.png" class="circular-icon" ng-click="val18=!val18"/>
 							<p>LIVING ROOM</p>
 						</div>
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col-25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val19"/>
 							<img src="img/dining-room-icon.png" class="circular-icon" ng-click="val19=!val19"/>
 							<p>DINING ROOM</p>
 						</div>
-						<div class="col font-10 align-center" style="position:relative">
+						<div class="col-25 align-center" style="position:relative">
 							<img src="img/tic-icon.png" class="tic-icon" ng-show="val20"/>
 							<img src="img/washroom-icon.png" class="circular-icon" ng-click="val20=!val20"/>
 							<p>WASHROOM</p>
@@ -195,9 +240,9 @@
 		
 			</div>
 		
-		
 			
 		</div>
+
 					
 	</ion-content>
 	<div class="row footer" >
