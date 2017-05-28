@@ -15,18 +15,32 @@
     function Login($state, $filter, $http, config, $location) {
         var loginVm = this;
         // Variable declarations
-       // loginVm.currentUser = {};
-       // loginVm.currentUser.email = ""; //manu@gmail.com
-       // loginVm.currentUser.password = ""; //mannu
+        loginVm.currentUser = {};
+        loginVm.currentUser.email = ""; //manu@gmail.com
+        loginVm.currentUser.password = ""; //mannu
         var currentUser,currentPassword;
+        /*loginVm.currentUser1 = {
+            email:"madhumitamohanl",
+            password:"123"
+        };*/
+        
 
         // Function declarations
         loginVm.authenticateUser = authenticateUser;
         loginVm.SignUp = SignUp;
         loginVm.ForgotPassword = ForgotPassword;
         loginVm.changeServerIp = changeServerIp;
+        loginVm.displayPassword = displayPassword;
 
         activate();
+
+        function displayPassword(){
+            document.getElementById("password").type="text";
+            setTimeout(function(){
+                document.getElementById("password").type="password";
+            },500);
+            
+        }
 
         function changeServerIp() {
             var newPrefix = window.prompt("Enter server url", config.prefix);
@@ -46,7 +60,7 @@
         function authenticateUser() {
             currentUser = document.getElementById("username").value ;
             currentPassword = document.getElementById("password").value ;
-            if( currentUser== "Madhumita")
+            if( currentUser== "Scutops")
             {
                 if(currentPassword == "123")
                     $state.go('display-options');
