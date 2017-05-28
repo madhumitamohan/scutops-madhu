@@ -39,12 +39,18 @@
 
             var geocoder = new google.maps.Geocoder;
             geocoder.geocode({address:add},function(results,status){
-                map.setCenter(results[0].geometry.location);
-                placeMarker(results[0].geometry.location);
-                console.log(status);
+                if(status == "OK")
+                    {
+                     map.setCenter(results[0].geometry.location);
+                     placeMarker(results[0].geometry.location);
+                     console.log(status);
+                    }
+                else{
+                    alert("Geolocation was not set due to the following reason : " + status);
+                }
             });
-
         }
+
 
       function initMap() {        
         var center = new google.maps.LatLng(9.994015,76.293758);
@@ -59,24 +65,25 @@
         marker = new google.maps.Marker({
             map:map,
             position: center,
-            //draggable:true,
             animation: google.maps.Animation.DROP,
             icon:'img/marker2.gif'
         });
 
-        //MAKING THE MAP MOVABLE
+        //MAKING THE MAP MOVABLE-REVERSE GEOLOCATION
         var geocoder = new google.maps.Geocoder;
-        google.maps.event.addListener(map, 'click', function(event) {
-            
+        google.maps.event.addListener(map, 'click', function(event) {         
             placeMarker(event.latLng);
-
             //finding the formatted address of the position
             geocoder.geocode({location:event.latLng},function(results,status){
-
             document.getElementById("location-input").value=(results[0].formatted_address);
             console.log(results[0].formatted_address);
             })
         });
+
+        //GEOLOCATION
+        document.getElementById("location-input").addEventListener('input',function(){
+            Search();
+        })
     }
 
         function Animate(){

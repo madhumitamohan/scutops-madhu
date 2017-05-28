@@ -1,5 +1,5 @@
 <ion-view title={{pageTitle}}>
-	<ion-content class="background-page" >
+	<ion-content class="set-location" >
 		<div class="ion-content" >
 			
 		<div class="row header" >
@@ -28,24 +28,24 @@
 
 			
 			<div class="title-table">
-				<div class="row table-row ">
-					<div class="col-50 align-center" style="border-right:1px solid rgb(206,19,113)">
+				<div class="row table-row">
+					<div class="col-50 align-center border-right" >
 						<div>DATE</div>
-						<input id= "date" class="table-row-input" type="date" style="width: 120px;">
+						<input id= "date" type="date" style="width: 120px;">
 					</div>
 					<div class="col-50 align-center">
 						<div>NO. OF EMPLOYEES</div>
-						<input id="count" type="number" min="1" max="5" class="table-row-input" style="width: 25px;"/>
+						<input id="count" type="number" min="1" max="5" style="width: 25px;"/>
 					</div>
 				</div>
 				<hr/>
 				<div class="row table-row">
-					<div class="col-50 align-center" style="border-right:1px solid rgb(206,19,113)">
+					<div class="col-50 align-center border-right">
 						<div>START TIME</div>
-						<input id="time" class="table-row-input" type="time" style="width: 60px;">
+						<input id="time" type="time" style="width: 60px;">
 					</div>
 					<div class="col-50 align-center">
-						<div class="table-row-input " style="width: 100px;">Have a promocode?</div>
+						<div class="promocode">Have a promocode?</div>
 					</div>
 				</div>
 			</div>
@@ -53,8 +53,6 @@
 			<div class="align-center" ><!--NAVIGATION NOT TAKING PLACE. CHECK! -->
 				<button type="button" class="button-style" ng-click="SetLocation.BookNow()">BOOK NOW </button>
 			</div>	
-
-			<button type="button" ng-click="SetLocation.Search()">SEARCH</button>
 
 
 	</div>

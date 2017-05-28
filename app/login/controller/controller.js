@@ -15,9 +15,10 @@
     function Login($state, $filter, $http, config, $location) {
         var loginVm = this;
         // Variable declarations
-        loginVm.currentUser = {};
-        loginVm.currentUser.email = ""; //manu@gmail.com
-        loginVm.currentUser.password = ""; //mannu
+       // loginVm.currentUser = {};
+       // loginVm.currentUser.email = ""; //manu@gmail.com
+       // loginVm.currentUser.password = ""; //mannu
+        var currentUser,currentPassword;
 
         // Function declarations
         loginVm.authenticateUser = authenticateUser;
@@ -38,15 +39,27 @@
         }
 
         function activate() {
+            
             // To initialize anything before the project starts
         }
 
         function authenticateUser() {
-            $state.go('display-options');
+            currentUser = document.getElementById("username").value ;
+            currentPassword = document.getElementById("password").value ;
+            if( currentUser== "Madhumita")
+            {
+                if(currentPassword == "123")
+                    $state.go('display-options');
+                else
+                    alert("Please enter the right password");
+            }
+            else
+                alert("This username has not been signed up. Please signup");
         }
 
         function SignUp() {
-            $state.go('signup'); //change state go to app.module
+        $state.go('signup');
+             //change state go to app.module
         }
 
 
