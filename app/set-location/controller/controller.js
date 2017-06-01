@@ -16,11 +16,8 @@
 
         var SetLocationVm = this;
         // Variable declarations
-        SetLocationVm.currentUser = {};
-        SetLocationVm.currentUser.email = ""; //manu@gmail.com
-        SetLocationVm.currentUser.password = ""; //mannu
-        var bookingDate,bookingTime,bookingCount,bookingPromocode,valid=true;
         var currentDate,currentTime,currentHour,currentMinute,currentSecond,validDate,validHour,validTime,date;
+        SetLocationVm.bookingDetails={};
 
         // Function declarations
         var map;
@@ -62,14 +59,13 @@
 
 
         function onCreateMap(center){
-            var map = new google.maps.Map(document.getElementById('map'), {
+            var map = new google.maps.Map(document.getElementById("map"), {
           center: center,
           scrollwheel: true,
           zoom: 15,
           disableDefaultUI: true,
           draggable:true,
           minZoom:10,
-          //heading:100
           });
             return map;
         }
@@ -98,7 +94,6 @@
         }
 
         function updateInputField(map,marker,currentLocation){
-            console.log("hello");
             var geocoder = new google.maps.Geocoder;
             google.maps.event.addListener(map, 'click', function(event) {         
             placeMarker(marker,event.latLng);
@@ -112,7 +107,7 @@
 
         function updateMarker(map,marker,currentLocation){
             currentLocation.addEventListener('input',function(){
-            var add = currentLocation.value;
+            var add = SetLocationVm.bookingLocation;
             var geocoder = new google.maps.Geocoder;
             geocoder.geocode({address:add},function(results,status){
                 if(status == "OK")
@@ -157,7 +152,6 @@
 
         var center = new google.maps.LatLng(9.993014,76.2942063);
 
-
         var map = onCreateMap(center);
         var marker = onCreateMarker(map,center);
         var currentLocation = document.getElementById("location-input");
@@ -170,54 +164,62 @@
 
     }
 
+    function getDateFromDate(date){
+        return date.toISOString().substr(0,10);
+    }
+
+    function getHoursFromDate(date){
+        return date.getHours();
+    }
+
+    function getMinutesFromDate(date){
+        return date.getMinutes();
+    }
+
+    function getTimeAddingZero(time){
+        return ((time<10)? ("0" + time) : time);
+    }
+
         function inputInitialize(){
             date = new Date();
-            currentDate = date.toISOString().substr(0,10);
-            currentHour = date.getHours();
-            currentMinute = date.getMinutes();
-            currentSecond = date.getSeconds();
-            validHour = date.getHours() + 2;
+            currentDate = getDateFromDate(date);
+            currentHour = getHoursFromDate(date);
+            currentMinute = getMinutesFromDate(date);
 
-            currentHour = (currentHour<10)? ("0" + currentHour) : currentHour;
-            currentMinute = (currentMinute<10)? ("0" + currentMinute) : currentMinute;
-            currentSecond = (currentSecond<10)? ("0" + currentSecond) : currentSecond;          
-            validHour = (validHour<10)? ("0" + validHour) : validHour;
+            validHour = currentHour + 2;
+            validHour = getTimeAddingZero(validHour);
+
+            currentMinute = getTimeAddingZero(currentMinute);
+        
             validTime = validHour + ":" + currentMinute;
 
-            document.getElementById("date").value = currentDate;
-            document.getElementById("time").value = validTime;
-            document.getElementById("count").value = 1;
+            SetLocationVm.bookingDetails.bookingDate = currentDate;
+            SetLocationVm.bookingDetails.bookingTime = validTime;
+            SetLocationVm.bookingDetails.bookingCount = 1;
+
         }
 
-        function BookNow() {
-            
-            if(checkValidity())
+        function BookNow() {       
+            if(checkValidity(SetLocationVm.bookingDetails.bookingDate,SetLocationVm.bookingDetails.bookingTime,SetLocationVm.bookingDetails.bookingCount))
                 {
-                    localStorage.setItem("count",(bookingCount));
+                    localStorage.setItem("count",(SetLocationVm.bookingDetails.bookingCount));
                     $state.go('confirm-booking');
                 }
 
         }
 
 
-        function checkValidity(){
-            bookingTime = document.getElementById("time").value;
-            bookingDate= document.getElementById("date").value;
-            bookingCount = document.getElementById("count").value;
-            validDate = new Date();
-            validDate.setDate(date.getDate()+1);
-            validDate = validDate.toISOString().substr(0,10);
-            if(dateValidity() && timeValidity() && countValidity())
+        function checkValidity(bookingDate,bookingTime,bookingCount){
+            if(dateValidity(bookingDate) && timeValidity(bookingDate,bookingTime) && countValidity(bookingCount))
                 return true;
         }
 
-        function timeValidity(){
-            
-           /* console.log(date.getTime());
-            console.log(Date.parse('01/01/2011 10:20:45') > Date.parse('01/01/2011 5:10:10'));*/
+        function timeValidity(bookingDate,bookingTime){
             var bookingTimeHour = bookingTime.substr(0,2);
             //bookinghour
-                      
+            validDate = new Date();
+            validDate.setDate(date.getDate()+1);
+            validDate = getDateFromDate(validDate);
             
             
             if(bookingTime < "07:00" || bookingTime > "18:00")
@@ -239,7 +241,7 @@
 
         }
 
-        function dateValidity(){
+        function dateValidity(bookingDate){
             if(Date.parse(bookingDate) < Date.parse(currentDate))
                 {
                     alert("Booking starts from today");
@@ -248,7 +250,7 @@
                 return true;
         }
 
-        function countValidity(){
+        function countValidity(bookingCount){
             if(bookingCount<1)
                 {
                     alert("Book atleast one professional");
