@@ -1,9 +1,11 @@
 .background-page, .set-location, .login-page,.signup-page{
   background-image: url("../img/home-bg.png");
+  z-index: 1;
 }
 
-.dashboard, .confirm-booking, .background-page2{
-   background-color: #FFF3E0;
+.dashboard, .confirm-booking, .background-page2,.feedback-page , .about-page, .settings-page,.help-page{
+   background-color: #FFF3E0 !important;
+   z-index: 1;
 }
 
 .margin-left-25{
@@ -29,7 +31,7 @@
   color: #ce1370;
 }
 
-.login-page .button-style, .signup-page .button-style, .dashboard .button-style,.set-location .button-style{
+.settings-page .button-style,.login-page .button-style, .signup-page .button-style, .dashboard .button-style,.set-location .button-style,.feedback-page .button-style{
   background-color: #ce1370;
   color:#FDF7F6;
   width: 90%;
@@ -60,8 +62,8 @@
 }
 
 .icon-dimensions{
-  width: 32px;
-  height: 30px;
+  width: 24px !important;
+  height: 24px !important;
 }
 
 .margin0{
@@ -132,19 +134,19 @@ padding-left:3% !important;
 }
 /*------------------------------*/
 
-.signup-page input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+.signup-page input::-webkit-input-placeholder, .login-page input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:   #ce1370 ;
 }
-.signup-page input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+.signup-page input:-moz-placeholder,.login-page input::-webkit-input-placeholder { /* Mozilla Firefox 4 to 18 */
    color:    #ce1370;
 }
-.signup-page input::-moz-placeholder { /* Mozilla Firefox 19+ */
+.signup-page input::-moz-placeholder,.login-page input::-webkit-input-placeholder { /* Mozilla Firefox 19+ */
    color:   #ce1370;
 }
-.signup-page input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+.signup-page input:-ms-input-placeholder,.login-page input::-webkit-input-placeholder { /* Internet Explorer 10-11 */
    color:   #ce1370;
 }
-.signup-page input::-ms-input-placeholder { /* Microsoft Edge */
+.signup-page input::-ms-input-placeholder,.login-page input::-webkit-input-placeholder { /* Microsoft Edge */
    color:   #ce1370;
 }
 
@@ -160,8 +162,8 @@ padding-left:3% !important;
 */
 
 .dashboard .options img{
-  margin:7px 15px 0 5%;
-  height:20px;
+  margin:8px 15px 0 5%;
+  height:18px;
   width: 20px;
   float: left;
 }
@@ -219,7 +221,7 @@ padding-left:2%;
   padding-right: 30px!important;
 }
 
-.dashboard .textarea{
+.dashboard .textarea,.feedback-page .textarea{
 border-radius: 3px;
 box-shadow: 0 0 15px 7px #F8D1CF;
 border: 1px solid #ce1370 !important;
@@ -242,7 +244,7 @@ margin:auto;
   box-shadow: 0 0 15px 7px #F8D1CF;
   background-color: #FAFAFA;
   z-index: 1;
-  width: 90%;
+  width: 80%;
 }
 
 .dashboard .tic-icon{
@@ -281,6 +283,9 @@ padding-top: 10px;
   padding-left: 35px !important;
 }
 
+.dashboard .button-class{
+  padding-right: 30px !important;
+}
 
 /*-------------------------*/
 
@@ -333,20 +338,10 @@ font-size: 15px;
 width: 90%;
 height:1.2em !important;
 }
-/*
-.signup-table{
-  margin:10% 3% 0 3%;
-  border-radius: 5px;
-  background-color: #FDDEA9;
-  border:1px solid #E27E88;
-  padding: 0;
+
+.set-location .map-input-container{
+  margin-top: 20px !important;
 }
-*/
-/*display-options*/
-
-
-
-
 
 /*SET-LOCATION*/
 
@@ -369,11 +364,11 @@ height:1.2em !important;
   margin:10px 3% 3% 3%; 
   padding: 10px;
   z-index: 2;
+  border:1px solid #ce1370;
+  box-shadow: 0 0 15px 3px #F8D1CF;
 }
 
-.map-input-container{
-  margin-top: 20px !important;
-}
+
 
 
 .input-number{
@@ -394,12 +389,8 @@ height:1.2em !important;
   box-shadow: 1px 1px 1px rgb(246,181,110);
 }
 
-.main-content2{
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top:80px ;
-  padding-top: 2%;
+.main-content2, .help-page .main-content{
+  padding-top: 80px;
 }
 
 .main-content2 hr{
@@ -480,12 +471,20 @@ font-size: 90%;
   z-index: 1;
 }
 
-.header img{
-  margin-left:25px;
+.header .right-icon{
+  margin: 4px 10px 0 10px !important;
+  width:25px;
+  height: 24px;
 }
 
-.header .icon{
-  padding-bottom: 2px;
+.header .left-icon{
+  margin: 6px 10px 0 10px !important;
+  width: 20px;
+  height: 19px;
+}
+
+.header h3{
+  margin-top: 2px !important;
 }
 
 
@@ -493,13 +492,13 @@ font-size: 90%;
 
 hr { border-color: inherit; }
 /*FEEDBACK*/
-.feedback-text{
-  padding: 80px 0 40px 0;
+.feedback-page .feedback-text{
+  padding: 50% 0 40px 0;
   font-size: 0.9em;
   line-height: 1.2em;
 }
 
-.feedback-input{
+.feedback-page .feedback-input{
   width:90%;
   background-image: url("../img/feedback2.jpg");
   background-repeat: no-repeat;
@@ -519,4 +518,181 @@ hr { border-color: inherit; }
   margin: auto;
   margin-top: 5% !important;
   padding:10px 0 10px 0;
+}
+
+.confirm-booking .success-message{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 190px;
+  width: 190px;
+  color: black;
+  margin: auto;
+  z-index: 2;
+  background-color: #FFF4D4 !important;
+}
+
+.confirm-booking .scroll{
+  height: 100%;
+}
+
+.dashboard .scroll{
+  height:100%;
+}
+.confirm-booking .success-message h3{
+color: black;
+}
+
+.confirm-booking .success-message .text{
+font-size: 0.9em;
+padding:5px 15px 0 15px;
+}
+
+.confirm-booking .tick-image{
+  position: relative;
+  top: -22px;
+  width: 45px;
+  height: 45px;
+}
+
+.about-page .content, .settings-page .content{
+  margin: 100px 0 0 30px;
+  padding-right: 60px !important;
+  position: absolute;
+  width: 100%;
+}
+
+.about-page .content div{
+  width:100%;
+  border-bottom: 1px solid rgb(243,189,197);
+  padding-top: 8px;
+}
+
+.settings-page .track{
+width: 27px;
+height: 12px;
+border:none !important;
+}
+
+.settings-page .handle{
+  left: -1px;
+  top: 4px;
+  width:18px;
+  height: 18px;
+}
+
+.settings-page .toggle{
+margin-top:8px;
+float: right;
+}
+
+.settings-page .live-service-alerts .toggle{
+margin-top:5px !important;
+}
+
+.settings-page .toggle input:checked+.track {
+    border-color: rgb(246,178,212) !important;
+    background-color: rgb(246,178,212) !important;
+}
+
+.settings-page .toggle input:checked+.track .handle {
+    background-color: rgb(206,19,112);
+}
+
+.settings-page .text{
+  padding-top: 9px;
+  font-size: 0.9em;
+  float: left;
+  width: 80%;
+}
+
+.settings-page .help{
+  padding-top: 10%;
+  float: left;
+  width: 100%;
+}
+/*
+.help-page .professional-profile{
+  height: 48vw;
+  width: 57vw;
+  background-image: url("../img/home-bg.png");
+  margin-top: 10px;
+  margin-left: 20px;
+  padding: 0 15px 0 6px;
+}
+
+.help-page .professional-profile .heading{
+  font-size: 0.7em;
+  border-bottom:1px solid #ce1370;
+  padding: 4% 0 0 6%;
+}
+
+.help-page .professional-profile .image{
+  border-radius: 50%;
+  width: 38%;
+  height: 38%;
+  background-color: white;
+  float:left;
+  margin-top: 5%;
+  margin-left: 12%;
+}
+
+.help-page .professional-profile .details{
+  float:right;
+  font-size: 0.7em;
+  color: #ce1370;
+  margin-top: 2%;
+}
+*/
+
+.help-page .professional-profile{
+  height: 125px;
+  width: 150px;
+  background-image: url("../img/home-bg.png");
+  margin-top: 10px;
+  margin-left: 20px;
+  padding: 0 15px 0 6px;
+  border-radius: 3px;
+  font-size: 0.7em;
+  color: #ce1370;
+}
+
+.help-page .professional-profile .heading{
+  border-bottom:1px solid #ce1370;
+  padding: 4% 0 0 6%;
+}
+
+.help-page .professional-profile .image{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  float:left;
+  margin-top: 5%;
+  margin-left: 12%;
+}
+
+.help-page .professional-profile .details{
+  float:right;
+  margin-top: 2%;
+}
+
+.help-page .professional-profile .name{
+  float:left;
+  line-height: 0.9em;
+}
+
+.help-page .report-issue{
+  margin:10px 20px 0 20px;
+  color:rgb(61,64,63); /*black*/
+  font-size: 0.8em;
+}
+
+.help-page .report-issue-sub div{
+  border-bottom: 1px solid rgb(61,64,63);
+  margin-top: 15px;
+  line-height: 1.2em;
+  font-style: italic;
 }

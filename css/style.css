@@ -27,7 +27,7 @@ h4, h5, h6{font-family:'open_sanssemibold',Helvetica,Arial,sans-serif !important
   display: none !important;
 }
 ion-nav-view .settings-page { 
-  background-color: white !important;
+  /*background-color: white !important;*/
   color: black ;
 }
 

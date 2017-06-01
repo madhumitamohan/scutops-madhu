@@ -20,7 +20,6 @@
         loginVm.currentUser.password = ""; //mannu
 
         // Function declarations
-        loginVm.authinticateUser = authinticateUser;
         loginVm.signUp = signUp;
         loginVm.ForgotPassword = ForgotPassword;
         loginVm.changeServerIp = changeServerIp;
@@ -41,12 +40,8 @@
             // To initialize anything before the project starts
         }
 
-        function authinticateUser() {
-            $state.go('dashboard');
-        }
-
         function signUp() {
-            $state.go('display-options'); //change state go to app.module
+            $state.go('dashboard'); //change state go to app.module
         }
 
 

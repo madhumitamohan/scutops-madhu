@@ -12,7 +12,7 @@
 
     Feedback.$inject = ['$state', '$filter', '$http', 'config', '$location'];
 
-    function ConfirmBooking($state, $filter, $http, config, $location) {
+    function Feedback($state, $filter, $http, config, $location) {
         var loginVm = this;
         // Variable declarations
         loginVm.currentUser = {};
@@ -20,7 +20,6 @@
         loginVm.currentUser.password = ""; //mannu
 
         // Function declarations
-        loginVm.bookService = bookService;
 
         activate();
 

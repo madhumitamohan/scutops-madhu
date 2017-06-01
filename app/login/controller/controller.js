@@ -63,7 +63,7 @@
             if( currentUser== "Scutops")
             {
                 if(currentPassword == "123")
-                    $state.go('display-options');
+                    $state.go('dashboard');
                 else
                     alert("Please enter the right password");
             }

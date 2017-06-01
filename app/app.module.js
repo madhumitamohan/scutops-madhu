@@ -64,11 +64,11 @@ angular.module(appName, ['ionic'])
         title: 'SetLocation'
     })
 
-     .state('display-options', {
-        url: "/display-options",
-        templateUrl: "app/display-options/templates/display-options.html",
-        controller: 'DisplayOptionsController as DisplayOptions',
-        title: 'display-options'
+     .state('dashboard', {
+        url: "/dashboard",
+        templateUrl: "app/dashboard/templates/dashboard.html",
+        controller: 'DashboardController as Dashboard',
+        title: 'dashboard'
     })
 
 
@@ -93,6 +93,26 @@ angular.module(appName, ['ionic'])
         title: 'menu'
     })
 
+     .state('about', {
+        url: "/about",
+        templateUrl: "app/about/templates/about.html",
+        controller: 'AboutController as About',
+        title: 'about'
+    })
+
+     .state('settings', {
+        url: "/settings",
+        templateUrl: "app/settings/templates/settings.html",
+        controller: 'SettingsController as Settings',
+        title: 'settings'
+    })
+
+      .state('help', {
+        url: "/help",
+        templateUrl: "app/help/templates/help.html",
+        controller: 'HelpController as Help',
+        title: 'help'
+    })
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');
 

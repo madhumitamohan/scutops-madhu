@@ -12,31 +12,31 @@
 
 			 	<div class="options">
 			 		<div>
-			 			<img src="img/feedback.png" />
+			 			<img src="img/history-icon.png" />
 			 			<div>My Bookings</div>
 			 		</div>
 			 		<div>
-			 			<img src="img/feedback.png" />
+			 			<img src="img/promotions-icon.gif" />
 			 			<div>Promotions</div>
 			 		</div>
 			 		<div>
-			 			<img src="img/feedback.png" />
+			 			<img src="img/history-icon.png" />
 			 			<div>My Profile</div>
 			 		</div>
 			 		<div>
-			 			<img src="img/feedback.png" />
+			 			<img src="img/history-icon.png" />
 			 			<div>Notifications</div>
 			 		</div>
-			 		<div>
-			 			<img src="img/feedback.png" />
+			 		<div ng-click="Dashboard.helpCall()">
+			 			<img src="img/help2.gif" />
 			 			<div>Help</div>
 			 		</div>
-			 		<div>
-			 			<img src="img/feedback.png" />
+			 		<div ng-click="Dashboard.feedbackCall()">
+			 			<img src="img/history-icon.png" />
 			 			<div>Feedback</div>
 			 		</div>
-			 		<div>
-			 			<img src="img/feedback.png" class="icon-small"/>
+			 		<div ng-click="Dashboard.settingsCall()">
+			 			<img src="img/settings-icon1.gif" class="icon-small"/>
 			 			<div>Settings</div>
 			 		</div>
 
@@ -44,20 +44,20 @@
 			 	<hr/>
 
 			 	<div class="options left-padding">
-			 		<div>About</div>
+			 		<div ng-click="Dashboard.aboutCall()">About</div>
 			 		<div>Log Out</div>
 			 	</div>
 
 			</div>
 			<div class="row header" >
-				<div class="col-20" >
-					<img src="img/menu-icon.png" ng-click="val21=!val21" />
+				<div class="col-20" ng-click="val21=!val21">
+					<img src="img/menu-icon.png" class="left-icon"/>
 				</div>
-				<div class="col align-center" >
+				<div class="col  align-center" >
 					<h3 class="text-bold">ScutOps</h3>
 				</div>
 				<div class="col-20" >
-					<img src="img/notification-icon.png" class="icon-dimensions float-right" />
+					<img src="img/notification-icon.png" class="right-icon float-right" />
 				</div>
 			</div>
 
@@ -226,32 +226,15 @@
 					</div>
 				</div>
 
-				<div>
-					<button class="button-style" ng-click="DisplayOptions.bookService()">BOOK SERVICE</button>
+				<div class="align-center button-class">
+					<button class="button-style" ng-click="Dashboard.bookService()">BOOK SERVICE</button>
 				</div>
 		
 			</div>
 		
 			
 		</div>
-			<div class="row footer" >
-				<div class="col-25 font-10 pink-color align-center">
-					<img src="img/home-icon.png" class="icon-dimensions"/>
-					<p>HOME</p>
-				</div>
-				<div class="col-25 font-10 pink-color align-center">
-					<img src="img/history-icon.png" class="icon-dimensions"/>
-					<p>HISTORY</p>
-				</div>
-				<div class="col-25 font-10 pink-color align-center">
-			 		<img src="img/account-icon.png" class="icon-dimensions"/>
-					<p>ACCOUNT</p>
-				</div>
-				<div class="col-25 font-10 pink-color align-center">
-					<img src="img/settings-icon.png" class="icon-dimensions"/>
-					<p>SETTINGS</p>
-				</div>
-			</div>
+			
 					
 	</ion-content>
 	

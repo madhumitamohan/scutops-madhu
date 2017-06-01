@@ -68,7 +68,8 @@
           zoom: 15,
           disableDefaultUI: true,
           draggable:true,
-          minZoom:10
+          minZoom:10,
+          //heading:100
           });
             return map;
         }
@@ -160,6 +161,7 @@
         var map = onCreateMap(center);
         var marker = onCreateMarker(map,center);
         var currentLocation = document.getElementById("location-input");
+        //console.log(map.getHeading());
         //FOR PLACING THE MARKER AT THE CENTER
         updateInputField(map,marker,currentLocation);
         updateMarker(map,marker,currentLocation);
@@ -188,8 +190,12 @@
         }
 
         function BookNow() {
+            
             if(checkValidity())
-                $state.go('confirm-booking');
+                {
+                    localStorage.setItem("count",(bookingCount));
+                    $state.go('confirm-booking');
+                }
 
         }
 
@@ -243,7 +249,6 @@
         }
 
         function countValidity(){
-            console.log(bookingCount);
             if(bookingCount<1)
                 {
                     alert("Book atleast one professional");

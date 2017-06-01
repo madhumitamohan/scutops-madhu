@@ -3,22 +3,30 @@
 		
 		<div class="ion-content" >
 			
+
+			<div class="success-message align-center" ng-show="val1">
+				<img src="img/tick-payment.gif" class="tick-image"/>
+				<h3 >Success</h3>
+				<div class="text">Thank you for using Scutops</div>
+				<button class="button-style" ng-click="val1=!val1">OK</button>
+			</div>
+
 			<div class="row header" >
-				<div class="col-20 padding-header" >
-					<img src="img/menu-icon.png" style=" margin-left:25px "/>
+				<div class="col-20" >
+					<img src="img/menu-icon.png" class="left-icon"/>
 				</div>
 				<div class="col  align-center" >
-					<h3 class="text-bold">ScutOps</h3>
+					<h3 class="text-bold">Feedback</h3>
 				</div>
 				<div class="col-20" >
-					<img src="img/notification-icon.png" class="icon-dimensions float-right" style=" margin-right:25px " />
+					<img src="img/notification-icon.png" class="right-icon float-right" />
 				</div>
 			</div>
 
 			<div class="main-content2 font-8" >
 				<div class="block-major">
 					<div>Total advance amount to be paid
-						<div class="float-right" id="amount">Rs. 155</div>
+						<div class="float-right" id="amount" >Rs.{{ConfirmBooking.amount()}}</div>
 			    	</div>
 
 			    	<div>
@@ -33,14 +41,14 @@
 			    		<div class="block text-bold align-center"><img src="img/scutops.png" class="float-left"/>Scutops Money</div>
 			    		<hr/>
 			    		<div class="block">
-			    			<div>Available Balance <div class="float-right">Rs.500</div></div>
-			    			<div>To be paid <div class="float-right">Rs.155</div>
+			    			<div>Available Balance <div class="float-right">Rs.000</div></div>
+			    			<div>To be paid <div class="float-right">Rs.{{ConfirmBooking.amount()}}</div>
 			    			</div>
 			    			
 			    		</div>
 			    		<hr/>
-			    		<div class="block">Updated Balance <div class="float-right">Rs.345</div></div>
-			    		<div class="align-center"><button class="button-style" >PROCEED TO PAY</button></div>
+			    		<div class="block">Updated Balance <div class="float-right">Rs.{{ConfirmBooking.amount()}}</div></div>
+			    		<div class="align-center"><button class="button-style" ng-click="val1=!val1">PROCEED TO PAY</button></div>
 			    	
 					</div>
 				</div>

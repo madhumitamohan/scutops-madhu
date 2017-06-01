@@ -18,14 +18,17 @@
         loginVm.currentUser = {};
         loginVm.currentUser.email = ""; //manu@gmail.com
         loginVm.currentUser.password = ""; //mannu
-
         // Function declarations
-        loginVm.bookService = bookService;
+        loginVm.amount = amount;
 
         activate();
 
         function activate() {
             // To initialize anything before the project starts
+        }
+
+        function amount(){
+           return (localStorage.getItem("count") * 157);
         }
 
 
