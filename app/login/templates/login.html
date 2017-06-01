@@ -2,9 +2,6 @@
 	<ion-content class="login-page">
 		<div class="ion-content ">
 
-				<!--<div class="align-center login-scutops-div">
-					<img src="img/scutops-logo.png" class="login-scutops-image"/>
-				</div>-->
 			<div class="row">
 			 	<div class="col-20">
 			 	</div>
@@ -21,14 +18,14 @@
 		<div class="align-center">
 			<div class="login-username">
 				<img src="img/User_icon.png" />
-				<input type="text" placeholder="Username" id="username"/>
+				<input type="text" placeholder="Username" id="username" ng-model="Login.currentUser.email"/>
 			</div>
 		</div>
 
 		<div class="align-center">
 			<div class="login-password" >	
 				<img src="img/password_icon.png" />
-				<input type="password" placeholder="Password" id="password"/>
+				<input type="password" placeholder="Password" id="password" ng-model="Login.currentUser.password"/>
 				<img src="img/password_icon.png" id="password-visible" ng-click="Login.displayPassword()" />
 			</div>	
 		</div>

@@ -18,18 +18,11 @@
         loginVm.currentUser = {};
         loginVm.currentUser.email = ""; //manu@gmail.com
         loginVm.currentUser.password = ""; //mannu
-        var currentUser,currentPassword;
-        /*loginVm.currentUser1 = {
-            email:"madhumitamohanl",
-            password:"123"
-        };*/
-        
 
         // Function declarations
         loginVm.authenticateUser = authenticateUser;
         loginVm.SignUp = SignUp;
         loginVm.ForgotPassword = ForgotPassword;
-        loginVm.changeServerIp = changeServerIp;
         loginVm.displayPassword = displayPassword;
 
         activate();
@@ -42,27 +35,15 @@
             
         }
 
-        function changeServerIp() {
-            var newPrefix = window.prompt("Enter server url", config.prefix);
-            if (newPrefix) {
-                config.prefix = newPrefix;
-                config.recalculateUrls(newPrefix);
-                console.log(newPrefix);
-                console.log(config.prefix);
-            }
-        }
-
         function activate() {
             
             // To initialize anything before the project starts
         }
 
         function authenticateUser() {
-            currentUser = document.getElementById("username").value ;
-            currentPassword = document.getElementById("password").value ;
-            if( currentUser== "Scutops")
+            if(loginVm.currentUser.email== "Scutops")
             {
-                if(currentPassword == "123")
+                if(loginVm.currentUser.password == "123")
                     $state.go('dashboard');
                 else
                     alert("Please enter the right password");

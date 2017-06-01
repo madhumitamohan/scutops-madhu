@@ -10,9 +10,9 @@
          */
         .controller('SetLocationController', SetLocation);
 
-    SetLocation.$inject = ['$state', '$filter', '$http', 'config', '$location', '$scope', '$compile','$window'];
+    SetLocation.$inject = ['$state', '$filter', '$http', 'config', '$location', '$scope', '$compile','$window','BookingService'];
 
-    function SetLocation($state, $filter, $http, config, $location, $scope, $compile, $window ) {
+    function SetLocation($state, $filter, $http, config, $location, $scope, $compile, $window, BookingService ) {
 
         var SetLocationVm = this;
         // Variable declarations
@@ -20,8 +20,6 @@
         SetLocationVm.bookingDetails={};
 
         // Function declarations
-        var map;
-        var marker;
         SetLocationVm.BookNow = BookNow;
         SetLocationVm.checkValidity = checkValidity;
         activate();
@@ -32,31 +30,6 @@
             }, 1000);
             inputInitialize();
         }
-
-
-       function positionValidity(map,latLngBounds){
-            map.addListener('bounds_changed',function(){
-                var c = map.getCenter();
-                var x = c.lng();
-                var y = c.lat();
-                var maxX = latLngBounds.getNorthEast().lng();
-                var maxY = latLngBounds.getNorthEast().lat();
-                var minX = latLngBounds.getSouthWest().lng();
-                var minY = latLngBounds.getSouthWest().lat();
-                if(x>maxX)
-                    x = maxX;
-                if(y>maxY)
-                    y = maxY;
-                if(x<minX)
-                    x = minX;
-                if(y<minY)
-                    y=minY;
-                map.setCenter(new google.maps.LatLng(y,x));
-
-        });
-        }
-
-
 
         function onCreateMap(center){
             var map = new google.maps.Map(document.getElementById("map"), {
@@ -91,6 +64,28 @@
         function placeMarker(marker,location) {
             Animate(marker);
             marker.setPosition(location);
+        }
+
+        function positionValidity(map,latLngBounds){
+            map.addListener('bounds_changed',function(){
+                var c = map.getCenter();
+                var x = c.lng();
+                var y = c.lat();
+                var maxX = latLngBounds.getNorthEast().lng();
+                var maxY = latLngBounds.getNorthEast().lat();
+                var minX = latLngBounds.getSouthWest().lng();
+                var minY = latLngBounds.getSouthWest().lat();
+                if(x>maxX)
+                    x = maxX;
+                if(y>maxY)
+                    y = maxY;
+                if(x<minX)
+                    x = minX;
+                if(y<minY)
+                    y=minY;
+                map.setCenter(new google.maps.LatLng(y,x));
+
+        });
         }
 
         function updateInputField(map,marker,currentLocation){
@@ -202,7 +197,10 @@
         function BookNow() {       
             if(checkValidity(SetLocationVm.bookingDetails.bookingDate,SetLocationVm.bookingDetails.bookingTime,SetLocationVm.bookingDetails.bookingCount))
                 {
-                    localStorage.setItem("count",(SetLocationVm.bookingDetails.bookingCount));
+                    BookingService.setCount(SetLocationVm.bookingDetails.bookingCount);
+                    console.log(BookingService.Message);
+                    console.log(BookingService.getCount());
+                    //localStorage.setItem("count",(SetLocationVm.bookingDetails.bookingCount));
                     $state.go('confirm-booking');
                 }
 
@@ -265,6 +263,6 @@
             
         }
 
-            }
+    }
 
 }) ();

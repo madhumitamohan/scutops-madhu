@@ -31,18 +31,18 @@
 				<div class="row table-row">
 					<div class="col-50 align-center border-right" >
 						<div>DATE</div>
-						<input id= "date" type="date" style="width: 120px;" ng-model="SetLocation.bookingDetails.bookingDate">
+						<input id= "date" type="date" ng-model="SetLocation.bookingDetails.bookingDate">
 					</div>
 					<div class="col-50 align-center">
 						<div>NO. OF EMPLOYEES</div>
-						<input id="count" type="number" style="width: 25px" ng-model="SetLocation.bookingDetails.bookingCount"/>
+						<input id="count" type="number" ng-model="SetLocation.bookingDetails.bookingCount"/>
 					</div>
 				</div>
 				<hr/>
 				<div class="row table-row">
 					<div class="col-50 align-center border-right">
 						<div>START TIME</div>
-						<input id="time" type="time" style="width: 60px" ng-model="SetLocation.bookingDetails.bookingTime">
+						<input id="time" type="time" ng-model="SetLocation.bookingDetails.bookingTime">
 					</div>
 					<div class="col-50 align-center">
 						<div class="promocode"><input type="text" placeholder="Have a promocode?" ng-model="SetLocationVm.bookingDetails.bookingCode"/></div>
@@ -50,7 +50,7 @@
 				</div>
 			</div>
 			
-			<div class="align-center" ><!--NAVIGATION NOT TAKING PLACE. CHECK! -->
+			<div class="align-center" >
 				<button type="button" class="button-style" ng-click="SetLocation.BookNow()">BOOK NOW </button>
 			</div>	
 

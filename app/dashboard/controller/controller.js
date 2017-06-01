@@ -24,20 +24,10 @@
         dashboardVm.aboutCall = aboutCall;
         dashboardVm.settingsCall = settingsCall;
         dashboardVm.bookService = bookService;
-        dashboardVm.helpCall = helpCall;
+        dashboardVm.displayMenu = displayMenu;
 
 
         activate();
-
-        function changeServerIp() {
-            var newPrefix = window.prompt("Enter server url", config.prefix);
-            if (newPrefix) {
-                config.prefix = newPrefix;
-                config.recalculateUrls(newPrefix);
-                console.log(newPrefix);
-                console.log(config.prefix);
-            }
-        }
 
         function activate() {
             // To initialize anything before the project starts
@@ -59,8 +49,12 @@
              $state.go('about');
         }
 
-        function helpCall(){
-             $state.go('help');
+        function displayMenu(){           
+            var opacity = document.getElementById("content-portion").style.opacity;
+            if(opacity == 0.5)
+                document.getElementById("content-portion").style.opacity = 1;
+            else
+                document.getElementById("content-portion").style.opacity = 0.5;
         }
 
     }

@@ -10,9 +10,9 @@
          */
         .controller('ConfirmBookingController', ConfirmBooking);
 
-    ConfirmBooking.$inject = ['$state', '$filter', '$http', 'config', '$location'];
+    ConfirmBooking.$inject = ['$state', '$filter', '$http', 'config', '$location','BookingService'];
 
-    function ConfirmBooking($state, $filter, $http, config, $location) {
+    function ConfirmBooking($state, $filter, $http, config, $location,  BookingService) {
         var loginVm = this;
         // Variable declarations
         loginVm.currentUser = {};
@@ -24,11 +24,12 @@
         activate();
 
         function activate() {
-            // To initialize anything before the project starts
+            console.log(BookingService.getCount() * 157);
+            loginVm.bookingAmount = (BookingService.getCount() * 157);// To initialize anything before the project starts
         }
 
         function amount(){
-           return (localStorage.getItem("count") * 157);
+           return BookingService.getCount() * 157;
         }
 
 
