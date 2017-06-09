@@ -4,25 +4,36 @@
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <title>Scutops</title>
+        <link href="Waves/dist/waves.min.css" rel="stylesheet">
         <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
         <link href="css/basic-style.css" rel="stylesheet">
+        
 
     </head>
     <body animation="slide-left-right-ios7">
         <ion-nav-view class="main-nav-view"></ion-nav-view>
-    </body>
+    
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.min.js"></script>
 
+    
+   
+
     <!-- your app's js -->
+    <script src="Waves/dist/waves.min.js"></script>
     <script src="app/app.module.js"></script>
     <script src="app/shared/controller/SidebarController.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBU1J9O3GiR_-wHwEYlCRKOR4Azb5iSTDQ&libraries=places"
                  async defer></script>
    <!-- <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBU1J9O3GiR_-wHwEYlCRKOR4Azb5iSTDQ&libraries=places">
     </script>-->
+<!--RIPPLW-->
+     <script type="text/javascript">      
+        Waves.attach('button', 'waves-float');
+        Waves.init();
+    </script> 
     
     <!-- Configurations -->
     <script src="app/shared/config.values.js"></script>
@@ -46,5 +57,9 @@
     
 
      <!-- Services -->
+     <script src="app/shared/service/booking-service.js"></script>
+     <script src="app/login/service/login-service.js"></script>
+     <script src="app/signup/service/signup-service.js"></script>
+     </body>
    
 </html>

@@ -24,7 +24,8 @@
         dashboardVm.aboutCall = aboutCall;
         dashboardVm.settingsCall = settingsCall;
         dashboardVm.bookService = bookService;
-        dashboardVm.displayMenu = displayMenu;
+        dashboardVm.changeOpacity = changeOpacity;
+        dashboardVm.logOut = logOut;
 
 
         activate();
@@ -49,12 +50,17 @@
              $state.go('about');
         }
 
-        function displayMenu(){           
-            var opacity = document.getElementById("content-portion").style.opacity;
+        function logOut(){
+             
+             $state.go('login');
+        }
+
+        function changeOpacity(){           
+            var opacity = document.getElementsByClassName("content")[0].style.opacity;
             if(opacity == 0.5)
-                document.getElementById("content-portion").style.opacity = 1;
+                document.getElementsByClassName("content")[0].style.opacity = 1;
             else
-                document.getElementById("content-portion").style.opacity = 0.5;
+                document.getElementsByClassName("content")[0].style.opacity = 0.5;
         }
 
     }

@@ -15,28 +15,52 @@
 
      .factory('LoginPersistenceDataService', LoginPersistenceDataService);
 
-     LoginDataService.$inject = ['LoginClientDataService'];
+     LoginDataService.$inject = ['LoginClientDataService', 'LoginPersistenceDataService'];
 
-     function LoginDataService(LoginClientDataService) {
+     function LoginDataService(LoginClientDataService, LoginPersistenceDataService) {
          var loginDataService = {
-
+            authenticateUser : authenticateUser
          };
+
+         function authenticateUser(userDetails){
+            return LoginPersistenceDataService.authenticateUser(userDetails);
+         }
 
         return loginDataService;
      }
 
-     LoginClientDataService.$inject = ['$q', 'config'];
+     LoginClientDataService.$inject = [ 'config'];
 
-     function LoginClientDataService($q, config) {
+     function LoginClientDataService( config) {
          var loginClientDataService = {
          };
          return loginClientDataService;
      }
 
-     LoginPersistenceDataService.$inject = [];
+     LoginPersistenceDataService.$inject = ['$q','$http','config'];
 
-     function LoginPersistenceDataService() {
-         var loginPersistenceDataService = {};
-         return loginPersistenceDataService;
+     function LoginPersistenceDataService($q, $http, config) {
+         var loginPersistenceDataService = {
+            authenticateUser : authenticateUser
+         };
+          return loginPersistenceDataService;
+         function authenticateUser(userDetails){
+            var defer = $q.defer();
+            $http({
+                method:"POST",
+                url: config.API_URL.login,
+                data: userDetails
+            }).then(function mySuccess(response){
+                //console.log(response.statusText);
+                //console.log(response.data);
+                defer.resolve(response.data);
+            }, function myError(response){
+                //console.log(response.statusText);
+                defer.resolve(false);
+            });
+
+            return defer.promise;
+         }
+        
      }
  })();

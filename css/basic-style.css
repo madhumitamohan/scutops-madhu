@@ -134,19 +134,19 @@ padding-left:3% !important;
 }
 /*------------------------------*/
 
-.signup-page input::-webkit-input-placeholder, .login-page input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+.signup-page input::-webkit-input-placeholder, .login-page input::-webkit-input-placeholder,.set-location input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:   #ce1370 ;
 }
-.signup-page input:-moz-placeholder,.login-page input::-webkit-input-placeholder { /* Mozilla Firefox 4 to 18 */
+.signup-page input:-moz-placeholder,.login-page input::-webkit-input-placeholder,.set-location input::-webkit-input-placeholder { /* Mozilla Firefox 4 to 18 */
    color:    #ce1370;
 }
-.signup-page input::-moz-placeholder,.login-page input::-webkit-input-placeholder { /* Mozilla Firefox 19+ */
+.signup-page input::-moz-placeholder,.login-page input::-webkit-input-placeholder,.set-location input::-webkit-input-placeholder { /* Mozilla Firefox 19+ */
    color:   #ce1370;
 }
-.signup-page input:-ms-input-placeholder,.login-page input::-webkit-input-placeholder { /* Internet Explorer 10-11 */
+.signup-page input:-ms-input-placeholder,.login-page input::-webkit-input-placeholder,.set-location input::-webkit-input-placeholder { /* Internet Explorer 10-11 */
    color:   #ce1370;
 }
-.signup-page input::-ms-input-placeholder,.login-page input::-webkit-input-placeholder { /* Microsoft Edge */
+.signup-page input::-ms-input-placeholder,.login-page input::-webkit-input-placeholder,.set-location input::-webkit-input-placeholder { /* Microsoft Edge */
    color:   #ce1370;
 }
 
@@ -155,10 +155,6 @@ padding-left:3% !important;
   border-bottom: 2px solid #ce1370 !important;
 }
 /*------------------------------------------------
-.signup-service-text{
-  font-size: 5px;
-  background-color: white;
-}
 */
 
 .dashboard .options img{
@@ -169,7 +165,7 @@ padding-left:3% !important;
 }
 
 .dashboard .user-profile{
-  background-image:url("../img/home-bg.png"); 
+  background-color:rgb(250,176,27);
   height: 95px;
   padding:20px;
   position: relative;
@@ -259,7 +255,7 @@ margin:auto;
 
 .dashboard .menu{
   float: top left;
-  width:60%;
+  width:80%;
   position: absolute;
   height:140%;
   z-index: 4;
@@ -271,12 +267,16 @@ margin:auto;
 .dashboard .menu .options{
 line-height: 3em; 
 padding-left: 20px; 
-padding-top: 10px;
+padding-top: 20px;
 }
 
 .dashboard .menu hr{
-  margin-right: 30%;
+  margin-right: 20%;
   color: rgb(237,152,123);
+}
+
+.dashboard .menu .menu-item{
+  padding-bottom: 10px;
 }
 
 .options.left-padding{
@@ -285,6 +285,15 @@ padding-top: 10px;
 
 .dashboard .button-class{
   padding-right: 30px !important;
+}
+
+.dashboard a{
+  color: #ce1370;
+  text-decoration: none;
+}
+
+.dashboard a:hover{
+  color:#ce1370 !important;
 }
 
 /*-------------------------*/
@@ -315,17 +324,31 @@ padding-top: 10px;
     line-height: 1.3em;
   }
 
-.set-location .title-table input,.set-location .promocode{
+.set-location .title-table input{
     color:rgb(214,75,123) !important;
     background-color: rgb(253,222,169);
     margin:auto;
     font-size: 1.1em !important;
     height: 15px !important;
     padding-left: 3px;
+    width: 90%;
   }
 
-.set-location .promocode {
-  width: 75%;
+.set-location .title-table #date{
+padding-left: 30%;
+}
+
+.set-location .title-table #time{
+  padding-left: 35%;
+}
+
+.set-location .title-table #count{
+  padding-left: 43%;
+}
+
+.set-location #promocode {
+  margin: auto;
+  width: 100px !important;
 }
 
 .set-location #location-input{
@@ -570,6 +593,11 @@ padding:5px 15px 0 15px;
   padding-top: 8px;
 }
 
+.about-page a{
+  text-decoration: none;
+  color: black;
+}
+
 .settings-page .track{
 width: 27px;
 height: 12px;
@@ -613,39 +641,7 @@ margin-top:5px !important;
   float: left;
   width: 100%;
 }
-/*
-.help-page .professional-profile{
-  height: 48vw;
-  width: 57vw;
-  background-image: url("../img/home-bg.png");
-  margin-top: 10px;
-  margin-left: 20px;
-  padding: 0 15px 0 6px;
-}
 
-.help-page .professional-profile .heading{
-  font-size: 0.7em;
-  border-bottom:1px solid #ce1370;
-  padding: 4% 0 0 6%;
-}
-
-.help-page .professional-profile .image{
-  border-radius: 50%;
-  width: 38%;
-  height: 38%;
-  background-color: white;
-  float:left;
-  margin-top: 5%;
-  margin-left: 12%;
-}
-
-.help-page .professional-profile .details{
-  float:right;
-  font-size: 0.7em;
-  color: #ce1370;
-  margin-top: 2%;
-}
-*/
 
 .help-page .professional-profile{
   height: 125px;

@@ -10,13 +10,12 @@
          */
         .controller('SignUpController', SignUp);
 
-    SignUp.$inject = ['$state', '$filter', '$http', 'config', '$location'];
+    SignUp.$inject = ['$state', '$filter', '$http', 'config', '$location','SignUpDataService'];
 
-    function SignUp($state, $filter, $http, config, $location) {
+    function SignUp($state, $filter, $http, config, $location,SignUpDataService) {
         var signUpVm = this;
         // Variable declarations
         signUpVm.newUser = {};
-
         // Function declarations
         signUpVm.signUp = signUp;
 
@@ -28,7 +27,17 @@
         }
 
         function signUp() {
-            $state.go('dashboard'); //change state go to app.module
+            //console.log(signUpVm.newUser);
+            var newUserJSON = JSON.stringify(signUpVm.newUser);
+            //console.log(newUserJSON);
+            SignUpDataService.createAccount(newUserJSON).then(function(response){
+                //console.log(response.description);
+                if(response.result)
+                    $state.go('dashboard');
+                else
+                    alert(response.description);
+            });
+             //change state go to app.module
         }
 
     }

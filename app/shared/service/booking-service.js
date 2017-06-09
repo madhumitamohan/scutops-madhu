@@ -14,7 +14,6 @@
     function BookingService(){
         var count;
         return{
-            Message : "Hello",
             setCount: function(bookingCount){
                  count = bookingCount;
              },

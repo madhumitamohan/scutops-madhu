@@ -9,34 +9,60 @@
      /**
       * Registration data service.
       */
-     .factory('LoginDataService', LoginDataService)
+     .factory('SignUpDataService', SignUpDataService)
 
-     .factory('LoginClientDataService', LoginClientDataService)
+     .factory('SignUpClientDataService', SignUpClientDataService)
 
-     .factory('LoginPersistenceDataService', LoginPersistenceDataService);
+     .factory('SignUpPersistenceDataService', SignUpPersistenceDataService);
 
-     LoginDataService.$inject = ['LoginClientDataService'];
+     SignUpDataService.$inject = ['SignUpClientDataService','SignUpPersistenceDataService'];
 
-     function LoginDataService(LoginClientDataService) {
-         var loginDataService = {
-
+     function SignUpDataService(SignUpClientDataService,SignUpPersistenceDataService) {
+         var signUpDataService = {
+            createAccount : createAccount
          };
 
-        return loginDataService;
+        function createAccount(newUserDetails){
+            return SignUpPersistenceDataService.createAccount(newUserDetails);
+        }
+
+        return signUpDataService;
      }
 
-     LoginClientDataService.$inject = ['$q', 'config'];
+     SignUpClientDataService.$inject = ['$q', 'config'];
 
-     function LoginClientDataService($q, config) {
-         var loginClientDataService = {
+     function SignUpClientDataService($q, config) {
+         var SignUpClientDataService = {
          };
-         return loginClientDataService;
+         return SignUpClientDataService;
      }
 
-     LoginPersistenceDataService.$inject = [];
+     SignUpPersistenceDataService.$inject = ['$q', 'config','$http'];
 
-     function LoginPersistenceDataService() {
-         var loginPersistenceDataService = {};
-         return loginPersistenceDataService;
+     function SignUpPersistenceDataService($q, config, $http) {
+         var signUpPersistenceDataService = {
+            createAccount : createAccount
+         };
+         return signUpPersistenceDataService;
+
+         function createAccount(newUserDetails){
+            
+            var defer = $q.defer();
+            $http({
+                url:config.API_URL.signup,
+                method:"POST",
+                data:newUserDetails
+            }).then(function onSuccess(response){
+                /*console.log(response.data);
+                console.log(response);
+                console.log(defer.resolve(response.data));*/              
+                defer.resolve(response.data);
+            },function onFailure(response){
+                console.log("FAILURE");
+                defer.resolve(false);
+            });
+
+            return defer.promise;
+         }
      }
  })();
