@@ -1,0 +1,75 @@
+<ion-view title={{pageTitle}}>
+	<ion-content class="bookPackage-page">
+		<div class="ion-content">
+
+		
+		<div class="align-center" class="map-input-container">
+			<div class="service-location">
+				<div class="margin0">SERVICE LOCATION</div>
+				<input id="location-input" type="text" placeholder="Enter Location" ng-model="BookPackage.bookingLocation"/>
+			</div>
+			<div id="map" class="background" ng-model="BookPackage.map">
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="row days">
+				<div class="col" ng-click="BookPackage.sunday = !BookPackage.sunday">		
+					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.sunday"/>	
+					<div class="day-of-a-week">SUN</div>			
+				</div>
+				<div class="col" ng-click="BookPackage.monday = !BookPackage.monday">
+					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.monday"/>	
+					<div class=" day-of-a-week">MON</div>
+				</div>
+				<div class="col" ng-click="BookPackage.tuesday = !BookPackage.tuesday">
+					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.tuesday"/>	
+					<div class=" day-of-a-week" >TUE</div>
+				</div>
+				<div class="col" ng-click="BookPackage.wednesday = !BookPackage.wednesday"> 
+					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.wednesday"/>	
+					<div class=" day-of-a-week">WED</div>
+				</div>
+				<div class="col" ng-click="BookPackage.thursday = !BookPackage.thursday">
+					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.thursday"/>	
+					<div class=" day-of-a-week">THU</div>
+				</div>
+				<div class="col" ng-click="BookPackage.friday = !BookPackage.friday">
+					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.friday"/>	
+					<div class="day-of-a-week">FRI</div>
+				</div>
+				<div class="col" ng-click="BookPackage.satday = !BookPackage.satday">
+					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.satday"/>	
+					<div class=" day-of-a-week">SAT</div>
+				</div>
+			</div>
+
+			<div class="title-table">
+				<div class="row table-row">
+					<div class="col-50 align-center border-right">
+						<div>START TIME</div>
+						<input id="time" type="time" ng-model="BookPackage.bookingDetails.bookingTime">
+					</div>
+					<div class="col-50 align-center">
+						<div>NO. OF EMPLOYEES</div>
+						<input id="count" type="number" ng-model="BookPackage.bookingDetails.bookingCount"/>
+					</div>
+				</div>
+				<hr/>
+				<div class="align-center table-row row-promocode">
+						<input id="promocode" type="text" placeholder="Have a promocode?" ng-model="BookPackage.bookingDetails.bookingCode"/>
+				</div>
+			</div>
+
+			<div class="align-center" >
+				<button type="button" class="button-style waves-effect" ng-click="BookPackage.BookNow()">BOOK NOW </button>
+			</div>
+		</div>
+		
+		
+		</div>
+
+	</ion-content>
+</ion-view>
+
+<!--ce1370-->
