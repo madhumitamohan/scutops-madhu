@@ -10,9 +10,9 @@
          */
         .controller('DashboardController', Dashboard);
 
-    Dashboard.$inject = ['$state', '$filter', '$http', 'config', '$location'];
+    Dashboard.$inject = ['$state', '$filter', '$http', 'config', '$location', 'DashboardDataService'];
 
-    function Dashboard($state, $filter, $http, config, $location) {
+    function Dashboard($state, $filter, $http, config, $location, DashboardDataService) {
         var dashboardVm = this;
         // Variable declarations
         dashboardVm.currentUser = {};
@@ -24,7 +24,7 @@
         dashboardVm.aboutCall = aboutCall;
         dashboardVm.settingsCall = settingsCall;
         dashboardVm.bookService = bookService;
-        dashboardVm.changeOpacity = changeOpacity;
+        dashboardVm.displayMenu = displayMenu;
         dashboardVm.logOut = logOut;
 
 
@@ -51,11 +51,13 @@
         }
 
         function logOut(){
-             
+            DashboardDataService.logoutUser().then(function(response){
+                console.log("logged out");
+            });
              $state.go('login');
         }
 
-        function changeOpacity(){           
+        function displayMenu(){           
             var opacity = document.getElementsByClassName("content")[0].style.opacity;
             if(opacity == 0.5)
                 document.getElementsByClassName("content")[0].style.opacity = 1;
