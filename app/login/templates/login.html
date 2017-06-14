@@ -13,23 +13,21 @@
 				<div class="col-20">
 				</div>
 			</div>	
-		
-		<div >	
-		<div class="align-center">
-			<div class="login-username">
-				<img src="img/User_icon.png" />
-				<input type="text" placeholder="Username" id="username" ng-model="Login.currentUser.email"/>
+	
+			<div class="align-center">
+				<div class="login-username">
+					<img src="img/User_icon.png" />
+					<input type="text" placeholder="Username" id="username" ng-model="Login.currentUser.email"/>
+				</div>
 			</div>
-		</div>
 
-		<div class="align-center">
-			<div class="login-password" >	
-				<img src="img/password_icon.png" />
-				<input type="password" placeholder="Password" id="password" ng-model="Login.currentUser.password"/>
-				<img src="img/password_icon.png" id="password-visible" ng-click="Login.displayPassword()" />
-			</div>	
-		</div>
-	</div>
+			<div class="align-center">
+				<div class="login-password" >	
+					<img src="img/password_icon.png" />
+					<input type="password" placeholder="Password" id="password" ng-model="Login.currentUser.password"/>
+					<img src="img/password_icon.png" id="password-visible" ng-click="Login.displayPassword()" />
+				</div>	
+			</div>
 
 			<div class="align-center">
 				<button class="button-style waves-effect" ng-click="Login.authenticateUser()">LOGIN</button>
@@ -39,7 +37,10 @@
 				<p> Don't have an account? <span class="text-bold cursor-pointer" ng-click="Login.SignUp()">Sign up! </span></p>
 				<p> Forgot Password? </p>
 			</div>
-			
+
+			<div class="align-center">
+				<img src="img/google-login-icon.png" class="google-button" ng-click="Login.googleLogIn()"/>
+			</div>
 
 	</ion-content>
 </ion-view>

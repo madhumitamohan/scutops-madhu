@@ -46,7 +46,7 @@
          return signUpPersistenceDataService;
 
          function createAccount(newUserDetails){
-            
+            //console.log(newUserDetails);
             var defer = $q.defer();
             $http({
                 url:config.API_URL.signup,

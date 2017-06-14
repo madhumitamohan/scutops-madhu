@@ -15,7 +15,7 @@
     function BookPackage($state, $filter, $http, config, $location) {
         var bookPackageVm = this;
         // Variable declarations
-        var currentDate,currentTime,currentHour,currentMinute,currentSecond,validDate,validHour,validTime,date;
+        var currentDate,currentHour,validTime,date;
 
         // Function declarations
         
@@ -23,13 +23,10 @@
 
         activate();
         function activate() {
-        }
-
-        function activate() {
             setTimeout(function(){ 
                     initMap();
             }, 1000);
-        
+            
         }
 
         function onCreateMap(center){
@@ -159,7 +156,6 @@
         positionValidity(map,latLngBounds);
 
     }
-
     }    
 
 }) ();

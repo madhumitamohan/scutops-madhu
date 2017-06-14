@@ -7,11 +7,11 @@
 			 	
 			 	<div class="user-profile align-center">
 			 		<img src="" class="user-dp"/>
-			 		<div class="user-name">Nandu Dinesan</div>
+			 		<div class="user-name" >{{Dashboard.currentUser.username}}</div>
 			 	</div>
 
 			 	<div class="options">
-			 		<div class="menu-item waves-effect">
+			 		<div class="menu-item waves-effect" ng-click="Dashboard.bookPackage()">
 			 			<img src="img/history-icon.png" />
 			 			<div>Book a Package</div>
 			 		</div >

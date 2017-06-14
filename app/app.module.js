@@ -120,6 +120,13 @@ angular.module(appName, ['ionic'])
         controller: 'BookPackageController as BookPackage',
         title: 'bookPackage'
     })
+
+      .state('phoneNumber', {
+        url: "/phoneNumber",
+        templateUrl: "app/phoneNumber/templates/phoneNumber.html",
+        controller: 'PhoneNumberController as PhoneNumber',
+        title: 'phoneNumber'
+    })
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');
 

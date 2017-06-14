@@ -19,11 +19,15 @@
 
      function DashboardDataService(DashboardClientDataService,DashboardPersistenceDataService) {
          var DashboardDataService = {
-            logoutUser:logoutUser
+            logoutUser:logoutUser,
+            activateUser : activateUser
          };
 
          function logoutUser(){
             return DashboardPersistenceDataService.logoutUser();
+         }
+        function activateUser(){
+            return DashboardPersistenceDataService.activateUser();
          }
 
         return DashboardDataService;
@@ -41,10 +45,28 @@
 
      function DashboardPersistenceDataService($q, config,$http) {
          var DashboardPersistenceDataService = {
-            logoutUser:logoutUser
+            logoutUser:logoutUser,
+            activateUser : activateUser
          };
          return DashboardPersistenceDataService;
          function logoutUser(){
+            
+            var defer = $q.defer();
+            $http({
+                method:"POST",
+                url:config.API_URL.logout
+            }).then(function success(response){
+                //console.log(defer.resolve());
+                //console.log(response);
+                defer.resolve(response);
+            },function failure(response){
+                console.log(response.statusType);
+                defer.resolve(false);
+            });
+            return defer.promise;
+         }
+
+         function activateUser(){
             
             var defer = $q.defer();
             $http({

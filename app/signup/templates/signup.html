@@ -12,31 +12,37 @@
 			</div>
 		</div>
 
-		<div class="align-center">
-			<h4 class="text-bold">Create an Account</h4>
-		</div>
+		<div class="content">
+			<div class="align-center">
+				<h4 class="text-bold">Create an Account</h4>
+			</div>
 
-		<div class="input-container">
-			<div>
-				<input type="text" placeholder="Email Address" ng-model="SignUp.newUser.email"/>
+			<div class="input-container">
+				<div>
+					<input type="text" placeholder="Email Address" ng-model="SignUp.newUser.email"/>
+				</div>
+				<div>
+					<input type="password" placeholder="Password" ng-model="SignUp.newUser.password"/>
+				</div>
+				<div>
+					<input type="tel" placeholder="Phone Number" ng-model="SignUp.newUser.phone_number"/>
+				</div>
+				<div>
+					<input type="text" placeholder="Address" ng-model="SignUp.newUser.address"/>
+				</div>
+				<div>
+					<input type="text" placeholder="Landmark" ng-model="SignUp.newUser.landmark"/>
+				</div>
 			</div>
-			<div>
-				<input type="password" placeholder="password" ng-model="SignUp.newUser.password"/>
-			</div>
-			<div>
-				<input type="text" placeholder="Phone Number" ng-model="SignUp.newUser.phone_number"/>
-			</div>
-			<div>
-				<input type="text" placeholder="Address" ng-model="SignUp.newUser.address"/>
-			</div>
-			<div>
-				<input type="text" placeholder="Landmark" ng-model="SignUp.newUser.landmark"/>
-			</div>
-		</div>
 
-		<div class="align-center">
-			<button class="button-style waves-effect" ng-click="SignUp.signUp()"> SIGN UP</button>
+			<div class="align-center">
+				<button class="button-style waves-effect" ng-click="SignUp.scutopsSignUp()"> SIGN UP</button>
+			</div>
+			<div class="align-center">
+				<img src="img/google-signup-icon.jpg" class="google-button" ng-click="SignUp.googleSignUp()"/>
+			</div>
 		</div>
+		
 
 	</ion-content>
 </ion-view>

@@ -4,8 +4,11 @@
     var API_URL = {
         serverUrl: prefix,
         login: prefix + "login.php",
+        google: prefix + "google.php",
         signup: prefix + "signup.php",
-        dashboard:prefix + "dashboard.php"
+        dashboard:prefix + "dashboard.php",
+        logout:prefix + "logout.php",
+        addPhoneNumber:prefix + "addPhoneNumber.php"
     };
 
   /*  function recalculateUrls(prefix) {

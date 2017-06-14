@@ -16,7 +16,6 @@
 
         var SetLocationVm = this;
         // Variable declarations
-        var currentDate,currentTime,currentHour,currentMinute,currentSecond,validDate,validHour,validTime,date;
         SetLocationVm.bookingDetails={};
 
         // Function declarations
@@ -175,30 +174,51 @@
         return ((time<10)? ("0" + time) : time);
     }
 
-        function inputInitialize(){
-            date = new Date();
-            currentDate = getDateFromDate(date);
-            currentHour = getHoursFromDate(date);
-            currentMinute = getMinutesFromDate(date);
+    function getCurrentDateString(){
+        var date = new Date();
+        return date;
+    }
 
-            validHour = currentHour + 2;
-            validHour = getTimeAddingZero(validHour);
+    function getCurrentDate(){
+        return getDateFromDate(getCurrentDateString());
+    }
 
-            currentMinute = getTimeAddingZero(currentMinute);
+    function getCurrentHour(){
+        return getHoursFromDate(getCurrentDateString());
+    }
+
+    function getCurrentMinute(){
+        return getMinutesFromDate(getCurrentDateString());
+    }
+
+    function getValidTime(){
+        var validHour = getCurrentHour() + 2;
+        validHour = getTimeAddingZero(validHour);
+
+        var currentMinute = getTimeAddingZero(getCurrentMinute());
         
-            validTime = validHour + ":" + currentMinute;
+        var validTime = validHour + ":" + currentMinute;
+        return validTime;
+    }
 
-            SetLocationVm.bookingDetails.bookingDate = currentDate;
-            SetLocationVm.bookingDetails.bookingTime = validTime;
+    function getTomorrowDate(){
+        var tomorrowDate = getCurrentDateString();
+        tomorrowDate.setDate(tomorrowDate.getDate()+1);
+        tomorrowDate = getDateFromDate(tomorrowDate);
+        return tomorrowDate;
+    }
+
+        function inputInitialize(){
+            SetLocationVm.bookingDetails.bookingDate = getCurrentDate();
+            SetLocationVm.bookingDetails.bookingTime = getValidTime();
             SetLocationVm.bookingDetails.bookingCount = 1;
-
         }
 
         function BookNow() {       
             if(checkValidity(SetLocationVm.bookingDetails.bookingDate,SetLocationVm.bookingDetails.bookingTime,SetLocationVm.bookingDetails.bookingCount))
                 {
                     BookingService.setCount(SetLocationVm.bookingDetails.bookingCount);
-                    console.log(BookingService.Message);
+                    //console.log(BookingService.Message);
                     console.log(BookingService.getCount());
                     //localStorage.setItem("count",(SetLocationVm.bookingDetails.bookingCount));
                     $state.go('confirm-booking');
@@ -215,24 +235,20 @@
         function timeValidity(bookingDate,bookingTime){
             var bookingTimeHour = bookingTime.substr(0,2);
             //bookinghour
-            validDate = new Date();
-            validDate.setDate(date.getDate()+1);
-            validDate = getDateFromDate(validDate);
             
-            
-            if(bookingTime < "07:00" || bookingTime > "18:00")
+            if(bookingTime < "07:00" || bookingTime > "18:00")//if booking is before 7 or after 6
                {
                 alert("Booking is allowed only between 7am and 5pm");
                 return false;
                }
-            else if((currentDate == bookingDate) && (bookingTime<validTime))
+            else if((getCurrentDate() == bookingDate) && (bookingTime<getValidTime()))//if booking time is less than 2 hours from now
             {
                 alert("Booking is only allowed 2 hours from now");
                 return false;
             }
-            else if(bookingDate == validDate && currentHour>=18 && bookingTimeHour<9 )
+            else if(bookingDate == getTomorrowDate() && getCurrentHour()>=18 && bookingTimeHour<9)
             {
-                alert("Not Possible");
+                alert("Booking for the next day before 9am is taken only before 6pm");
                 return false;
             }
             return true;
@@ -240,7 +256,19 @@
         }
 
         function dateValidity(bookingDate){
-            if(Date.parse(bookingDate) < Date.parse(currentDate))
+            if(isSunday(bookingDate))//if the booking is for sunday
+            {
+                var fridayDate = getCurrentDateString();
+                var convertedBookingDate = new Date(bookingDate);
+                fridayDate.setDate(convertedBookingDate.getDate() - 2);
+                if(Date.parse(getCurrentDateString()) > Date.parse(fridayDate)){
+                    alert("Booking for Sunday is taken till Friday only");
+                    return false;
+                } 
+                //console.log(validDate);
+            }
+
+            if(Date.parse(bookingDate) < Date.parse(getCurrentDate())) //if the booking is before current date
                 {
                     alert("Booking starts from today");
                     return false;
@@ -261,6 +289,16 @@
                 }
             return true;
             
+        }
+
+        function isSunday(bookingDate){
+            var convertedBookingDate = new Date(bookingDate);
+            //console.log(d.getDay());
+            //console.log(d);
+            if(convertedBookingDate.getDay() == 0)
+                return true;
+            else
+                return false;
         }
 
     }

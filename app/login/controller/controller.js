@@ -17,14 +17,17 @@
         // Variable declarations
         loginVm.currentUser = {};
         loginVm.currentUser.email = ""; //manu@gmail.com
-        loginVm.currentUser.password = ""; //mannu
-
+        loginVm.currentUser.password = "";
+        loginVm.currentUser.type =1; //mannu
         // Function declarations
         
         loginVm.SignUp = SignUp;
+        loginVm.googleLogOut = googleLogOut;
+        loginVm.googleLogIn = googleLogIn;
         loginVm.ForgotPassword = ForgotPassword;
         loginVm.displayPassword = displayPassword;
         loginVm.authenticateUser = authenticateUser;
+        //loginVm.googleSignIn = googleSignIn;
 
         activate();
 
@@ -38,6 +41,7 @@
 
         function activate() {
             var userDetails = JSON.stringify(loginVm.currentUser);
+            console.log(userDetails);
             LoginDataService.authenticateUser(userDetails).then(function(response){
                 if(response.result)
                     $state.go('dashboard');
@@ -47,10 +51,8 @@
 
         function authenticateUser() {
             var userDetails = JSON.stringify(loginVm.currentUser);
-            //console.log(userDetails);
+            console.log(userDetails);
             LoginDataService.authenticateUser(userDetails).then(function(response){
-                //console.log(response);
-                //console.log(response.result);
                 if(response.result)
                     $state.go('dashboard');
                 else
@@ -78,6 +80,44 @@
             /*$state.go('forgotPassword');*/
             $location.path('/forgot');
         }
-    }
 
+       
+        var provider = new firebase.auth.GoogleAuthProvider();
+
+        function googleLogIn() {
+          provider.setCustomParameters({
+            prompt: 'select_account'
+          });
+            firebase.auth()
+   
+            .signInWithPopup(provider).then(function(result) {
+             var token = result.credential.accessToken;
+             var user = result.user;
+        
+             //console.log(token);
+             console.log(user);
+             loginVm.currentUser.email = user.email;
+             loginVm.currentUser.password = "";
+             loginVm.currentUser.type = 3;
+             authenticateUser();
+            }).catch(function(error) {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+        
+          console.log(error.code)
+          console.log(error.message)
+            });
+        }
+
+        function googleLogOut() {
+   firebase.auth().signOut()
+    
+   .then(function() {
+      console.log('Signout Succesfull')
+   }, function(error) {
+      console.log('Signout Failed')  
+   });
+}
+
+}
 })();

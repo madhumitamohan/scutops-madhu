@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <meta name="google-signin-client_id" content="hybrid-170611">
         <title>Scutops</title>
         <link href="Waves/dist/waves.min.css" rel="stylesheet">
         <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
@@ -27,13 +28,44 @@
     <script src="app/shared/controller/SidebarController.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBU1J9O3GiR_-wHwEYlCRKOR4Azb5iSTDQ&libraries=places"
                  async defer></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+    </script>
+    <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer>
+    </script>-->
+    <script src = "https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
    <!-- <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBU1J9O3GiR_-wHwEYlCRKOR4Azb5iSTDQ&libraries=places">
     </script>-->
 <!--RIPPLW-->
      <script type="text/javascript">      
         Waves.attach('button', 'waves-float');
         Waves.init();
+
+       /*function start() {
+      gapi.load('auth2', function() {
+        auth2 = gapi.auth2.init({
+          client_id: '78639105877-n96saie4ingscm79jidiphvfal619e79.apps.googleusercontent.com',
+          // Scopes to request in addition to 'profile' and 'email'
+          //scope: 'additional_scope'
+        });
+      });
+    } */
     </script> 
+
+    
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDE2Ljvhi31kvkI3M3QZVbh0lRwjwuKDGs",
+    authDomain: "scutops-madhu.firebaseapp.com",
+    databaseURL: "https://scutops-madhu.firebaseio.com",
+    projectId: "scutops-madhu",
+    storageBucket: "scutops-madhu.appspot.com",
+    messagingSenderId: "669826165782"
+  };
+  firebase.initializeApp(config);
+</script>
     
     <!-- Configurations -->
     <script src="app/shared/config.values.js"></script>
@@ -50,6 +82,9 @@
     <script src="app/about/controller/controller.js"></script>
     <script src="app/settings/controller/controller.js"></script>
     <script src="app/help/controller/controller.js"></script>
+    <script src="app/bookPackage/controller/controller.js"></script>
+    <script src="app/phoneNumber/controller/controller.js"></script>
+
     
     
     <!-- <script src="app/shared/controller/Headercontroller.js"></script>
@@ -61,6 +96,7 @@
      <script src="app/login/service/login-service.js"></script>
      <script src="app/signup/service/signup-service.js"></script>
      <script src="app/dashboard/service/dashboard-service.js"></script>
+     <script src="app/phoneNumber/service/phoneNumber-service.js"></script>
      </body>
    
 </html>

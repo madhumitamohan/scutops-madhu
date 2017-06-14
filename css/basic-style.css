@@ -1,10 +1,10 @@
 .background-page, .set-location, .login-page,.signup-page{
-  background-image: url("../img/home-bg.png");
+  background-image: url("../img/home-bg.png"); /*dark-background*/
   z-index: 1;
 }
 
-.dashboard, .confirm-booking, .background-page2,.feedback-page , .about-page, .settings-page,.help-page{
-   background-color: #FFF3E0 !important;
+.dashboard, .confirm-booking, .background-page2,.feedback-page , .about-page, .settings-page,.help-page, .bookPackage-page{
+   background-color: #FFF3E0 !important; /*light-background*/
    z-index: 1;
 }
 
@@ -31,7 +31,7 @@
   color: #ce1370;
 }
 
-.settings-page .button-style,.login-page .button-style, .signup-page .button-style, .dashboard .button-style,.set-location .button-style,.feedback-page .button-style{
+.settings-page .button-style,.login-page .button-style, .signup-page .button-style, .dashboard .button-style,.set-location .button-style,.feedback-page .button-style, .bookPackage-page .button-style {
   background-color: #ce1370;
   color:#FDF7F6;
   width: 90%;
@@ -97,7 +97,7 @@
 }
 
 .login-page .login-username{
-  margin: 15% 5% 5% 5%;
+  margin: 15% 0 5% 0;
   left:10px;
   border-bottom: 2px solid #ce1370 !important;
 }
@@ -107,6 +107,7 @@
   margin-left: 10px !important;
   height: 12px;
   width: 30px;
+  margin-top: 8px;
 }
 
 .login-page .login-password #password-visible{
@@ -115,7 +116,7 @@
   top:-30px;
 }
 .login-page .login-password{
-  margin: 5%;
+  margin: 5% 0 5% 0;
   left:10px;
   border-bottom: 2px solid #ce1370 !important;
 }
@@ -128,25 +129,41 @@
 }
 
 .login-page input , .signup-page input{
-width:auto;
+width:80%;
 background-color:transparent;
 padding-left:3% !important;
 }
+
+.login-page .google-button , .signup-page .google-button{
+  width: 48%;
+  height:33px;
+  border-radius: 3px;
+  float: right;
+}
+
+.login-page .content{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.login-page .button-style{
+  width: 100% !important;
+}
 /*------------------------------*/
 
-.signup-page input::-webkit-input-placeholder, .login-page input::-webkit-input-placeholder,.set-location input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+.signup-page input::-webkit-input-placeholder, .login-page input::-webkit-input-placeholder,.set-location input::-webkit-input-placeholder, .bookPackage-page input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:   #ce1370 ;
 }
-.signup-page input:-moz-placeholder,.login-page input::-webkit-input-placeholder,.set-location input::-webkit-input-placeholder { /* Mozilla Firefox 4 to 18 */
+.signup-page input:-moz-placeholder,.login-page input::-webkit-input-placeholder,.set-location input::-webkit-input-placeholder, .bookPackage-page input::-webkit-input-placeholder { /* Mozilla Firefox 4 to 18 */
    color:    #ce1370;
 }
-.signup-page input::-moz-placeholder,.login-page input::-webkit-input-placeholder,.set-location input::-webkit-input-placeholder { /* Mozilla Firefox 19+ */
+.signup-page input::-moz-placeholder,.login-page input::-webkit-input-placeholder,.set-location input::-webkit-input-placeholder, .bookPackage-page input::-webkit-input-placeholder { /* Mozilla Firefox 19+ */
    color:   #ce1370;
 }
-.signup-page input:-ms-input-placeholder,.login-page input::-webkit-input-placeholder,.set-location input::-webkit-input-placeholder { /* Internet Explorer 10-11 */
+.signup-page input:-ms-input-placeholder,.login-page input::-webkit-input-placeholder,.set-location input::-webkit-input-placeholder, .bookPackage-page input::-webkit-input-placeholder { /* Internet Explorer 10-11 */
    color:   #ce1370;
 }
-.signup-page input::-ms-input-placeholder,.login-page input::-webkit-input-placeholder,.set-location input::-webkit-input-placeholder { /* Microsoft Edge */
+.signup-page input::-ms-input-placeholder,.login-page input::-webkit-input-placeholder,.set-location input::-webkit-input-placeholder, .bookPackage-page input::-webkit-input-placeholder { /* Microsoft Edge */
    color:   #ce1370;
 }
 
@@ -154,6 +171,12 @@ padding-left:3% !important;
   margin: 5%;
   border-bottom: 2px solid #ce1370 !important;
 }
+
+.signup-page .content img{
+  margin-right: 5% !important;
+}
+
+
 /*------------------------------------------------
 */
 
@@ -303,11 +326,11 @@ padding-top: 20px;
   top:80px;
 }
 
-.set-location .border-right{
+.set-location .border-right, .bookPackage-page .border-right{
   border-right:1px solid rgb(206,19,113);
 }
 
-.set-location .title-table{
+.set-location .title-table, .bookPackage-page .title-table {
   height:100%;
   width:90%;
   background-color:rgb(253,222,169) ;
@@ -317,14 +340,14 @@ padding-top: 20px;
   box-shadow: 0 0 2px rgb(206,19,113);
   }
 
-.set-location .table-row{
+.set-location .table-row, .bookPackage-page .table-row{
     margin:2% 2% 2% 2%;
     color: rgb(226,126,136);
     font-size: 0.7em;
     line-height: 1.3em;
   }
 
-.set-location .title-table input{
+.set-location .title-table input, .bookPackage-page .title-table input{
     color:rgb(214,75,123) !important;
     background-color: rgb(253,222,169);
     margin:auto;
@@ -338,20 +361,19 @@ padding-top: 20px;
 padding-left: 30%;
 }
 
-.set-location .title-table #time{
+.set-location .title-table #time, .bookPackage-page .title-table #time{
   padding-left: 35%;
 }
 
-.set-location .title-table #count{
+.set-location .title-table #count, .bookPackage-page .title-table #count{
   padding-left: 43%;
 }
 
-.set-location #promocode {
-  margin: auto;
+.set-location #promocode, .bookPackage-page .title-table #promocode {
   width: 100px !important;
 }
 
-.set-location #location-input{
+.set-location #location-input, .bookPackage-page #location-input{
 background-image: url("../img/setting1.png");
 background-repeat: no-repeat;
 background-position:center left;
@@ -362,7 +384,7 @@ width: 90%;
 height:1.2em !important;
 }
 
-.set-location .map-input-container{
+.set-location .map-input-container, .bookPackage-page .map-input-container{
   margin-top: 20px !important;
 }
 
@@ -375,7 +397,7 @@ height:1.2em !important;
   width: 100%;
 }
 
-.service-location{
+.set-location .service-location, .bookPackage-page .service-location{
   position: absolute;
   width: 93%;
   line-height: 10px;
@@ -692,3 +714,49 @@ margin-top:5px !important;
   line-height: 1.2em;
   font-style: italic;
 }
+
+.bookPackage-page .content{
+  padding: 0 20px 0 20px !important;
+}
+
+.bookPackage-page .days{
+  margin-top: 10px;
+  height: 50px;
+  padding-left: 4%;
+}
+
+.bookPackage-page .day-of-a-week{
+  background-color: #ce1370;
+  border-radius: 50%;
+  color: white;
+  width: 10vw;
+  height: 10vw;
+  font-size: 0.9em;
+  font-family: monospace;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.bookPackage-page .days .tic-icon{
+  margin-left: 7%;
+  position: absolute; 
+  top:7px;
+  width:15px;
+  height: 15px;
+}
+
+ .bookPackage-page .title-table{
+  margin-top:8% !important;
+  margin-bottom: 0 !important;
+ }
+
+ .bookPackage-page .title-table .row-promocode{
+  padding: 10px;
+ }
+
+ .bookPackage-page .days .col{
+  padding-right:0 !important;
+  padding-left: 0!important;
+ }
+

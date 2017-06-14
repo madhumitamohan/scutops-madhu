@@ -18,6 +18,7 @@
         dashboardVm.currentUser = {};
         dashboardVm.currentUser.email = ""; //manu@gmail.com
         dashboardVm.currentUser.password = ""; //mannu
+        dashboardVm.currentUser.username = "";
 
         // Function declarations
         dashboardVm.feedbackCall = feedbackCall;
@@ -26,12 +27,21 @@
         dashboardVm.bookService = bookService;
         dashboardVm.displayMenu = displayMenu;
         dashboardVm.logOut = logOut;
+        dashboardVm.bookPackage = bookPackage;
 
 
         activate();
 
         function activate() {
             // To initialize anything before the project starts
+            DashboardDataService.activateUser().then(function(response){             
+                dashboardVm.currentUser.username = response.data;
+                console.log(dashboardVm.currentUser.username);
+            });
+        }
+
+        function bookPackage(){
+            $state.go('bookPackage');
         }
 
         function bookService() {
@@ -53,9 +63,11 @@
         function logOut(){
             DashboardDataService.logoutUser().then(function(response){
                 console.log("logged out");
+                $state.go('login');
             });
-             $state.go('login');
+             
         }
+
 
         function displayMenu(){           
             var opacity = document.getElementsByClassName("content")[0].style.opacity;
