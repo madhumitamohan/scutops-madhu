@@ -9,6 +9,7 @@
         <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
         <link href="css/basic-style.css" rel="stylesheet">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
         
 
     </head>
@@ -17,86 +18,104 @@
     
 
     <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.min.js"></script>
+      <script src="lib/ionic/js/ionic.bundle.min.js"></script>
 
-    
-   
+      
+     
 
-    <!-- your app's js -->
-    <script src="Waves/dist/waves.min.js"></script>
-    <script src="app/app.module.js"></script>
-    <script src="app/shared/controller/SidebarController.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBU1J9O3GiR_-wHwEYlCRKOR4Azb5iSTDQ&libraries=places"
-                 async defer></script>
-    <script src="https://apis.google.com/js/api.js"></script>
-    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
-    </script>
-    <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer>
-    </script>-->
-    <script src = "https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-   <!-- <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBU1J9O3GiR_-wHwEYlCRKOR4Azb5iSTDQ&libraries=places">
-    </script>-->
-<!--RIPPLW-->
-     <script type="text/javascript">      
-        Waves.attach('button', 'waves-float');
-        Waves.init();
+      <!-- your app's js -->
+      <script src="Waves/dist/waves.min.js"></script>
+      <script src="app/app.module.js"></script>
+      <script src="app/shared/controller/SidebarController.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBU1J9O3GiR_-wHwEYlCRKOR4Azb5iSTDQ&libraries=places"
+                   async defer></script>
+      <script src="https://apis.google.com/js/api.js"></script>
+      <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+      </script>
+      <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer>
+      </script>-->
+      <script src = "https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+     <!-- <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyBU1J9O3GiR_-wHwEYlCRKOR4Azb5iSTDQ&libraries=places">
+      </script>-->
+  <!--RIPPLW-->
+       <script type="text/javascript">      
+          Waves.attach('button', 'waves-float');
+          Waves.init();
 
-       /*function start() {
-      gapi.load('auth2', function() {
-        auth2 = gapi.auth2.init({
-          client_id: '78639105877-n96saie4ingscm79jidiphvfal619e79.apps.googleusercontent.com',
-          // Scopes to request in addition to 'profile' and 'email'
-          //scope: 'additional_scope'
+         /*function start() {
+        gapi.load('auth2', function() {
+          auth2 = gapi.auth2.init({
+            client_id: '78639105877-n96saie4ingscm79jidiphvfal619e79.apps.googleusercontent.com',
+            // Scopes to request in addition to 'profile' and 'email'
+            //scope: 'additional_scope'
+          });
         });
-      });
-    } */
-    </script> 
+      } */
 
-    
-<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDE2Ljvhi31kvkI3M3QZVbh0lRwjwuKDGs",
-    authDomain: "scutops-madhu.firebaseapp.com",
-    databaseURL: "https://scutops-madhu.firebaseio.com",
-    projectId: "scutops-madhu",
-    storageBucket: "scutops-madhu.appspot.com",
-    messagingSenderId: "669826165782"
-  };
-  firebase.initializeApp(config);
-</script>
-    
-    <!-- Configurations -->
-    <script src="app/shared/config.values.js"></script>
+      </script> 
 
-    <!-- Controllers -->
 
-    <script src="app/login/controller/controller.js"></script>
-    <script src="app/set-location/controller/controller.js"></script>
-    <script src="app/signup/controller/controller.js"></script>
-    <script src="app/dashboard/controller/controller.js"></script>
-    <script src="app/confirm-booking/controller/controller.js"></script>
-    <script src="app/feedback/controller/controller.js"></script>
-    <script src="app/menu/controller/controller.js"></script>
-    <script src="app/about/controller/controller.js"></script>
-    <script src="app/settings/controller/controller.js"></script>
-    <script src="app/help/controller/controller.js"></script>
-    <script src="app/bookPackage/controller/controller.js"></script>
-    <script src="app/phoneNumber/controller/controller.js"></script>
+      
+      <script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+      <script>
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyDE2Ljvhi31kvkI3M3QZVbh0lRwjwuKDGs",
+          authDomain: "scutops-madhu.firebaseapp.com",
+          databaseURL: "https://scutops-madhu.firebaseio.com",
+          projectId: "scutops-madhu",
+          storageBucket: "scutops-madhu.appspot.com",
+          messagingSenderId: "669826165782"
+        };
+        firebase.initializeApp(config);
+        /*const messaging = firebase.messaging();
 
-    
-    
-    <!-- <script src="app/shared/controller/Headercontroller.js"></script>
-  -->   
-    
+        messaging.requestPermission()
+        .then(function() {
+          console.log('Notification permission granted.');
+          return messaging.getToken();
+        }).then(function(token){
+          console.log(token);
+        })
+        .catch(function(err) {
+          console.log('Unable to get permission to notify.', err);
+        });*/
 
-     <!-- Services -->
-     <script src="app/shared/service/booking-service.js"></script>
-     <script src="app/login/service/login-service.js"></script>
-     <script src="app/signup/service/signup-service.js"></script>
-     <script src="app/dashboard/service/dashboard-service.js"></script>
-     <script src="app/phoneNumber/service/phoneNumber-service.js"></script>
+      </script>
+      
+      <!-- Configurations -->
+      <script src="app/shared/config.values.js"></script>
+
+      <!-- Controllers -->
+
+      <script src="app/login/controller/controller.js"></script>
+      <script src="app/set-location/controller/controller.js"></script>
+      <script src="app/signup/controller/controller.js"></script>
+      <script src="app/dashboard/controller/controller.js"></script>
+      <script src="app/confirm-booking/controller/controller.js"></script>
+      <script src="app/feedback/controller/controller.js"></script>
+      <script src="app/about/controller/controller.js"></script>
+      <script src="app/settings/controller/controller.js"></script>
+      <script src="app/help/controller/controller.js"></script>
+      <script src="app/bookPackage/controller/controller.js"></script>
+      <script src="app/phoneNumber/controller/controller.js"></script>
+      <script src="app/shared/controller/HeaderController.js"></script>
+      <script src="app/shared/controller/SidebarController.js"></script>
+      <script src="app/liveUpdate/controller/controller.js"></script>
+
+      
+      
+      <!-- <script src="app/shared/controller/Headercontroller.js"></script>
+    -->   
+      
+
+       <!-- Services -->
+       <script src="app/shared/service/common-service.js"></script>
+       <script src="app/shared/service/sidebar-service.js"></script>
+       <script src="app/login/service/login-service.js"></script>
+       <script src="app/signup/service/signup-service.js"></script>
+       <script src="app/dashboard/service/dashboard-service.js"></script>
+       <script src="app/phoneNumber/service/phoneNumber-service.js"></script>
      </body>
    
 </html>

@@ -2,7 +2,7 @@
 /* global angular */
 angular.module(appName)
 
-.controller('SidebarController', function($scope,$state, config) {
+.controller('SidebarController', function($scope,$state, config, SidebarDataService) {
     
     $scope.state = false;
     
@@ -10,10 +10,32 @@ angular.module(appName)
         $scope.state = !$scope.state;
     };
 
-    $scope.logout = function() {
-        config.userDetails = {};
-        $state.go('login');
-    };
+
+    $scope.bookPackage = function(){
+        $state.go('bookPackage');
+    }
+
+    $scope.feedbackCall = function(){
+         $state.go('feedback');
+    }
+
+    $scope.settingsCall = function(){
+         $state.go('settings');
+    }
+
+    $scope.aboutCall = function(){
+         $state.go('about');
+    }
+
+    $scope.logOut = function(){
+       
+        SidebarDataService.logoutUser().then(function(response){
+            console.log("logged out");
+            $state.go('login');
+        });
+         
+    }
+
 
     $scope.userDetails = config.userDetails;
     console.log("loading header.....");

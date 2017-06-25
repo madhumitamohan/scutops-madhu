@@ -1,0 +1,80 @@
+<ion-side-menus class="sidebar-page">
+  <!-- Left menu -->
+    <ion-side-menu side="left">
+
+  		<div class="menu" >
+			 	
+		 	<div class="user-profile align-center">
+		 		<img src="" class="user-dp"/>
+		 		<div class="user-name" >USERNAME</div>
+		 	</div>
+
+		 	<div class="options">
+		 		<div menu-close class="menu-item waves-effect" ng-click="bookPackage()">
+		 			<img src="img/history-icon.png" />
+		 			<div>Book a Package</div>
+		 		</div >
+		 		<div menu-close class="menu-item waves-effect">
+		 			<img src="img/history-icon.png" />
+		 			<div>My Bookings</div>
+		 		</div >
+		 		<div menu-close class="menu-item waves-effect">
+		 			<img src="img/promotions-icon.gif" />
+		 			<div>Promotions</div>
+		 		</div>
+		 		<div menu-close class="menu-item waves-effect">
+		 			<img src="img/history-icon.png" />
+		 			<div>My Profile</div>
+		 		</div>
+		 		<div menu-close class="menu-item waves-effect">
+		 			<img src="img/history-icon.png" />
+		 			<div>Notifications</div>
+		 		</div>
+		 		<div menu-close class="menu-item waves-effect" >
+		 			<img src="img/history-icon.png" />
+		 			<a ng-href="http://www.scutops.com/faqs.html">Help</a>
+		 		</div>
+		 		<div menu-close class="menu-item waves-effect" ng-click="feedbackCall()">
+		 			<img src="img/history-icon.png" />
+		 			<div>Feedback</div>
+		 		</div>
+		 		<div menu-close class="menu-item waves-effect" ng-click="settingsCall()">
+		 			<img src="img/settings-icon1.gif" class="icon-small"/>
+		 			<div>Settings</div>
+		 		</div>
+
+		 	</div>
+		 	<hr/>
+
+		 	<div class="options">
+		 		<div menu-close ng-click="aboutCall()" class="menu-item left-padding">About</div>
+		 		<div menu-close ng-click="logOut()" class="waves-effect menu-item left-padding">Log Out</div>
+		 	</div>
+
+		</div>
+
+  </ion-side-menu>
+
+  <ion-side-menu-content>
+  	<ion-view class="header-page">
+	<ion-nav-bar align-title="center" class="header">
+	    <div class="buttons left-buttons">
+	    	<button menu-toggle="left" class="left-button button icon ion-navicon"></button>
+	 	</div>
+	    <h1 class="title">{{pageTitle}}</h1>
+	    <div class="buttons right-buttons">
+	    	<img src="img/notification-icon.png"/>
+	    </div>
+	</ion-nav-bar>
+
+	<!--<div class="bar bar-header header">
+	   <button menu-toggle="left" class="button icon ion-navicon"></button>
+	      <h1 class="title">{{pageTitle}}</h1>
+	   <button class="button"><img src="img/notification-icon.png"/></button>
+	</div>-->
+
+	<ion-nav-view></ion-nav-view>
+</ion-view>
+  </ion-side-menu-content>
+
+</ion-side-menus>

@@ -53,8 +53,8 @@
                 method:"POST",
                 data:newUserDetails
             }).then(function onSuccess(response){
-                /*console.log(response.data);
-                console.log(response);
+                console.log(response.data);
+                /*console.log(response);
                 console.log(defer.resolve(response.data));*/              
                 defer.resolve(response.data);
             },function onFailure(response){

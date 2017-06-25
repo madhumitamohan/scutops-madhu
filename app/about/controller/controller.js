@@ -13,9 +13,6 @@
     About.$inject = ['$state', '$filter', '$http', 'config', '$location'];
 
     function About($state, $filter, $http, config, $location) {
-        var aboutVm = this;
-
-  
         activate();
 
         function activate(){

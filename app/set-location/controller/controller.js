@@ -10,9 +10,9 @@
          */
         .controller('SetLocationController', SetLocation);
 
-    SetLocation.$inject = ['$state', '$filter', '$http', 'config', '$location', '$scope', '$compile','$window','BookingService'];
+    SetLocation.$inject = ['$state', '$filter', '$http', 'config', '$location', '$scope', '$compile','$window','CommonService'];
 
-    function SetLocation($state, $filter, $http, config, $location, $scope, $compile, $window, BookingService ) {
+    function SetLocation($state, $filter, $http, config, $location, $scope, $compile, $window, CommonService ) {
 
         var SetLocationVm = this;
         // Variable declarations
@@ -217,9 +217,9 @@
         function BookNow() {       
             if(checkValidity(SetLocationVm.bookingDetails.bookingDate,SetLocationVm.bookingDetails.bookingTime,SetLocationVm.bookingDetails.bookingCount))
                 {
-                    BookingService.setCount(SetLocationVm.bookingDetails.bookingCount);
-                    //console.log(BookingService.Message);
-                    console.log(BookingService.getCount());
+                    CommonService.setValue(SetLocationVm.bookingDetails.bookingCount);
+                    //console.log(CommonService.Message);
+                    console.log(CommonService.getCount());
                     //localStorage.setItem("count",(SetLocationVm.bookingDetails.bookingCount));
                     $state.go('confirm-booking');
                 }

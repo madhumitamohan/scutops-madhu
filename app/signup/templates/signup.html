@@ -12,6 +12,14 @@
 			</div>
 		</div>
 
+		<!--<div class="enter-phone-number align-center" ng-show="phoneNumberPopup">
+			<h3>Enter your phone number</h3>
+			<div class="input-phone-number">
+				<input type="tel"  ng-model="SignUp.newUser.phone_number"/>
+			</div>
+			<button class="button-style waves-effect" ng-click="SignUp.googleSignUp()">OK</button>
+		</div>-->
+
 		<div class="content">
 			<div class="align-center">
 				<h4 class="text-bold">Create an Account</h4>
@@ -39,7 +47,8 @@
 				<button class="button-style waves-effect" ng-click="SignUp.scutopsSignUp()"> SIGN UP</button>
 			</div>
 			<div class="align-center">
-				<img src="img/google-signup-icon.jpg" class="google-button" ng-click="SignUp.googleSignUp()"/>
+				<img src="img/google-signup-icon.jpg" class="google-button" 
+				ng-click="SignUp.googleSignUp()"/>
 			</div>
 		</div>
 		

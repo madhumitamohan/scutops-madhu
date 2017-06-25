@@ -52,11 +52,13 @@
           return loginPersistenceDataService;
          function authenticateUser(userDetails){
             var defer = $q.defer();
+            console.log("Calling API")
             $http({
                 method:"POST",
                 url: config.API_URL.login,
                 data: userDetails
             }).then(function mySuccess(response){
+                console.log(response.data);
                 //console.log(response.statusText);
                 //console.log(response.data);
                 defer.resolve(response.data);

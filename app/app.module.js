@@ -41,8 +41,6 @@ angular.module(appName, ['ionic'])
 
     $stateProvider
 
-    
-
     .state('login', {
         url: "/login",
         templateUrl: "app/login/templates/login.html",
@@ -50,82 +48,108 @@ angular.module(appName, ['ionic'])
         title: 'Login'
     })
 
+    .state('sidebar', {
+        url: "",
+        templateUrl: "app/shared/templates/sidebar.html",
+        controller: 'SidebarController as Sidebar',
+        title: 'Sidebar',
+        abstract:true
+    })
+
+    .state('header', {
+        url: "",
+        templateUrl: "app/shared/templates/header.html",
+        controller: 'HeaderController as Header',
+        title: 'header',
+        abstract:true
+    })
+
+    
+
     .state('signup', {
         url: "/signup",
         templateUrl: "app/signup/templates/signup.html",
         controller: 'SignUpController as SignUp',
-        title: 'SignUp'
+        title: 'Sign Up'
     })
 
      .state('set-location', {
+        parent:"header",
         url: "/set-location",
         templateUrl: "app/set-location/templates/set-location.html",
         controller: 'SetLocationController as SetLocation',
-        title: 'SetLocation'
+        title: 'Set Location'
     })
 
-     .state('dashboard', {
+     .state('sidebar.dashboard', {
         url: "/dashboard",
         templateUrl: "app/dashboard/templates/dashboard.html",
         controller: 'DashboardController as Dashboard',
-        title: 'dashboard'
+        title: 'Dashboard'
     })
 
 
      .state('confirm-booking', {
+        parent:"header",
         url: "/confirm-booking",
         templateUrl: "app/confirm-booking/templates/confirm-booking.html",
         controller: 'ConfirmBookingController as ConfirmBooking',
-        title: 'confirm-booking'
+        title: 'Confirm-Booking'
     })
 
      .state('feedback', {
+        parent:"sidebar",
         url: "/feedback",
         templateUrl: "app/feedback/templates/feedback.html",
         controller: 'FeedbackController as Feedback',
-        title: 'feedback'
-    })
-
-     .state('menu', {
-        url: "/menu",
-        templateUrl: "app/menu/templates/menu.html",
-        controller: 'MenuController as Menu',
-        title: 'menu'
+        title: 'Feedback'
     })
 
      .state('about', {
+        parent:"sidebar",
         url: "/about",
         templateUrl: "app/about/templates/about.html",
         controller: 'AboutController as About',
-        title: 'about'
+        title: 'About'
     })
 
      .state('settings', {
+        parent:"sidebar",
         url: "/settings",
         templateUrl: "app/settings/templates/settings.html",
         controller: 'SettingsController as Settings',
-        title: 'settings'
+        title: 'Settings'
     })
 
       .state('help', {
+        parent:"sidebar",
         url: "/help",
         templateUrl: "app/help/templates/help.html",
         controller: 'HelpController as Help',
-        title: 'help'
+        title: 'Help'
     })
 
       .state('bookPackage', {
+        parent:"sidebar",
         url: "/bookPackage",
         templateUrl: "app/bookPackage/templates/bookPackage.html",
         controller: 'BookPackageController as BookPackage',
-        title: 'bookPackage'
+        title: 'Book A Package'
     })
 
       .state('phoneNumber', {
         url: "/phoneNumber",
         templateUrl: "app/phoneNumber/templates/phoneNumber.html",
         controller: 'PhoneNumberController as PhoneNumber',
-        title: 'phoneNumber'
+        title: 'Phone Number'
+    })
+
+      .state('liveUpdate', {
+        parent:"sidebar",
+        url: "/liveUpdate",
+        templateUrl: "app/liveUpdate/templates/liveUpdate.html",
+        controller: 'LiveUpdateController as LiveUpdate',
+        title: 'Live Update'
     })
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');

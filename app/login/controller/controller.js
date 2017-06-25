@@ -24,7 +24,7 @@
         loginVm.SignUp = SignUp;
         loginVm.googleLogOut = googleLogOut;
         loginVm.googleLogIn = googleLogIn;
-        loginVm.ForgotPassword = ForgotPassword;
+        loginVm.forgotPassword = forgotPassword;
         loginVm.displayPassword = displayPassword;
         loginVm.authenticateUser = authenticateUser;
         //loginVm.googleSignIn = googleSignIn;
@@ -39,22 +39,38 @@
             
         }
 
+        function forgotPassword(){
+          var auth = firebase.auth();
+          var emailAddress = loginVm.currentUser.email;
+
+          auth.sendPasswordResetEmail(emailAddress).then(function() {
+            console.log("sent");// Email sent.
+          }, function(error) {
+            console.log("error");// An error happened.
+          });
+        }
+
         function activate() {
-            var userDetails = JSON.stringify(loginVm.currentUser);
+            /*var userDetails = JSON.stringify(loginVm.currentUser);
             console.log(userDetails);
             LoginDataService.authenticateUser(userDetails).then(function(response){
                 if(response.result)
-                    $state.go('dashboard');
-            });
+                    $state.go('sidebar.dashboard');
+            });*/
             // To initialize anything before the project starts
         }
 
         function authenticateUser() {
+
+          /*firebase.auth().signInWithEmailAndPassword(loginVm.currentUser.email, loginVm.currentUser.password).catch(function(error) {
+           console.log("error");
+          });
+          $state.go('sidebar.dashboard');*/
             var userDetails = JSON.stringify(loginVm.currentUser);
             console.log(userDetails);
             LoginDataService.authenticateUser(userDetails).then(function(response){
                 if(response.result)
-                    $state.go('dashboard');
+                    $state.go('sidebar.dashboard');
                 else
                     alert(response.description);
             });
@@ -75,11 +91,11 @@
              //change state go to app.module
         }
 
-
+/*
         function ForgotPassword() {
-            /*$state.go('forgotPassword');*/
+            /*$state.go('forgotPassword');
             $location.path('/forgot');
-        }
+        }*/
 
        
         var provider = new firebase.auth.GoogleAuthProvider();

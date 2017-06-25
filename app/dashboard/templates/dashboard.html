@@ -3,57 +3,7 @@
 		
 		<div class="ion-content">
 
-		    <div class="menu" ng-show="Dashboard.menu" ng-click="Dashboard.menu=!Dashboard.menu;Dashboard.displayMenu()">
-			 	
-			 	<div class="user-profile align-center">
-			 		<img src="" class="user-dp"/>
-			 		<div class="user-name" >{{Dashboard.currentUser.username}}</div>
-			 	</div>
-
-			 	<div class="options">
-			 		<div class="menu-item waves-effect" ng-click="Dashboard.bookPackage()">
-			 			<img src="img/history-icon.png" />
-			 			<div>Book a Package</div>
-			 		</div >
-			 		<div class="menu-item waves-effect">
-			 			<img src="img/history-icon.png" />
-			 			<div>My Bookings</div>
-			 		</div >
-			 		<div class="menu-item waves-effect">
-			 			<img src="img/promotions-icon.gif" />
-			 			<div>Promotions</div>
-			 		</div>
-			 		<div class="menu-item waves-effect">
-			 			<img src="img/history-icon.png" />
-			 			<div>My Profile</div>
-			 		</div>
-			 		<div class="menu-item waves-effect">
-			 			<img src="img/history-icon.png" />
-			 			<div>Notifications</div>
-			 		</div>
-			 		<div class="menu-item waves-effect" >
-			 			<img src="img/history-icon.png" />
-			 			<a ng-href="http://www.scutops.com/faqs.html">Help</a>
-			 		</div>
-			 		<div class="menu-item waves-effect" ng-click="Dashboard.feedbackCall()">
-			 			<img src="img/history-icon.png" />
-			 			<div>Feedback</div>
-			 		</div>
-			 		<div class="menu-item waves-effect" ng-click="Dashboard.settingsCall()">
-			 			<img src="img/settings-icon1.gif" class="icon-small"/>
-			 			<div>Settings</div>
-			 		</div>
-
-			 	</div>
-			 	<hr/>
-
-			 	<div class="options left-padding">
-			 		<div ng-click="Dashboard.aboutCall()" class="menu-item">About</div>
-			 		<div ng-click="Dashboard.logOut()" class="waves-effect menu-item">Log Out</div>
-			 	</div>
-
-			</div>
-			<div class="row header" >
+			<!--<div class="row header" >
 				<div class="col-20" ng-click="Dashboard.menu=!Dashboard.menu;Dashboard.displayMenu()">
 					<img src="img/menu-icon.png" class="left-icon"/>
 				</div>
@@ -63,7 +13,7 @@
 				<div class="col-20" >
 					<img src="img/notification-icon.png" class="right-icon float-right" />
 				</div>
-			</div>
+			</div>-->
 
 			<div class="main-content content" id="content-portion">
 				<div class="title">
@@ -102,7 +52,7 @@
 				</div>
 
 				<div class="textarea-outer">
-					<textarea class="textarea" rows="8" cols="30" placeholder="Enter the instructions to be passed on to the professional."></textarea>
+					<textarea class="textarea" rows="8" cols="30" placeholder="Enter the instructions to be passed on to the professional." ng-model = "Dashboard.dashboardDetails.instructions"></textarea>
                 </div>
 
 
@@ -115,23 +65,23 @@
 				
 					<div class="row">
 						<div class="col-25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.breakfast"/>
-							<img src="img/break-fast-icon.png" class="circular-icon" ng-click="Dashboard.breakfast=!Dashboard.breakfast"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.cooking.breakfast"/>
+							<img src="img/break-fast-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.cooking.breakfast=!Dashboard.dashboardDetails.services.cooking.breakfast"/>
 							<div>BREAKFAST</div>
 						</div>
 						<div class="col-25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.lunch"/>
-							<img src="img/lunch-icon.png" class="circular-icon" ng-click="Dashboard.lunch=!Dashboard.lunch"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.cooking.lunch"/>
+							<img src="img/lunch-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.cooking.lunch=!Dashboard.dashboardDetails.services.cooking.lunch"/>
 							<div>LUNCH</div>
 						</div>
 						<div class="col-25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.snacks"/>
-							<img src="img/snacks-icon.png" class="circular-icon" ng-click="Dashboard.snacks=!Dashboard.snacks"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.cooking.snacks"/>
+							<img src="img/snacks-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.cooking.snacks=!Dashboard.dashboardDetails.services.cooking.snacks"/>
 							<div>SNACKS</div>
 						</div>
 						<div class="col-25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dinner"/>
-							<img src="img/dinner-icon.png" class="circular-icon" ng-click="Dashboard.dinner=!Dashboard.dinner"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.cooking.dinner"/>
+							<img src="img/dinner-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.cooking.dinner=!Dashboard.dashboardDetails.services.cooking.dinner"/>
 							<div>DINNER</div>
 						</div>
 					</div>
@@ -146,23 +96,23 @@
 				
 					<div class="row">
 						<div class="col-25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.bedRoom"/>
-							<img src="img/bedroom-icon.png" class="circular-icon" ng-click="Dashboard.bedRoom=!Dashboard.bedRoom"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.cleaning.bedRoom"/>
+							<img src="img/bedroom-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.cleaning.bedRoom=!Dashboard.dashboardDetails.services.cleaning.bedRoom"/>
 							<div>BEDROOM</div>
 						</div>
 						<div class="col25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.livingRoom"/>
-							<img src="img/living-room-icon.png" class="circular-icon" ng-click="Dashboard.livingRoom=!Dashboard.livingRoom"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.cleaning.livingRoom"/>
+							<img src="img/living-room-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.cleaning.livingRoom=!Dashboard.dashboardDetails.services.cleaning.livingRoom"/>
 							<div>LIVING ROOM</div>
 						</div>
 						<div class="col-25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.diningRoom"/>
-							<img src="img/dining-room-icon.png" class="circular-icon" ng-click="Dashboard.diningRoom=!Dashboard.diningRoom"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.cleaning.diningRoom"/>
+							<img src="img/dining-room-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.cleaning.diningRoom=!Dashboard.dashboardDetails.services.cleaning.diningRoom"/>
 							<div>DINING ROOM</div>
 						</div>
 						<div class="col-25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.washRoom"/>
-							<img src="img/washroom-icon.png" class="circular-icon" ng-click="Dashboard.washRoom=!Dashboard.washRoom"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.cleaning.washRoom"/>
+							<img src="img/washroom-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.cleaning.washRoom=!Dashboard.dashboardDetails.services.cleaning.washRoom"/>
 							<div>WASHROOM</div>
 						</div>
 					</div>
@@ -177,23 +127,23 @@
 				
 					<div class="row">
 						<div class="col-25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.spBreakfast"/>
-							<img src="img/break-fast-icon.png" class="circular-icon" ng-click="Dashboard.spBreakfast=!Dashboard.spBreakfast"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.spCooking.breakfast"/>
+							<img src="img/break-fast-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.spCooking.breakfast=!Dashboard.dashboardDetails.services.spCooking.breakfast"/>
 							<div>BREAKFAST</div>
 						</div>
 						<div class="col-25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.spLunch"/>
-							<img src="img/lunch-icon.png" class="circular-icon" ng-click="Dashboard.spLunch=!Dashboard.spLunch"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.spCooking.lunch"/>
+							<img src="img/lunch-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.spCooking.lunch=!Dashboard.dashboardDetails.services.spCooking.lunch"/>
 							<div>LUNCH</div>
 						</div>
 						<div class="col-25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.spSnacks"/>
-							<img src="img/snacks-icon.png" class="circular-icon" ng-click="Dashboard.spSnacks=!Dashboard.spSnacks"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.spCooking.snacks"/>
+							<img src="img/snacks-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.spCooking.snacks=!Dashboard.dashboardDetails.services.spCooking.snacks"/>
 							<div>SNACKS</div>
 						</div>
 						<div class="col-25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.spDinner"/>
-							<img src="img/dinner-icon.png" class="circular-icon" ng-click="Dashboard.spDinner=!Dashboard.spDinner"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.spCooking.dinner"/>
+							<img src="img/dinner-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.spCooking.dinner=!Dashboard.dashboardDetails.services.spCooking.dinner"/>
 							<div>DINNER</div>
 						</div>
 					</div>
@@ -208,23 +158,23 @@
 				
 					<div class="row">
 						<div class="col-25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.spBedRoom"/>
-							<img src="img/bedroom-icon.png" class="circular-icon" ng-click="Dashboard.spBedRoom=!Dashboard.spBedRoom"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.spCleaning.bedRoom"/>
+							<img src="img/bedroom-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.spCleaning.bedRoom=!Dashboard.dashboardDetails.services.spCleaning.bedRoom"/>
 							<div>BEDROOM</div>
 						</div>
 						<div class="col-25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.spLivingRoom"/>
-							<img src="img/living-room-icon.png" class="circular-icon" ng-click="Dashboard.spLivingRoom=!Dashboard.spLivingRoom"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.spCleaning.livingRoom"/>
+							<img src="img/living-room-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.spCleaning.livingRoom=!Dashboard.dashboardDetails.services.spCleaning.livingRoom"/>
 							<div>LIVING ROOM</div>
 						</div>
 						<div class="col-25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.spDiningRoom"/>
-							<img src="img/dining-room-icon.png" class="circular-icon" ng-click="Dashboard.spDiningRoom=!Dashboard.spDiningRoom"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.spCleaning.diningRoom"/>
+							<img src="img/dining-room-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.spCleaning.diningRoom=!Dashboard.dashboardDetails.services.spCleaning.diningRoom"/>
 							<div>DINING ROOM</div>
 						</div>
 						<div class="col-25 align-center" style="position:relative">
-							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.spWashRoom"/>
-							<img src="img/washroom-icon.png" class="circular-icon" ng-click="Dashboard.spWashRoom=!Dashboard.spWashRoom"/>
+							<img src="img/tic-icon.png" class="tic-icon" ng-show="Dashboard.dashboardDetails.services.spCleaning.washRoom"/>
+							<img src="img/washroom-icon.png" class="circular-icon" ng-click="Dashboard.dashboardDetails.services.spCleaning.washRoom=!Dashboard.dashboardDetails.services.spCleaning.washRoom"/>
 							<div>WASHROOM</div>
 						</div>
 					</div>

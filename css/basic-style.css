@@ -3,7 +3,7 @@
   z-index: 1;
 }
 
-.dashboard, .confirm-booking, .background-page2,.feedback-page , .about-page, .settings-page,.help-page, .bookPackage-page{
+.dashboard,.liveUpdate-page, .confirm-booking, .background-page2,.feedback-page , .about-page, .settings-page,.help-page, .bookPackage-page{
    background-color: #FFF3E0 !important; /*light-background*/
    z-index: 1;
 }
@@ -36,7 +36,7 @@
   color:#FDF7F6;
   width: 90%;
   border: none;
-  height:10%;
+  height:20%;
   margin-top:10%; 
   margin-bottom: 5%;
   padding:5%;
@@ -176,36 +176,24 @@ padding-left:3% !important;
   margin-right: 5% !important;
 }
 
+.signup-page .input-phone-number{
+  border-bottom: 1px solid #ce1370;
+  margin: 20px 10px 0 10px;
+}
+
+.signup-page .enter-phone-number button{
+  height: 27% !important;
+}
+
+.signup-page .enter-phone-number{
+  padding-top: 10px;
+  height:150px !important;
+}
 
 /*------------------------------------------------
 */
 
-.dashboard .options img{
-  margin:8px 15px 0 5%;
-  height:18px;
-  width: 20px;
-  float: left;
-}
 
-.dashboard .user-profile{
-  background-color:rgb(250,176,27);
-  height: 95px;
-  padding:20px;
-  position: relative;
-}
-
-.dashboard .user-dp{
-  height: 50px;
-  width:50px;
-  background-color: white;
-  border-radius: 50%;
-  float: left;
-  margin-left: 5%;
-}
-
-.dashboard .user-name{
-  padding-top: 14px;
- }
 
 .dashboard .relative-position{
   position: relative !important;
@@ -213,7 +201,6 @@ padding-left:3% !important;
 
 .dashboard .main-content{
   padding-left: 30px !important;
-  padding-top: 5%;
   overflow-y:scroll;
   font-size: 10px;
   line-height: 1.5em;
@@ -276,54 +263,18 @@ margin:auto;
 
 }
 
-.dashboard .menu{
-  float: top left;
-  width:80%;
-  position: absolute;
-  height:140%;
-  z-index: 4;
-  background-color: rgb(250,206,128);
-  color: #ce1370;
-  font-size:12px;
-}
 
-.dashboard .menu .options{
-line-height: 3em; 
-padding-left: 20px; 
-padding-top: 20px;
-}
-
-.dashboard .menu hr{
-  margin-right: 20%;
-  color: rgb(237,152,123);
-}
-
-.dashboard .menu .menu-item{
-  padding-bottom: 10px;
-}
-
-.options.left-padding{
-  padding-left: 35px !important;
-}
 
 .dashboard .button-class{
   padding-right: 30px !important;
 }
 
-.dashboard a{
-  color: #ce1370;
-  text-decoration: none;
-}
-
-.dashboard a:hover{
-  color:#ce1370 !important;
-}
 
 /*-------------------------*/
 
 .set-location .content,.dashboard .content{
   position: relative;
-  top:80px;
+  padding-top:10px;
 }
 
 .set-location .border-right, .bookPackage-page .border-right{
@@ -435,7 +386,7 @@ height:1.2em !important;
 }
 
 .main-content2, .help-page .main-content{
-  padding-top: 80px;
+  padding-top: 10px;
 }
 
 .main-content2 hr{
@@ -507,7 +458,7 @@ font-size: 90%;
   z-index: 2;
 }
 
-.header{
+.header1{
   background-image: url("../img/home-bg.png");
   padding-top:40px;
   position:fixed;
@@ -516,19 +467,19 @@ font-size: 90%;
   z-index: 1;
 }
 
-.header .right-icon{
+.header1 .right-icon{
   margin: 4px 10px 0 10px !important;
   width:25px;
   height: 24px;
 }
 
-.header .left-icon{
+.header1 .left-icon{
   margin: 6px 10px 0 10px !important;
   width: 20px;
   height: 19px;
 }
 
-.header h3{
+.header1 h3{
   margin-top: 2px !important;
 }
 
@@ -565,18 +516,19 @@ hr { border-color: inherit; }
   padding:10px 0 10px 0;
 }
 
-.confirm-booking .success-message{
+.confirm-booking .success-message, .signup-page .enter-phone-number{
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   height: 190px;
-  width: 190px;
+  width: 205px;
   color: black;
   margin: auto;
   z-index: 2;
   background-color: #FFF4D4 !important;
+  border-radius: 3px;
 }
 
 .confirm-booking .scroll{
@@ -586,7 +538,7 @@ hr { border-color: inherit; }
 .dashboard .scroll{
   height:100%;
 }
-.confirm-booking .success-message h3{
+.confirm-booking .success-message h3,  .signup-page .enter-phone-number h3{
 color: black;
 }
 
@@ -603,7 +555,7 @@ padding:5px 15px 0 15px;
 }
 
 .about-page .content, .settings-page .content{
-  margin: 100px 0 0 30px;
+  margin: 25px 0 0 30px;
   padding-right: 60px !important;
   position: absolute;
   width: 100%;
@@ -655,7 +607,7 @@ margin-top:5px !important;
   padding-top: 9px;
   font-size: 0.9em;
   float: left;
-  width: 80%;
+  width: 86%;
 }
 
 .settings-page .help{
@@ -760,3 +712,152 @@ margin-top:5px !important;
   padding-left: 0!important;
  }
 
+.header-page .header{
+  background-color:rgb(251,189,81) !important;
+  position:fixed;
+  z-index: 2; 
+  border-bottom: 0px solid rgb(251,189,81) !important;
+}
+
+.header-page .header h1{
+  color: #ce1370 !important;
+  font-weight: bold !important;
+}
+
+.header-page .header .left-button{ /*menu button*/
+  background-color: rgb(251,189,81) !important;
+  border-width: 0px !important;
+  color: #ce1370 !important;
+}
+
+.header-page .header img{ /*notifications icon*/
+  margin: 4px 10px 0 10px !important;
+  width:25px;
+  height: 24px;
+}
+
+.header-page .header .right-buttons{
+position: absolute;
+top: 5px;
+right: 5px;
+bottom: 5px;
+}
+
+
+.sidebar-page .options img{
+  margin:8px 15px 0 5%;
+  height:18px;
+  width: 20px;
+  float: left;
+}
+
+.sidebar-page .user-profile{
+  background-color:rgb(250,176,27);
+  height: 95px;
+  padding:20px;
+}
+
+.sidebar-page .user-dp{
+  height: 50px;
+  width:50px;
+  background-color: white;
+  border-radius: 50%;
+  float: left;
+  margin-left: 5%;
+}
+
+.sidebar-page .user-name{
+  padding-top: 14px;
+ }
+
+ .sidebar-page .menu{
+  background-color: rgb(250,206,128);
+  color: #ce1370;
+  font-size:12px;
+}
+
+.sidebar-page .menu .options{
+line-height: 3em; 
+padding-top: 20px;
+}
+
+.sidebar-page .menu hr{
+  margin-right: 20%;
+  color: rgb(237,152,123);
+}
+
+.sidebar-page .menu .menu-item{
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+
+.sidebar-page .options .left-padding{
+  padding-left: 35px !important;
+}
+
+.sidebar-page a{
+  color: #ce1370;
+  text-decoration: none;
+  -webkit-tap-highlight-color: #ce1370 !important;
+}
+
+.sidebar-page a:hover{
+  color:#ce1370 !important;
+}
+
+.liveUpdate-page .update-options{
+  padding-top: 10px;
+  height: 40px;
+  background-color: #FAC76E;
+  color: #ce1370;
+}
+
+.liveUpdate-page .update-image{
+  height: 55px;
+}
+
+.liveUpdate-page .content{
+  padding: 10px;
+}
+
+.liveUpdate-page .time{
+  position: relative;
+  top: 33px;
+}
+
+.liveUpdate-page .details{
+  position: relative;
+  top: 33px;
+}
+
+.liveUpdate-page .mini-buttons{
+  height: 42px;
+}
+
+.liveUpdate-page div.stars {
+  width: 270px;
+  display: inline-block;
+}
+
+.liveUpdate-page input.star { display: none; }
+
+.liveUpdate-page label.star {
+  float: right;
+  padding: 10px;
+  font-size: 36px;
+  color: #ce1370;
+  transition: all .2s;
+}
+
+.liveUpdate-page input.star:checked ~ label.star:before {
+  content: '\f005';
+  color: #FD4;
+  transition: all .25s;
+}
+
+.liveUpdate-page label.star:hover { transform:scale(1.3); }
+
+.liveUpdate-page label.star:before {
+  content: '\f006';
+  font-family: FontAwesome;
+}

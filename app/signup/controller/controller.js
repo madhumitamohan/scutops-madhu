@@ -40,20 +40,25 @@
         }
 
         function signUp() {
+            /*firebase.auth().createUserWithEmailAndPassword(signUpVm.newUser.email, signUpVm.newUser.password).catch(function(error) {
+              console.log("error")
+            });*/
             //console.log(signUpVm.newUser);
             var newUserJSON = JSON.stringify(signUpVm.newUser);
             //console.log(newUserJSON);
             SignUpDataService.createAccount(newUserJSON).then(function(response){
                 //console.log(response.description);
                 if(response.result){
-                  //if(signUpVm.newUser.type == 1)
-                    $state.go('dashboard');
-                  //else if(signUpVm.newUser.type == 3)
-                    //$state.go('phoneNumber');
+                  if(signUpVm.newUser.type == 1)
+                    $state.go('sidebar.dashboard');
+                  else if(signUpVm.newUser.type == 3)
+                    $state.go('phoneNumber');
                 }
                 else
                     alert(response.description);
             });
+
+
              //change state go to app.module
         }
 

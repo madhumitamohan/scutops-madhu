@@ -27,7 +27,10 @@
         function addPhoneNumber(){
             var phoneNumber = (phoneNumberVm.phoneNumber);
             PhoneNumberDataService.addPhoneNumber(phoneNumber).then(function(response){
-                $state.go("dashboard");
+                if(response.result)
+                    $state.go("sidebar.dashboard");
+                else
+                    alert(response.description);
             });
         }
 
