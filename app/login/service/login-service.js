@@ -20,11 +20,16 @@
      function LoginDataService(LoginClientDataService, LoginPersistenceDataService) {
          var loginDataService = {
             authenticateUser : authenticateUser,
+            getUserDetails : getUserDetails
             //googleSignIn : googleSignIn
          };
 
          function authenticateUser(userDetails){
             return LoginPersistenceDataService.authenticateUser(userDetails);
+         }
+
+         function getUserDetails(id){
+            return LoginPersistenceDataService.getUserDetails(id);
          }
 
          /*function googleSignIn(authResult){
@@ -47,6 +52,7 @@
      function LoginPersistenceDataService($q, $http, config) {
          var loginPersistenceDataService = {
             authenticateUser : authenticateUser,
+            getUserDetails : getUserDetails
             //googleSignIn : googleSignIn
          };
           return loginPersistenceDataService;
@@ -58,9 +64,26 @@
                 url: config.API_URL.login,
                 data: userDetails
             }).then(function mySuccess(response){
-                console.log(response.data);
                 //console.log(response.statusText);
                 //console.log(response.data);
+                defer.resolve(response.data);
+            }, function myError(response){
+                //console.log(response.statusText);
+                defer.resolve(false);
+            });
+
+            return defer.promise;
+         }
+
+         function getUserDetails(id){
+            var defer = $q.defer();
+            $http({
+                method:"POST",
+                url: config.API_URL.getUserDetails,
+                data: id
+            }).then(function mySuccess(response){
+                //console.log(response.statusText);
+                console.log(response.data);
                 defer.resolve(response.data);
             }, function myError(response){
                 //console.log(response.statusText);

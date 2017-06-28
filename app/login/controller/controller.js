@@ -10,9 +10,9 @@
          */
         .controller('LoginController', Login);
 
-    Login.$inject = ['$state', '$filter', '$http', 'config', '$location','LoginDataService'];
+    Login.$inject = ['$state', '$filter', '$http', 'config', '$location','LoginDataService','CommonService'];
 
-    function Login($state, $filter, $http, config, $location, LoginDataService) {
+    function Login($state, $filter, $http, config, $location, LoginDataService, CommonService) {
         var loginVm = this;
         // Variable declarations
         loginVm.currentUser = {};
@@ -51,13 +51,16 @@
         }
 
         function activate() {
-            /*var userDetails = JSON.stringify(loginVm.currentUser);
-            console.log(userDetails);
-            LoginDataService.authenticateUser(userDetails).then(function(response){
-                if(response.result)
-                    $state.go('sidebar.dashboard');
-            });*/
-            // To initialize anything before the project starts
+            if(CommonService.checkCookie()){
+              var id = CommonService.getCookie("id");
+              LoginDataService.getUserDetails(id).then(function(response){
+                console.log(response.payload);
+                CommonService.setUserDetails(response.payload);
+                $state.go("sidebar.dashboard");
+            });
+            }         
+            else
+              console.log("cookie not set");
         }
 
         function authenticateUser() {
@@ -67,10 +70,13 @@
           });
           $state.go('sidebar.dashboard');*/
             var userDetails = JSON.stringify(loginVm.currentUser);
-            console.log(userDetails);
+            //console.log(userDetails);
             LoginDataService.authenticateUser(userDetails).then(function(response){
-                if(response.result)
+                if(response.result){
+                    CommonService.setCookie("id",response.payload.id);
+                    CommonService.setUserDetails(response.payload);
                     $state.go('sidebar.dashboard');
+                  }
                 else
                     alert(response.description);
             });

@@ -4,11 +4,12 @@
 		<div class="ion-content" >
 			
 
-			<div class="success-message align-center" ng-show="val1">
+			<div class="success-message align-center" ng-show="ConfirmBooking.successMessagePopup">
 				<img src="img/tick-payment.gif" class="tick-image"/>
-				<h3 >Success</h3>
+				<h3>Success</h3>
 				<div class="text">Thank you for using Scutops</div>
-				<button class="button-style waves-effect" ng-click="val1=!val1;ConfirmBooking.increaseOpacity()">OK</button>
+				<div class="text">New Balance : Rs.{{ConfirmBooking.finalBalance}}</div>
+				<button class="button-style waves-effect" ng-click="ConfirmBooking.successMessagePopup=!ConfirmBooking.successMessagePopup;ConfirmBooking.increaseOpacity()">OK</button>
 			</div>
 
 			<div class="main-content2 font-8" >
@@ -29,14 +30,14 @@
 			    		<div class="block text-bold align-center"><img src="img/scutops.png" class="float-left"/>Scutops Money</div>
 			    		<hr/>
 			    		<div class="block">
-			    			<div>Available Balance <div class="float-right">Rs.000</div></div>
+			    			<div>Available Balance <div class="float-right">Rs.{{ConfirmBooking.initialBalance}}</div></div>
 			    			<div>To be paid <div class="float-right">Rs.{{ConfirmBooking.bookingAmount}}</div>
 			    			</div>
 			    			
 			    		</div>
 			    		<hr/>
 			    		<div class="block">Updated Balance <div class="float-right">Rs.{{ConfirmBooking.bookingAmount}}</div></div>
-			    		<div class="align-center"><button class="button-style waves-effect" ng-click="val1=!val1;ConfirmBooking.decreaseOpacity()">PROCEED TO PAY</button></div>
+			    		<div class="align-center"><button class="button-style waves-effect" ng-click="ConfirmBooking.bookingPayment()">PROCEED TO PAY</button></div>
 			    	
 					</div>
 				</div>
@@ -46,8 +47,6 @@
 				<div>Credit Card</div><hr/>
 				<div>Net Banking</div><hr/>
 				<div>Other Wallets</div>
-
-
 			</div>
 		</div>
 					

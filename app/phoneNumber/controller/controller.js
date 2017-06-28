@@ -10,9 +10,9 @@
          */
         .controller('PhoneNumberController', PhoneNumber);
 
-    PhoneNumber.$inject = ['$state', '$filter', '$http', 'config', '$location','PhoneNumberDataService'];
+    PhoneNumber.$inject = ['$state', '$filter', '$http', 'config', '$location','PhoneNumberDataService','CommonService'];
 
-    function PhoneNumber($state, $filter, $http, config, $location,PhoneNumberDataService) {
+    function PhoneNumber($state, $filter, $http, config, $location,PhoneNumberDataService,CommonService) {
         //variable declarations
         var phoneNumberVm = this;
 
@@ -25,10 +25,16 @@
         }
 
         function addPhoneNumber(){
-            var phoneNumber = (phoneNumberVm.phoneNumber);
-            PhoneNumberDataService.addPhoneNumber(phoneNumber).then(function(response){
-                if(response.result)
-                    $state.go("sidebar.dashboard");
+            var newUser = CommonService.getValue();
+            newUser.phone_number = (phoneNumberVm.phoneNumber);
+            var newUserJSON = JSON.stringify(newUser);
+            console.log(newUserJSON);
+            PhoneNumberDataService.createAccount(newUserJSON).then(function(response){
+                if(response.result){
+                        CommonService.setCookie("id",response.payload.id);
+                        CommonService.setUserDetails(response.payload);
+                        $state.go('sidebar.dashboard');
+                    }
                 else
                     alert(response.description);
             });

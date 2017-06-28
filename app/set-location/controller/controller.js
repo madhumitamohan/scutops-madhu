@@ -10,20 +10,26 @@
          */
         .controller('SetLocationController', SetLocation);
 
-    SetLocation.$inject = ['$state', '$filter', '$http', 'config', '$location', '$scope', '$compile','$window','CommonService'];
+    SetLocation.$inject = ['$state', '$filter', '$http', 'config', '$location', '$scope', '$compile','$window','CommonService' ,'SetLocationDataService'];
 
-    function SetLocation($state, $filter, $http, config, $location, $scope, $compile, $window, CommonService ) {
+    function SetLocation($state, $filter, $http, config, $location, $scope, $compile, $window, CommonService,SetLocationDataService ) {
 
-        var SetLocationVm = this;
+        var setLocationVm = this;
         // Variable declarations
-        SetLocationVm.bookingDetails={};
-
+        setLocationVm.bookingDetails={};
+        setLocationVm.bookingDetails.promocode="";
         // Function declarations
-        SetLocationVm.BookNow = BookNow;
-        SetLocationVm.checkValidity = checkValidity;
+        setLocationVm.BookNow = BookNow;
+        setLocationVm.checkValidity = checkValidity;
         activate();
 
         function activate() {
+            setLocationVm.bookingDetails.services = CommonService.getBookingDetails().services;
+            setLocationVm.bookingDetails.instructions = CommonService.getBookingDetails().instructions;
+            setLocationVm.bookingDetails.cust_id = CommonService.getBookingDetails().cust_id;
+            console.log(setLocationVm.bookingDetails.services);
+            console.log(setLocationVm.bookingDetails);
+            setLocationVm.bookingDetails.bookingLocation = "HimasTech, Kaloor";
             setTimeout(function(){ 
                     initMap();
             }, 1000);
@@ -101,7 +107,7 @@
 
         function updateMarker(map,marker,currentLocation){
             currentLocation.addEventListener('input',function(){
-            var add = SetLocationVm.bookingLocation;
+            var add = setLocationVm.bookingLocation;
             var geocoder = new google.maps.Geocoder;
             geocoder.geocode({address:add},function(results,status){
                 if(status == "OK")
@@ -209,21 +215,9 @@
     }
 
         function inputInitialize(){
-            SetLocationVm.bookingDetails.bookingDate = getCurrentDate();
-            SetLocationVm.bookingDetails.bookingTime = getValidTime();
-            SetLocationVm.bookingDetails.bookingCount = 1;
-        }
-
-        function BookNow() {       
-            if(checkValidity(SetLocationVm.bookingDetails.bookingDate,SetLocationVm.bookingDetails.bookingTime,SetLocationVm.bookingDetails.bookingCount))
-                {
-                    CommonService.setValue(SetLocationVm.bookingDetails.bookingCount);
-                    //console.log(CommonService.Message);
-                    console.log(CommonService.getCount());
-                    //localStorage.setItem("count",(SetLocationVm.bookingDetails.bookingCount));
-                    $state.go('confirm-booking');
-                }
-
+            setLocationVm.bookingDetails.bookingDate = getCurrentDate();
+            setLocationVm.bookingDetails.bookingTime = getValidTime();
+            setLocationVm.bookingDetails.bookingCount = 1;
         }
 
 
@@ -300,6 +294,32 @@
             else
                 return false;
         }
+
+
+        function BookNow() {       
+            if(checkValidity(setLocationVm.bookingDetails.bookingDate,setLocationVm.bookingDetails.bookingTime,setLocationVm.bookingDetails.bookingCount))
+                {
+                    CommonService.setBookingDetails(setLocationVm.bookingDetails);
+                    //console.log(CommonService.Message);
+                    //console.log(CommonService.getBookingDetails());
+                    //console.log(setLocationVm.bookingDetails.services.cooking);
+                    //console.log(setLocationVm.bookingDetails);
+
+                    var bookingDetails = JSON.stringify(setLocationVm.bookingDetails);
+                    //console.log(bookingDetails);
+                    SetLocationDataService.createOrder(bookingDetails).then(function(response) {
+                        if (response.result) {
+                            $state.go('confirm-booking');
+                        } else {
+                            alert(response.description);
+                        }
+                    });
+                    //localStorage.setItem("count",(setLocationVm.bookingDetails.bookingCount));
+                    
+                }
+
+        }
+
 
     }
 

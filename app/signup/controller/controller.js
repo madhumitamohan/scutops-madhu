@@ -10,9 +10,9 @@
          */
         .controller('SignUpController', SignUp);
 
-    SignUp.$inject = ['$state', '$filter', '$http', 'config', '$location','SignUpDataService'];
+    SignUp.$inject = ['$state', '$filter', '$http', 'config', '$location','SignUpDataService', 'CommonService'];
 
-    function SignUp($state, $filter, $http, config, $location,SignUpDataService) {
+    function SignUp($state, $filter, $http, config, $location,SignUpDataService, CommonService) {
         var signUpVm = this;
         // Variable declarations
         signUpVm.newUser = {};
@@ -20,7 +20,7 @@
         signUpVm.newUser.type = 0;
         signUpVm.newUser.phone_number = "";
         signUpVm.newUser.password = "";
-        signUpVm.newUser.landmark = "";
+        signUpVm.newUser.username = "";
         signUpVm.newUser.address = "";
         signUpVm.newUser.username = "";
         // Function declarations
@@ -46,19 +46,23 @@
             //console.log(signUpVm.newUser);
             var newUserJSON = JSON.stringify(signUpVm.newUser);
             //console.log(newUserJSON);
-            SignUpDataService.createAccount(newUserJSON).then(function(response){
-                //console.log(response.description);
-                if(response.result){
-                  if(signUpVm.newUser.type == 1)
-                    $state.go('sidebar.dashboard');
-                  else if(signUpVm.newUser.type == 3)
-                    $state.go('phoneNumber');
-                }
-                else
-                    alert(response.description);
-            });
-
-
+            if(signUpVm.newUser.type == 1)
+              {
+                SignUpDataService.createAccount(newUserJSON).then(function(response){
+                              //console.log(response.description);
+                              if(response.result){
+                                CommonService.setCookie("id",response.payload.id);
+                                CommonService.setUserDetails(response.payload);
+                                $state.go('sidebar.dashboard');
+                              }
+                              else
+                                  alert(response.description);
+                          });
+            }
+            else if(signUpVm.newUser.type == 3){
+              CommonService.setValue(signUpVm.newUser);
+              $state.go('phoneNumber');
+            }
              //change state go to app.module
         }
 

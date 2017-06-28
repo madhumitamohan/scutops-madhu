@@ -30,6 +30,7 @@
         activate();
 
         function activate() {
+            dashboardVm.dashboardDetails.cust_id = CommonService.getUserDetails().id;
             // To initialize anything before the project starts
            /* DashboardDataService.activateUser().then(function(response){             
                 dashboardVm.currentUser.username = response.data;
@@ -38,14 +39,21 @@
         }
 
         function bookService() {
-            if(dashboardVm.dashboardDetails.services.cooking.breakfast || dashboardVm.dashboardDetails.services.cooking.lunch || dashboardVm.dashboardDetails.services.cooking.snacks|| dashboardVm.dashboardDetails.services.cooking.dinner)
-                console.log("OK");
-            else if(dashboardVm.dashboardDetails.services.cleaning.bedRoom || dashboardVm.dashboardDetails.services.cleaning.livingRoom|| dashboardVm.dashboardDetails.services.cleaning.diningRoom|| dashboardVm.dashboardDetails.services.cleaning.washRoom)
-                console.log("OK");
+            if(dashboardVm.dashboardDetails.services.cooking.breakfast || dashboardVm.dashboardDetails.services.cooking.lunch || dashboardVm.dashboardDetails.services.cooking.snacks|| dashboardVm.dashboardDetails.services.cooking.dinner ||dashboardVm.dashboardDetails.services.cleaning.bedRoom || dashboardVm.dashboardDetails.services.cleaning.livingRoom|| dashboardVm.dashboardDetails.services.cleaning.diningRoom|| dashboardVm.dashboardDetails.services.cleaning.washRoom)
+                {
+                    CommonService.setBookingDetails(dashboardVm.dashboardDetails);
+                    $state.go('set-location');
+                }
             else if(dashboardVm.dashboardDetails.services.spCooking.breakfast || dashboardVm.dashboardDetails.services.spCooking.lunch || dashboardVm.dashboardDetails.services.spCooking.snacks|| dashboardVm.dashboardDetails.services.spCooking.dinner)
-                console.log("OK");
+                {
+                    CommonService.setBookingDetails(dashboardVm.dashboardDetails);
+                    $state.go('set-location');
+                }
             else if(dashboardVm.dashboardDetails.services.spCleaning.bedRoom || dashboardVm.dashboardDetails.services.spCleaning.livingRoom|| dashboardVm.dashboardDetails.services.spCleaning.diningRoom|| dashboardVm.dashboardDetails.services.spCleaning.washRoom)
-                console.log("OK");
+                {
+                    CommonService.setBookingDetails(dashboardVm.dashboardDetails);
+                    $state.go('set-location');
+                    }
             else
                 alert("Select atleast one option");
             /*console.log(dashboardVm.dashboardDetails.services.cooking);
@@ -53,8 +61,7 @@
             console.log(dashboardVm.dashboardDetails.services.spCooking);
             console.log(dashboardVm.dashboardDetails.services.spCleaning);
             console.log(dashboardVm.dashboardDetails);*/
-            CommonService.setValue(dashboardVm.dashboardDetails);
-            $state.go('set-location');
+            
         }
 
         function displayMenu(){           

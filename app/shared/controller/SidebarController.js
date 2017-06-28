@@ -2,7 +2,7 @@
 /* global angular */
 angular.module(appName)
 
-.controller('SidebarController', function($scope,$state, config, SidebarDataService) {
+.controller('SidebarController', function($scope,$state, config, SidebarDataService,CommonService) {
     
     $scope.state = false;
     
@@ -30,7 +30,7 @@ angular.module(appName)
     $scope.logOut = function(){
        
         SidebarDataService.logoutUser().then(function(response){
-            console.log("logged out");
+            CommonService.deleteCookie("id");
             $state.go('login');
         });
          

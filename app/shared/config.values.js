@@ -1,14 +1,15 @@
 (function() {
 
-    var prefix = "http://192.168.1.8/api/";
+    var prefix = "http://localhost/api/";
     var API_URL = {
         serverUrl: prefix,
         login: prefix + "login.php",
         google: prefix + "google.php",
         signup: prefix + "signup.php",
         dashboard:prefix + "dashboard.php",
-        logout:prefix + "logout.php",
-        addPhoneNumber:prefix + "addPhoneNumber.php"
+        createOrder : prefix + "createOrder.php",
+        getUserDetails : prefix + "getUserDetails.php",
+        makePayment : prefix + "makePayment.php"
     };
 
   /*  function recalculateUrls(prefix) {

@@ -55,7 +55,7 @@
                 //console.log(response);
                 defer.resolve(response);
             },function failure(response){
-                console.log(response.statusType);
+                //console.log(response.statusType);
                 defer.resolve(false);
             });
             return defer.promise;
