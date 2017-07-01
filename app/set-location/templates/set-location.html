@@ -33,13 +33,13 @@
 						<input id="time" type="time" ng-model="SetLocation.bookingDetails.bookingTime">
 					</div>
 					<div class="col-50 align-center">
-						<input id="promocode" type="text" placeholder="Have a promocode?" ng-model="SetLocationVm.bookingDetails.bookingCode"/>
+						<input id="promocode" type="text" placeholder="Have a promocode?" ng-model="SetLocation.bookingDetails.bookingCode"/>
 					</div>
 				</div>
 			</div>
 			
 			<div class="align-center" >
-				<button type="button" class="button-style waves-effect" ng-click="SetLocation.BookNow()">BOOK NOW </button>
+				<button type="button" class="button-style waves-effect" ng-click="SetLocation.BookNow()" ng-disabled="SetLocation.buttonDisableStatus">BOOK NOW </button>
 			</div>	
 
 

@@ -6,7 +6,7 @@
 		<div class="align-center" class="map-input-container">
 			<div class="service-location">
 				<div class="margin0">SERVICE LOCATION</div>
-				<input id="location-input" type="text" placeholder="Enter Location" ng-model="BookPackage.bookingLocation"/>
+				<input id="location-input" type="text" placeholder="Enter Location" ng-model="BookPackage.packageDetails.bookingLocation"/>
 			</div>
 			<div id="map" class="background" ng-model="BookPackage.map">
 			</div>
@@ -14,32 +14,32 @@
 
 		<div class="content">
 			<div class="row days">
-				<div class="col" ng-click="BookPackage.sunday = !BookPackage.sunday">		
-					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.sunday"/>	
+				<div class="col" ng-click="BookPackage.packageDetails.packageDays.sunday = !BookPackage.packageDetails.packageDays.sunday">		
+					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.packageDetails.packageDays.sunday"/>	
 					<div class="day-of-a-week">SUN</div>			
 				</div>
-				<div class="col" ng-click="BookPackage.monday = !BookPackage.monday">
-					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.monday"/>	
+				<div class="col" ng-click="BookPackage.packageDetails.packageDays.monday = !BookPackage.packageDetails.packageDays.monday">
+					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.packageDetails.packageDays.monday"/>	
 					<div class=" day-of-a-week">MON</div>
 				</div>
-				<div class="col" ng-click="BookPackage.tuesday = !BookPackage.tuesday">
-					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.tuesday"/>	
+				<div class="col" ng-click="BookPackage.packageDetails.packageDays.tuesday = !BookPackage.packageDetails.packageDays.tuesday">
+					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.packageDetails.packageDays.tuesday"/>	
 					<div class=" day-of-a-week" >TUE</div>
 				</div>
-				<div class="col" ng-click="BookPackage.wednesday = !BookPackage.wednesday"> 
-					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.wednesday"/>	
+				<div class="col" ng-click="BookPackage.packageDetails.packageDays.wednesday = !BookPackage.packageDetails.packageDays.wednesday"> 
+					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.packageDetails.packageDays.wednesday"/>	
 					<div class=" day-of-a-week">WED</div>
 				</div>
-				<div class="col" ng-click="BookPackage.thursday = !BookPackage.thursday">
-					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.thursday"/>	
+				<div class="col" ng-click="BookPackage.packageDetails.packageDays.thursday = !BookPackage.packageDetails.packageDays.thursday">
+					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.packageDetails.packageDays.thursday"/>	
 					<div class=" day-of-a-week">THU</div>
 				</div>
-				<div class="col" ng-click="BookPackage.friday = !BookPackage.friday">
-					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.friday"/>	
+				<div class="col" ng-click="BookPackage.packageDetails.packageDays.friday = !BookPackage.packageDetails.packageDays.friday">
+					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.packageDetails.packageDays.friday"/>	
 					<div class="day-of-a-week">FRI</div>
 				</div>
-				<div class="col" ng-click="BookPackage.satday = !BookPackage.satday">
-					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.satday"/>	
+				<div class="col" ng-click="BookPackage.packageDetails.saturday = !BookPackage.packageDetails.packageDays.saturday">
+					<img src="img/tic-icon.png" class="tic-icon" ng-show="BookPackage.packageDetails.packageDays.saturday"/>	
 					<div class=" day-of-a-week">SAT</div>
 				</div>
 			</div>
@@ -48,21 +48,21 @@
 				<div class="row table-row">
 					<div class="col-50 align-center border-right">
 						<div>START TIME</div>
-						<input id="time" type="time" ng-model="BookPackage.bookingDetails.bookingTime">
+						<input id="time" type="time" ng-model="BookPackage.packageDetails.bookingTime">
 					</div>
 					<div class="col-50 align-center">
 						<div>NO. OF PROFESSIONALS</div>
-						<input id="count" type="number" ng-model="BookPackage.bookingDetails.bookingCount"/>
+						<input id="count" type="number" ng-model="BookPackage.packageDetails.bookingCount"/>
 					</div>
 				</div>
 				<hr/>
 				<div class="align-center table-row row-promocode">
-						<input id="promocode" type="text" placeholder="Have a promocode?" ng-model="BookPackage.bookingDetails.bookingCode"/>
+						<input id="promocode" type="text" placeholder="Have a promocode?" ng-model="BookPackage.packageDetails.promocode"/>
 				</div>
 			</div>
 
 			<div class="align-center" >
-				<button type="button" class="button-style waves-effect" ng-click="BookPackage.BookNow()">EXPRESS INTEREST</button>
+				<button type="button" class="button-style waves-effect" ng-click="BookPackage.bookNow()" ng-disabled="BookPackage.buttonDisableStatus">EXPRESS INTEREST</button>
 			</div>
 		</div>
 		

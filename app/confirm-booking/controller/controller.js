@@ -18,20 +18,23 @@
         BookingVm.currentUserDetails = {};
         BookingVm.successMessagePopup = false;
         BookingVm.initialBalance = 0;
+        BookingVm.paymentDetails = {};
         // Variable declarations
         // Function declarations
         BookingVm.decreaseOpacity = decreaseOpacity;
         BookingVm.increaseOpacity = increaseOpacity;
         BookingVm.bookingPayment = bookingPayment;
+        BookingVm.goToLive = goToLive;
 
         activate();
 
         function activate() {
-            console.log(CommonService.getUserDetails());
-            console.log(CommonService.getBookingDetails().bookingCount * 157);
             BookingVm.bookingAmount = (CommonService.getBookingDetails().bookingCount * 157);
             BookingVm.currentUserDetails = CommonService.getUserDetails(); 
             BookingVm.initialBalance = CommonService.getUserDetails().scutops_money;
+
+            BookingVm.paymentDetails.order_id = CommonService.getBookingDetails().order_id;
+            BookingVm.paymentDetails.cust_id = CommonService.getUserDetails().id;
             // To initialize anything before the project starts
         }
 
@@ -50,16 +53,24 @@
 
             if(balance >= 0){
                 BookingVm.currentUserDetails.scutops_money = balance; //updating the user details
+
+                BookingVm.paymentDetails.newBalance = balance;
             
-                var userDetails = JSON.stringify(BookingVm.currentUserDetails);// preparing for passing to the php file
-                BookingDataService.makePayment(userDetails).then(function(response){
+                var paymentDetails = JSON.stringify(BookingVm.paymentDetails);// preparing for passing to the php file
+                //console.log(paymentDetails);
+                BookingDataService.makePayment(paymentDetails).then(function(response){
                     CommonService.setUserDetails(BookingVm.currentUserDetails);//updating user details in common service
                     BookingVm.finalBalance = balance;
+                    decreaseOpacity();
                     BookingVm.successMessagePopup = true;
                 });
             }
             else
                 alert("Insufficient balance");
+        }
+
+        function goToLive(){
+            $state.go("liveUpdate");
         }
 
     }

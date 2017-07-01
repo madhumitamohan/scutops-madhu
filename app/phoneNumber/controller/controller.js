@@ -25,7 +25,7 @@
         }
 
         function addPhoneNumber(){
-            var newUser = CommonService.getValue();
+            var newUser = CommonService.getUserDetails();
             newUser.phone_number = (phoneNumberVm.phoneNumber);
             var newUserJSON = JSON.stringify(newUser);
             console.log(newUserJSON);
@@ -33,6 +33,7 @@
                 if(response.result){
                         CommonService.setCookie("id",response.payload.id);
                         CommonService.setUserDetails(response.payload);
+                        console.log(response.payload);
                         $state.go('sidebar.dashboard');
                     }
                 else

@@ -18,18 +18,19 @@
         // Variable declarations
         setLocationVm.bookingDetails={};
         setLocationVm.bookingDetails.promocode="";
+        setLocationVm.bookingDetails.bookingLocation = "HimasTech, Kaloor";
+        setLocationVm.buttonDisableStatus = false;
         // Function declarations
         setLocationVm.BookNow = BookNow;
-        setLocationVm.checkValidity = checkValidity;
         activate();
 
         function activate() {
             setLocationVm.bookingDetails.services = CommonService.getBookingDetails().services;
             setLocationVm.bookingDetails.instructions = CommonService.getBookingDetails().instructions;
-            setLocationVm.bookingDetails.cust_id = CommonService.getBookingDetails().cust_id;
-            console.log(setLocationVm.bookingDetails.services);
-            console.log(setLocationVm.bookingDetails);
-            setLocationVm.bookingDetails.bookingLocation = "HimasTech, Kaloor";
+            setLocationVm.bookingDetails.cust_id = CommonService.getUserDetails().id;
+            //console.log(setLocationVm.bookingDetails.services);
+            //console.log(setLocationVm.bookingDetails);
+            
             setTimeout(function(){ 
                     initMap();
             }, 1000);
@@ -99,6 +100,7 @@
             placeMarker(marker,event.latLng);
             geocoder.geocode({location:event.latLng},function(results,status){
             currentLocation.value=(results[0].formatted_address);
+            setLocationVm.bookingDetails.bookingLocation = results[0].formatted_address;
             console.log(results[0].formatted_address);
             })
         });
@@ -107,7 +109,7 @@
 
         function updateMarker(map,marker,currentLocation){
             currentLocation.addEventListener('input',function(){
-            var add = setLocationVm.bookingLocation;
+            var add = setLocationVm.bookingDetails.bookingLocation;
             var geocoder = new google.maps.Geocoder;
             geocoder.geocode({address:add},function(results,status){
                 if(status == "OK")
@@ -207,111 +209,55 @@
         return validTime;
     }
 
-    function getTomorrowDate(){
-        var tomorrowDate = getCurrentDateString();
-        tomorrowDate.setDate(tomorrowDate.getDate()+1);
-        tomorrowDate = getDateFromDate(tomorrowDate);
-        return tomorrowDate;
+
+    function inputInitialize(){
+        setLocationVm.bookingDetails.bookingDate = getCurrentDate();
+        setLocationVm.bookingDetails.bookingTime = getValidTime();
+        setLocationVm.bookingDetails.bookingCount = 1;
     }
 
-        function inputInitialize(){
-            setLocationVm.bookingDetails.bookingDate = getCurrentDate();
-            setLocationVm.bookingDetails.bookingTime = getValidTime();
-            setLocationVm.bookingDetails.bookingCount = 1;
-        }
-
-
-        function checkValidity(bookingDate,bookingTime,bookingCount){
-            if(dateValidity(bookingDate) && timeValidity(bookingDate,bookingTime) && countValidity(bookingCount))
-                return true;
-        }
-
-        function timeValidity(bookingDate,bookingTime){
-            var bookingTimeHour = bookingTime.substr(0,2);
-            //bookinghour
-            
-            if(bookingTime < "07:00" || bookingTime > "18:00")//if booking is before 7 or after 6
-               {
-                alert("Booking is allowed only between 7am and 5pm");
-                return false;
-               }
-            else if((getCurrentDate() == bookingDate) && (bookingTime<getValidTime()))//if booking time is less than 2 hours from now
+    function countValidity(bookingCount){
+        if(bookingCount<1)
             {
-                alert("Booking is only allowed 2 hours from now");
+                alert("Book atleast one professional");
+                setLocationVm.buttonDisableStatus = false;
                 return false;
             }
-            else if(bookingDate == getTomorrowDate() && getCurrentHour()>=18 && bookingTimeHour<9)
+        else if(bookingCount>5)
             {
-                alert("Booking for the next day before 9am is taken only before 6pm");
+                alert("Book less than or equal to five professionals");
+                setLocationVm.buttonDisableStatus = false;
                 return false;
             }
-            return true;
+        return true;
+        
+    }
 
-        }
-
-        function dateValidity(bookingDate){
-            if(isSunday(bookingDate))//if the booking is for sunday
-            {
-                var fridayDate = getCurrentDateString();
-                var convertedBookingDate = new Date(bookingDate);
-                fridayDate.setDate(convertedBookingDate.getDate() - 2);
-                if(Date.parse(getCurrentDateString()) > Date.parse(fridayDate)){
-                    alert("Booking for Sunday is taken till Friday only");
-                    return false;
-                } 
-                //console.log(validDate);
-            }
-
-            if(Date.parse(bookingDate) < Date.parse(getCurrentDate())) //if the booking is before current date
-                {
-                    alert("Booking starts from today");
-                    return false;
-                }
-                return true;
-        }
-
-        function countValidity(bookingCount){
-            if(bookingCount<1)
-                {
-                    alert("Book atleast one professional");
-                    return false;
-                }
-            else if(bookingCount>5)
-                {
-                    alert("Book less than or equal to five professionals");
-                    return false;
-                }
-            return true;
-            
-        }
-
-        function isSunday(bookingDate){
-            var convertedBookingDate = new Date(bookingDate);
-            //console.log(d.getDay());
-            //console.log(d);
-            if(convertedBookingDate.getDay() == 0)
-                return true;
-            else
-                return false;
-        }
 
 
         function BookNow() {       
-            if(checkValidity(setLocationVm.bookingDetails.bookingDate,setLocationVm.bookingDetails.bookingTime,setLocationVm.bookingDetails.bookingCount))
+            console.log(setLocationVm.buttonDisableStatus);
+            setLocationVm.buttonDisableStatus = true;
+            console.log(setLocationVm.buttonDisableStatus);
+            if(countValidity(setLocationVm.bookingDetails.bookingCount))
                 {
-                    CommonService.setBookingDetails(setLocationVm.bookingDetails);
                     //console.log(CommonService.Message);
                     //console.log(CommonService.getBookingDetails());
                     //console.log(setLocationVm.bookingDetails.services.cooking);
                     //console.log(setLocationVm.bookingDetails);
-
+                    console.log(setLocationVm.bookingDetails.bookingLocation);
                     var bookingDetails = JSON.stringify(setLocationVm.bookingDetails);
-                    //console.log(bookingDetails);
+                    console.log(bookingDetails);
+
                     SetLocationDataService.createOrder(bookingDetails).then(function(response) {
                         if (response.result) {
+                            setLocationVm.bookingDetails.order_id = response.payload.order_id;
+                            CommonService.setBookingDetails(setLocationVm.bookingDetails);
+                            console.log(setLocationVm.bookingDetails);
                             $state.go('confirm-booking');
                         } else {
                             alert(response.description);
+                            setLocationVm.buttonDisableStatus = false;
                         }
                     });
                     //localStorage.setItem("count",(setLocationVm.bookingDetails.bookingCount));

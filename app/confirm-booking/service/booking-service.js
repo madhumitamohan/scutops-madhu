@@ -22,8 +22,8 @@
             makePayment : makePayment
          };
 
-         function makePayment(userDetails){
-            return BookingPersistenceDataService.makePayment(userDetails);
+         function makePayment(paymentDetails){
+            return BookingPersistenceDataService.makePayment(paymentDetails);
          }
 
         return bookingDataService;
@@ -44,12 +44,12 @@
             makePayment : makePayment
          };
 
-         function makePayment(userDetails){
+         function makePayment(paymentDetails){
             var defer = $q.defer();
             $http({
                 method:"POST",
                 url: config.API_URL.makePayment,
-                data:userDetails
+                data:paymentDetails
             }).then(function success(response){
                 defer.resolve(response.data);
             }, function failure(response){

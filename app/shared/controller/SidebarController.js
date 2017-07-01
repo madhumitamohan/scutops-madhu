@@ -5,14 +5,21 @@ angular.module(appName)
 .controller('SidebarController', function($scope,$state, config, SidebarDataService,CommonService) {
     
     $scope.state = false;
+
+    var sidebarVm = this;
+    activate();
+
+    function activate(){
+        sidebarVm.username = CommonService.getUserDetails().username;
+    }
     
     $scope.toggleState = function() {
         $scope.state = !$scope.state;
     };
 
 
-    $scope.bookPackage = function(){
-        $state.go('bookPackage');
+    $scope.dashboard = function (){
+        $state.go('sidebar.dashboard');
     }
 
     $scope.feedbackCall = function(){

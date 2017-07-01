@@ -17,7 +17,6 @@
         // Variable declarations
         signUpVm.newUser = {};
         signUpVm.newUser.email = "";
-        signUpVm.newUser.type = 0;
         signUpVm.newUser.phone_number = "";
         signUpVm.newUser.password = "";
         signUpVm.newUser.username = "";
@@ -25,8 +24,6 @@
         signUpVm.newUser.username = "";
         // Function declarations
         signUpVm.scutopsSignUp = scutopsSignUp;
-        signUpVm.googleSignUp = googleSignUp;
-
 
         activate();
 
@@ -46,28 +43,23 @@
             //console.log(signUpVm.newUser);
             var newUserJSON = JSON.stringify(signUpVm.newUser);
             //console.log(newUserJSON);
-            if(signUpVm.newUser.type == 1)
-              {
-                SignUpDataService.createAccount(newUserJSON).then(function(response){
-                              //console.log(response.description);
-                              if(response.result){
-                                CommonService.setCookie("id",response.payload.id);
-                                CommonService.setUserDetails(response.payload);
-                                $state.go('sidebar.dashboard');
-                              }
-                              else
-                                  alert(response.description);
-                          });
-            }
-            else if(signUpVm.newUser.type == 3){
-              CommonService.setValue(signUpVm.newUser);
-              $state.go('phoneNumber');
-            }
+ 
+            SignUpDataService.createAccount(newUserJSON).then(function(response){
+                          //console.log(response.description);
+              if(response.result){
+                CommonService.setCookie("id",response.payload.id);
+                CommonService.setUserDetails(response.payload);
+                $state.go('sidebar.dashboard');
+              }
+              else
+                  alert(response.description);
+                      });
+            
              //change state go to app.module
         }
 
         
-        var provider = new firebase.auth.GoogleAuthProvider();
+        /*var provider = new firebase.auth.GoogleAuthProvider();
         function googleSignUp() {
           provider.setCustomParameters({
              prompt: 'select_account'
@@ -97,7 +89,7 @@
 
             });
         
-    }
+    }*/
 }
 
 })();

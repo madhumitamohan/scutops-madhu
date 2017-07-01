@@ -41,6 +41,13 @@ angular.module(appName, ['ionic'])
 
     $stateProvider
 
+    .state('splashScreen', {
+        url: "/splashScreen",
+        templateUrl: "app/splashScreen/templates/splashScreen.html",
+        controller: 'SplashScreenController as SplashScreen',
+        title: 'SplashScreen'
+    })
+
     .state('login', {
         url: "/login",
         templateUrl: "app/login/templates/login.html",
@@ -152,6 +159,6 @@ angular.module(appName, ['ionic'])
         title: 'Live Update'
     })
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/splashScreen');
 
 });

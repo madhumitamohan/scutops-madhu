@@ -6,9 +6,10 @@
 			<div class="feedback-text align-center" >We are always looking to improve ScutOps<br/>We'd love to hear your suggestions or feedback
 			</div>
 			<div>
-				<textarea class="textarea feedback-input" rows="10" placeholder="Enter your feedback here"></textarea>
+				<textarea class="textarea feedback-input" rows="10" placeholder="Enter your feedback here" ng-model="Feedback.feedbackDetails.feedback"></textarea>
 			</div>
-			<div class="align-center"> <button class="button-style">SUBMIT</button> </div>
+			
+			<div class="align-center"> <button class="button-style" ng-click="Feedback.enterFeedback()">SUBMIT</button> </div>
 			</div>
 					
 	</ion-content>

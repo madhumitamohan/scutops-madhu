@@ -9,7 +9,9 @@
         dashboard:prefix + "dashboard.php",
         createOrder : prefix + "createOrder.php",
         getUserDetails : prefix + "getUserDetails.php",
-        makePayment : prefix + "makePayment.php"
+        makePayment : prefix + "makePayment.php",
+        applyPackage : prefix + "applyPackage.php",
+        enterFeedback : prefix + "enterFeedback.php"
     };
 
   /*  function recalculateUrls(prefix) {

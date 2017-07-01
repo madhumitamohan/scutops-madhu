@@ -18,12 +18,9 @@
         loginVm.currentUser = {};
         loginVm.currentUser.email = ""; //manu@gmail.com
         loginVm.currentUser.password = "";
-        loginVm.currentUser.type =1; //mannu
         // Function declarations
         
         loginVm.SignUp = SignUp;
-        loginVm.googleLogOut = googleLogOut;
-        loginVm.googleLogIn = googleLogIn;
         loginVm.forgotPassword = forgotPassword;
         loginVm.displayPassword = displayPassword;
         loginVm.authenticateUser = authenticateUser;
@@ -51,16 +48,7 @@
         }
 
         function activate() {
-            if(CommonService.checkCookie()){
-              var id = CommonService.getCookie("id");
-              LoginDataService.getUserDetails(id).then(function(response){
-                console.log(response.payload);
-                CommonService.setUserDetails(response.payload);
-                $state.go("sidebar.dashboard");
-            });
-            }         
-            else
-              console.log("cookie not set");
+            
         }
 
         function authenticateUser() {
@@ -104,9 +92,9 @@
         }*/
 
        
-        var provider = new firebase.auth.GoogleAuthProvider();
+        //var provider = new firebase.auth.GoogleAuthProvider();
 
-        function googleLogIn() {
+        /*function googleLogIn() {
           provider.setCustomParameters({
             prompt: 'select_account'
           });
@@ -117,7 +105,7 @@
              var user = result.user;
         
              //console.log(token);
-             console.log(user);
+             //console.log(user);
              loginVm.currentUser.email = user.email;
              loginVm.currentUser.password = "";
              loginVm.currentUser.type = 3;
@@ -135,11 +123,11 @@
    firebase.auth().signOut()
     
    .then(function() {
-      console.log('Signout Succesfull')
+      console.log('Signout Succesfully');
    }, function(error) {
-      console.log('Signout Failed')  
+      console.log('Signout Failed');  
    });
-}
+}*/
 
 }
 })();

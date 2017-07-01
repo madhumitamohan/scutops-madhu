@@ -10,19 +10,32 @@
          */
     .controller('BookPackageController', BookPackage);
 
-    BookPackage.$inject = ['$state', '$filter', '$http', 'config', '$location'];
+    BookPackage.$inject = ['$state', '$filter', '$http', 'config', '$location','BookPackageDataService','CommonService'];
 
-    function BookPackage($state, $filter, $http, config, $location) {
+    function BookPackage($state, $filter, $http, config, $location, BookPackageDataService, CommonService) {
         var bookPackageVm = this;
+        bookPackageVm.packageDetails={};
+        bookPackageVm.packageDetails.packageDays = {};
+        bookPackageVm.packageDetails.bookingTime = "07:00";
+        bookPackageVm.packageDetails.bookingCount = 1;
+        bookPackageVm.packageDetails.promocode = "";
+        bookPackageVm.packageDetails.bookingLocation = "HimasTech, Kaloor";
+        bookPackageVm.packageDetails.no_of_days = 0;
+        bookPackageVm.buttonDisableStatus = false;
+
         // Variable declarations
         var currentDate,currentHour,validTime,date;
 
+        bookPackageVm.bookNow = bookNow;
         // Function declarations
         
        
 
         activate();
         function activate() {
+            bookPackageVm.packageDetails.services = CommonService.getBookingDetails().services;
+            bookPackageVm.packageDetails.instructions = CommonService.getBookingDetails().instructions;
+            bookPackageVm.packageDetails.cust_id = CommonService.getUserDetails().id;
             setTimeout(function(){ 
                     initMap();
             }, 1000);
@@ -91,6 +104,7 @@
                 placeMarker(marker,event.latLng);
                 geocoder.geocode({location:event.latLng},function(results,status){
                     currentLocation.value=(results[0].formatted_address);
+                    bookPackageVm.packageDetails.bookingLocation=(results[0].formatted_address);
                     console.log(results[0].formatted_address);
                     })
             });
@@ -153,6 +167,94 @@
         positionValidity(map,latLngBounds);
 
     }
-    }    
+
+    function checkValidity(bookingDays,bookingTime,bookingCount){
+            if(daysValidity(bookingDays) && timeValidity(bookingTime) && countValidity(bookingCount))
+                return true;
+        }
+
+    function daysValidity(bookingDays){
+        bookPackageVm.packageDetails.no_of_days=0;
+        if(bookingDays.sunday)
+            bookPackageVm.packageDetails.no_of_days+=1;
+        if(bookingDays.monday)
+            bookPackageVm.packageDetails.no_of_days+=1;
+        if(bookingDays.tuesday)
+            bookPackageVm.packageDetails.no_of_days+=1;
+        if(bookingDays.wednesday)
+            bookPackageVm.packageDetails.no_of_days+=1;
+        if(bookingDays.thursday)
+            bookPackageVm.packageDetails.no_of_days+=1;
+        if(bookingDays.friday)
+            bookPackageVm.packageDetails.no_of_days+=1;
+        if(bookingDays.satday)
+            bookPackageVm.packageDetails.no_of_days+=1;
+
+        if(bookPackageVm.packageDetails.no_of_days>=2)
+            return true;
+        else
+            {
+                alert("Select atleast two days");
+                bookPackageVm.buttonDisableStatus = false;
+            }
+    }
+
+    function timeValidity(bookingTime){
+            var bookingTimeHour = bookingTime.substr(0,2);
+            //bookinghour
+            
+            if(bookingTime < "07:00" || bookingTime > "18:00")//if booking is before 7 or after 6
+               {
+                alert("Booking is allowed only between 7am and 5pm");
+                bookPackageVm.buttonDisableStatus = false;
+                return false;
+               }
+            return true;
+
+        }
+
+    function countValidity(bookingCount){
+            if(bookingCount<1)
+                {
+                    alert("Book atleast one professional");
+                    bookPackageVm.buttonDisableStatus = false;
+                    return false;
+                }
+            else if(bookingCount>5)
+                {
+                    alert("Book less than or equal to five professionals");
+                    bookPackageVm.buttonDisableStatus = false;
+                    return false;
+                }
+            return true;
+            
+        }
+
+    function bookNow(){
+        bookPackageVm.buttonDisableStatus = true;
+        console.log(bookPackageVm.packageDetails);
+        console.log(bookPackageVm.packageDetails.packageDays);
+
+        var packageDetails = JSON.stringify(bookPackageVm.packageDetails);
+        
+
+        if(checkValidity(bookPackageVm.packageDetails.packageDays,bookPackageVm.packageDetails.bookingTime,bookPackageVm.packageDetails.bookingCount)){
+           
+            BookPackageDataService.applyPackage(packageDetails).then(function(response){
+                    if(response.result)
+                        $state.go("liveUpdate");
+                    else
+                        {
+                            alert(response.description);
+                            bookPackageVm.buttonDisableStatus = false;
+                        }
+                });
+        }
+    }
+
+    
+}    
+
+
 
 }) ();

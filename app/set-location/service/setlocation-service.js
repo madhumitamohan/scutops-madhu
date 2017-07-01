@@ -51,7 +51,7 @@
                 url: config.API_URL.createOrder,
                 data: bookingDetails
             }).then(function mySuccess(response){
-                console.log(response.data);
+                //console.log(response.data);
                 defer.resolve(response.data);
             }, function myError(response){
                 //console.log(response.statusText);
